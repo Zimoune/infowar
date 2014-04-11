@@ -19,26 +19,50 @@ public abstract class Robot {
 
   public abstract boolean peutTirer();
 
+  /**
+   * Renvoie true si le robot est dans la base
+   * @return
+   */
   public boolean estSurBase() {
   return false;
   }
 
+  /**
+   * Attribue la Coordonnée au robot
+   * @param coordonnees
+   */
   public void setCoordonnees(Coordonnees coordonnees) {
 	  this.coord = coordonnees;
   }
-
+  
+  /**
+   * Renvoie la vue
+   * @return
+   */
   public Vue getVue() {
-  return vue;
+	  return vue;
   }
 
+  /**
+   * Renvoie l'énergie du robot
+   * @return
+   */
   public int getEnergie() {
   return energie;
   }
-
+  
+  /**
+   * Attribue l'énergie au robot
+   * @param energie
+   */
   public void setEnergie(int energie) {
 	  this.energie = energie;
   }
 
+  /**
+   * Retourne le numéro d'équipe auquel appartient le robot
+   * @return
+   */
   public int getEquipe() {
   return equipe;
   }
@@ -55,17 +79,30 @@ public abstract class Robot {
 
   public abstract List<Coordonnees> getDeplacements();
 
+  /**
+   * Attribue la vue
+   * @param vue
+   */
   public void setVue(Vue vue) {
   }
 
+  /**
+   * Affiche le robot
+   */
   public String toString() {
   return null;
   }
 
+  /**
+   * Enleve l'energie en tirant
+   */
   public void subitTir() {
 	  this.energie -= 3;
   }
 
+  /**
+   * Enleve l'energie en posant une mine
+   */
   public void subitMine() {
 	  this.energie -= 2;
   }

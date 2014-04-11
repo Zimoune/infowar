@@ -12,25 +12,47 @@ public abstract class Cellule {
   Robot robot;
 
   public Cellule(int largeur, int hauteur) {
-	  coord = new Coordonnees(largeur,hauteur);  }
+	  coord = new Coordonnees(largeur,hauteur);  
+  }
 
+  /**
+   * Renvoie le numéro de l'équipe à qui appartient la mine
+   * 0 si ce n'est pas une mine
+   * @return
+   */
   public int contientMine() {
-  return mine;
+	  return mine;
   }
-
+  
+  /**
+   * Renvoie le numéro de l'équipe de la base
+   * 0 si ce n'est pas une base
+   * @return
+   */
   public int estBase() {
-  return base;
+	  return base;
   }
 
+  /**
+   * Renvoie la coordonnée de la cellule
+   * @return
+   */
   public Coordonnees getCoordonnees() {
-  return coord;
+	  return coord;
   }
 
+  /**
+   * Renvoie le robot que la cellule contient
+   * @return
+   */
   public Robot getContenu() {
-  return robot;
+	  return robot;
   }
 
 
+  /**
+   * Affiche le contenu de la cellule
+   */
   public String toString() {
 	  return "Cellule [mine=" + mine + ", base=" + base + ", coord=" + coord
 			+ ", image=" + image + ", robot=" + robot + "]";

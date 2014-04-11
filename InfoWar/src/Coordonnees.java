@@ -10,18 +10,33 @@ public class Coordonnees {
 	  this.hauteur = hauteur;
   }
 
+  /**
+   * Renvoie la position en x
+   */
   public int getLargeur() {
-  return largeur;
+	  return largeur;
   }
 
+  /**
+   * Renvoie la position en y
+   * @return
+   */
   public int getHauteur() {
-  return hauteur;
+	  return hauteur;
   }
 
+  /**
+   * Affiche la position
+   */
   public String toString() {
-  return "Largeur : " + largeur + " Hauteur : " + hauteur;
+	  return "Largeur : " + largeur + " Hauteur : " + hauteur;
   }
 
+  /**
+   * Additionne la coordonnée avec une autre
+   * @param coord
+   * @return
+   */
   public Coordonnees ajout(Coordonnees coord) {
 	  return coord = new Coordonnees(this.largeur + coord.largeur, this.hauteur + coord.hauteur);
   }
