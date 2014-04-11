@@ -1,23 +1,23 @@
 public abstract class Action {
+	private Coordonnees coord;
+	private Robot robot;
 
-  public Action(Robot robot, Coordonnees direction) {
-	  
-  }
-  
-  public Robot getRobot() {
-  return null;
-  }
+	public Action(Robot robot, Coordonnees direction) {
 
-  public Coordonnees getDirection() {
-  return null;
-  }
+	}
 
-  public Coordonnees getObjectif() {
-  return null;
-  }
+	public Robot getRobot() {
+		return null;
+	}
 
+	public Coordonnees getDirection() {
+		return null;
+	}
 
+	public Coordonnees getObjectif() {
+		return null;
+	}
 
-  public abstract void agit();
+	public abstract void agit();
 
 }

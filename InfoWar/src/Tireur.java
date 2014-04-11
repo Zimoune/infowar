@@ -1,6 +1,7 @@
 import java.util.List;
 
-public class Tireur extends Robot{
+public class Tireur extends Robot {
+	private Coordonnees coord;
 
 	public Tireur(Vue vue, int l, int h, int equipe) {
 		super(vue, l, h, equipe);
@@ -47,6 +48,5 @@ public class Tireur extends Robot{
 		// TODO Auto-generated method stub
 		return Constante.dep;
 	}
-
 
 }

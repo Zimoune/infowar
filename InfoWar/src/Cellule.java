@@ -5,11 +5,11 @@ public abstract class Cellule {
 
   protected int base = 0;
   
-  Coordonnees coord;
+  private Coordonnees coord;
 
   String image;
   
-  Robot robot;
+  private Robot robot;
 
   public Cellule(int largeur, int hauteur) {
 	  coord = new Coordonnees(largeur,hauteur);  

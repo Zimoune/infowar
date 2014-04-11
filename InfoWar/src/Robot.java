@@ -2,109 +2,115 @@ import java.util.List;
 
 public abstract class Robot {
 
-  private int energie;
+	private int energie;
 
-  private int equipe;
-  
-  private Vue vue;
-  
-  private Coordonnees coord;
+	private int equipe;
 
-  
-  public Robot(Vue vue, int l, int h, int equipe) {
-	  this.vue = vue;
-	  this.equipe = equipe;
-	  coord = new Coordonnees(l,h);
-  }
+	private Vue vue;
 
-  public abstract boolean peutTirer();
+	private Coordonnees coord;
 
-  /**
-   * Renvoie true si le robot est dans la base
-   * @return
-   */
-  public boolean estSurBase() {
-  return false;
-  }
+	public Robot(Vue vue, int l, int h, int equipe) {
+		this.vue = vue;
+		this.equipe = equipe;
+		coord = new Coordonnees(l, h);
+	}
 
-  /**
-   * Attribue la Coordonnée au robot
-   * @param coordonnees
-   */
-  public void setCoordonnees(Coordonnees coordonnees) {
-	  this.coord = coordonnees;
-  }
-  
-  /**
-   * Renvoie la vue
-   * @return
-   */
-  public Vue getVue() {
-	  return vue;
-  }
+	public abstract boolean peutTirer();
 
-  /**
-   * Renvoie l'énergie du robot
-   * @return
-   */
-  public int getEnergie() {
-  return energie;
-  }
-  
-  /**
-   * Attribue l'énergie au robot
-   * @param energie
-   */
-  public void setEnergie(int energie) {
-	  this.energie = energie;
-  }
+	/**
+	 * Renvoie true si le robot est dans la base
+	 * 
+	 * @return
+	 */
+	public boolean estSurBase() {
+		return false;
+	}
 
-  /**
-   * Retourne le numéro d'équipe auquel appartient le robot
-   * @return
-   */
-  public int getEquipe() {
-  return equipe;
-  }
+	/**
+	 * Attribue la Coordonnée au robot
+	 * 
+	 * @param coordonnees
+	 */
+	public void setCoordonnees(Coordonnees coordonnees) {
+		this.coord = coordonnees;
+	}
 
-  public abstract int getCoutAction();
+	/**
+	 * Renvoie la vue
+	 * 
+	 * @return
+	 */
+	public Vue getVue() {
+		return vue;
+	}
 
-  public abstract int getCoutDep();
+	/**
+	 * Renvoie l'énergie du robot
+	 * 
+	 * @return
+	 */
+	public int getEnergie() {
+		return energie;
+	}
 
-  public abstract int getDegatTir();
+	/**
+	 * Attribue l'énergie au robot
+	 * 
+	 * @param energie
+	 */
+	public void setEnergie(int energie) {
+		this.energie = energie;
+	}
 
-  public abstract int getDegatMine();
+	/**
+	 * Retourne le numéro d'équipe auquel appartient le robot
+	 * 
+	 * @return
+	 */
+	public int getEquipe() {
+		return equipe;
+	}
 
-  public abstract String getType();
+	public abstract int getCoutAction();
 
-  public abstract List<Coordonnees> getDeplacements();
+	public abstract int getCoutDep();
 
-  /**
-   * Attribue la vue
-   * @param vue
-   */
-  public void setVue(Vue vue) {
-  }
+	public abstract int getDegatTir();
 
-  /**
-   * Affiche le robot
-   */
-  public String toString() {
-  return null;
-  }
+	public abstract int getDegatMine();
 
-  /**
-   * Enleve l'energie en tirant
-   */
-  public void subitTir() {
-	  this.energie -= 3;
-  }
+	public abstract String getType();
 
-  /**
-   * Enleve l'energie en posant une mine
-   */
-  public void subitMine() {
-	  this.energie -= 2;
-  }
+	public abstract List<Coordonnees> getDeplacements();
+
+	/**
+	 * Attribue la vue
+	 * 
+	 * @param vue
+	 */
+	public void setVue(Vue vue) {
+	}
+
+	/**
+	 * Affiche le robot
+	 */
+	public String toString() {
+		return null;
+	}
+
+	/**
+	 * Enleve l'energie en tirant
+	 */
+	public void subitTir() {
+		this.energie -= 3;
+	}
+
+	/**
+	 * Enleve l'energie en posant une mine
+	 */
+	public void subitMine() {
+		this.energie -= 2;
+	}
 
 }
