@@ -5,9 +5,16 @@ public abstract class Robot {
   private int energie;
 
   private int equipe;
+  
+  private Vue vue;
+  
+  private Coordonnees coord;
 
   
   public Robot(Vue vue, int l, int h, int equipe) {
+	  this.vue = vue;
+	  this.equipe = equipe;
+	  coord = new Coordonnees(l,h);
   }
 
   public abstract boolean peutTirer();
@@ -17,21 +24,23 @@ public abstract class Robot {
   }
 
   public void setCoordonnees(Coordonnees coordonnees) {
+	  this.coord = coordonnees;
   }
 
   public Vue getVue() {
-  return null;
+  return vue;
   }
 
   public int getEnergie() {
-  return 0;
+  return energie;
   }
 
   public void setEnergie(int energie) {
+	  this.energie = energie;
   }
 
   public int getEquipe() {
-  return 0;
+  return equipe;
   }
 
   public abstract int getCoutAction();
@@ -54,9 +63,11 @@ public abstract class Robot {
   }
 
   public void subitTir() {
+	  this.energie -= 3;
   }
 
   public void subitMine() {
+	  this.energie -= 2;
   }
 
 }

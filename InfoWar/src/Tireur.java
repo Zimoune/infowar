@@ -16,19 +16,19 @@ public class Tireur extends Robot{
 	@Override
 	public int getCoutAction() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -2;
 	}
 
 	@Override
 	public int getCoutDep() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -1;
 	}
 
 	@Override
 	public int getDegatTir() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 	@Override
@@ -39,14 +39,13 @@ public class Tireur extends Robot{
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Tireur";
 	}
 
 	@Override
 	public List<Coordonnees> getDeplacements() {
 		// TODO Auto-generated method stub
-		return null;
+		return Constante.dep;
 	}
 
 

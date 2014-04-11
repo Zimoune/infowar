@@ -4,31 +4,37 @@ public abstract class Cellule {
   protected int mine = 0;
 
   protected int base = 0;
+  
+  Coordonnees coord;
 
   String image;
+  
+  Robot robot;
 
   public Cellule(int largeur, int hauteur) {
-  }
+	  coord = new Coordonnees(largeur,hauteur);  }
 
   public int contientMine() {
-  return 0;
+  return mine;
   }
 
   public int estBase() {
-  return 0;
+  return base;
   }
 
   public Coordonnees getCoordonnees() {
-  return null;
+  return coord;
   }
 
   public Robot getContenu() {
-  return null;
+  return robot;
   }
 
+
   public String toString() {
-  return null;
-  }
+	  return "Cellule [mine=" + mine + ", base=" + base + ", coord=" + coord
+			+ ", image=" + image + ", robot=" + robot + "]";
+}
 
   public abstract void deplaceSur();
 

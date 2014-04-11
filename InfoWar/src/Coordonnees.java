@@ -6,22 +6,24 @@ public class Coordonnees {
 
         
   public Coordonnees(int largeur, int hauteur) {
+	  this.largeur = largeur;
+	  this.hauteur = hauteur;
   }
 
   public int getLargeur() {
-  return 0;
+  return largeur;
   }
 
   public int getHauteur() {
-  return 0;
+  return hauteur;
   }
 
   public String toString() {
-  return null;
+  return "Largeur : " + largeur + " Hauteur : " + hauteur;
   }
 
   public Coordonnees ajout(Coordonnees coord) {
-  return null;
+	  return coord = new Coordonnees(this.largeur + coord.largeur, this.hauteur + coord.hauteur);
   }
 
 }

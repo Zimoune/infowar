@@ -9,7 +9,6 @@ public class Piegeur extends Robot{
 
 	@Override
 	public boolean peutTirer() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -22,7 +21,7 @@ public class Piegeur extends Robot{
 	@Override
 	public int getCoutDep() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
@@ -34,19 +33,17 @@ public class Piegeur extends Robot{
 	@Override
 	public int getDegatMine() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -2;
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+			return "Piegeur";
 	}
 
 	@Override
 	public List<Coordonnees> getDeplacements() {
-		// TODO Auto-generated method stub
-		return null;
+			return Constante.dep;
 	}
 
 }
