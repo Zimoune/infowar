@@ -44,6 +44,7 @@ public class Plateau {
 	 * Affiche le plateau
 	 */
 	public void afficherPlateau(Vue vue){
+		System.out.println("  1   2   3   4   5  x/y");
 		for (int i = 0; i < this.x; i++) {
 			System.out.println("---------------------");
 			for(int j = 0; j < this.y; j++){
@@ -64,7 +65,7 @@ public class Plateau {
 					
 				
 			}
-			System.out.println("¦");
+			System.out.println("¦ " + (i+1));
 		}
 		System.out.println("---------------------");
 	}

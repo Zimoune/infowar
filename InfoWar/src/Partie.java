@@ -6,10 +6,15 @@ public class Partie {
 	
 	ArrayList<Vue> listVu = new ArrayList<Vue>();
 	Plateau p;
+	
 	public Partie(){
 		//2 Joueurs et 1 robot
 		this.initPartie(2, 1);
 		p.afficherPlateau(this.listVu.get(1));;
+		if(this.p.tableau[p.getBase(1).getLargeur()][p.getBase(1).getHauteur()] instanceof Base){
+			
+		}
+			
 	}
 	
 	/**
@@ -61,8 +66,10 @@ public class Partie {
 	public void initPartie(int nmbDeJoueur, int nmbRobotParEquipe){
 		p = new Plateau();
 		p.initPlateau();
+		//Pour chaque joueur
 		for(int i = 1; i <= nmbDeJoueur; i++){
 			this.listVu.add(new Vue(i, this.p));
+			//Choix des types de tout les robots
 			for(int j = 0; j < nmbRobotParEquipe ; j++){
 				this.actionChoixRobot(choixRobot(), i);
 			}
@@ -70,6 +77,5 @@ public class Partie {
 		}
 		
 	}
-
 	
 }

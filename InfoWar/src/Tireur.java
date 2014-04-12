@@ -16,26 +16,22 @@ public class Tireur extends Robot {
 
 	@Override
 	public int getCoutAction() {
-		// TODO Auto-generated method stub
-		return -2;
+		return 2;
 	}
 
 	@Override
 	public int getCoutDep() {
-		// TODO Auto-generated method stub
-		return -1;
+		return 1;
 	}
 
 	@Override
 	public int getDegatTir() {
-		// TODO Auto-generated method stub
 		return 3;
 	}
 
 	@Override
 	public int getDegatMine() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 	@Override

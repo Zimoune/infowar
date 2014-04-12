@@ -127,6 +127,13 @@ public abstract class Robot {
 
 	}
 
+	public String stats(){
+		if(this instanceof Tireur)
+			return "Tireur : " + this.energie + " points d'énergie(s)";
+		else{
+			return "Piegeur : " + this.energie + " points d'énergie(s)";
+		}
+	}
 	/**
 	 * Enleve l'energie en tirant
 	 */

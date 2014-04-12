@@ -23,12 +23,24 @@ public class Base extends Cellule {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	/**
+	 * Affichage de la base et NON de son contenu
+	 */
 	public String toString(){
 		if(this.estBase() == 1)
 		return " B ";
 		else{
 			return " b ";
+		}
+	}
+	
+	/**
+	 * Affichage du contenu
+	 */
+	public void contenuBase(){
+		System.out.println("Contenu de la base équipe " +this.estBase()+ " :");
+		for(int i = 0; i < this.listRobot.size(); i++){
+			System.out.println(this.listRobot.get(i).stats());
 		}
 	}
 }
