@@ -9,7 +9,7 @@ public class Partie {
 	public Partie(){
 		//2 Joueurs et 1 robot
 		this.initPartie(2, 1);
-		p.afficherPlateau(this.listVu.get(0));;
+		p.afficherPlateau(this.listVu.get(1));;
 	}
 	
 	/**

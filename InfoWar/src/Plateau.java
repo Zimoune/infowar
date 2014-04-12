@@ -22,6 +22,7 @@ public class Plateau {
 		this.tableau[0][0].ajoute(1);
 		this.tableau[x-1][y-1] = new Base(x-1, y-1);
 		this.tableau[x-1][y-1].ajoute(2);
+		this.tableau[4][3].mine = 1;
 	}
 	
 	/**
@@ -54,6 +55,9 @@ public class Plateau {
 					else{
 						System.out.print(this.tableau[i][j].robot);
 					}
+				else if(this.tableau[i][j].contientMine() == vue.equipe){
+					System.out.print(" M ");
+				}
 				else{
 					System.out.print(this.tableau[i][j].toString());
 				}
