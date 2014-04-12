@@ -23,7 +23,7 @@ public class Menu {
 	public void actionMenu(int choix) {
 		switch (choix) {
 		case 1:
-			System.out.println("lancement de la partie jce");
+			new Partie();
 			break;
 		case 2:
 			System.out.println("lancement de la partie jcj");

@@ -16,6 +16,13 @@ public abstract class Robot {
 		coord = new Coordonnees(l, h);
 	}
 
+	/**
+	 * Retourn la coordonnees du robot
+	 * @return
+	 */
+	public Coordonnees getCoord(){
+		return this.coord;
+	}
 	public abstract boolean peutTirer();
 
 	/**
@@ -96,7 +103,28 @@ public abstract class Robot {
 	 * Affiche le robot
 	 */
 	public String toString() {
-		return null;
+		if(this instanceof Tireur){
+			if(this.equipe == 1){
+				return " T ";
+			}
+			else{
+				return " t ";
+			}
+		}
+			
+		else if(this instanceof Piegeur){
+			if(this.equipe == 1){
+				return " P ";
+			}
+			else{
+				return " p ";
+			}
+		}
+		else{
+			System.out.println("Un robot n'a pas d'équipe");
+			return " ? ";
+		}
+
 	}
 
 	/**

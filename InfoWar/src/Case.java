@@ -2,24 +2,33 @@ public class Case extends Cellule {
 
 	public Case(int largeur, int hauteur) {
 		super(largeur, hauteur);
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Deplace le robot r
+	 */
 	@Override
-	public void deplaceSur() {
-		// TODO Auto-generated method stub
-		
+	public void deplaceSur(Robot r) {
+		r.getVue().plateau.tableau[r.getCoord().getLargeur()][r.getCoord().getHauteur()].retirerRobot();
+		this.robot = r;
+		this.robot.setCoordonnees(this.getCoordonnees());
 	}
 
+	/**
+	 * Attribut une base à l'équipe passé en paramètre
+	 */
 	@Override
 	public void ajoute(int equipe) {
-		// TODO Auto-generated method stub
-		
+		this.base = equipe;
 	}
 
+	/**
+	 * Vide la case
+	 */
 	@Override
 	public void videCase() {
-		// TODO Auto-generated method stub
-		
+		this.mine = 0;
+		this.base = 0;
+		this.robot = null;
 	}
 }

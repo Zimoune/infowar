@@ -1,5 +1,5 @@
 
-public abstract class Cellule {
+public abstract class Cellule{
 
   protected int mine = 0;
 
@@ -9,7 +9,7 @@ public abstract class Cellule {
 
   String image;
   
-  private Robot robot;
+  protected Robot robot;
 
   public Cellule(int largeur, int hauteur) {
 	  coord = new Coordonnees(largeur,hauteur);  
@@ -49,16 +49,45 @@ public abstract class Cellule {
 	  return robot;
   }
 
+  /**
+   * Retire le robot
+   */
+  public void retirerRobot(){
+	  this.robot = null;
+  }
 
+  /**
+   * Place un robot
+   * @param r
+   */
+  public void setRobot(Robot r){
+	  this.robot = r;
+  }
+  
   /**
    * Affiche le contenu de la cellule
    */
   public String toString() {
-	  return "Cellule [mine=" + mine + ", base=" + base + ", coord=" + coord
-			+ ", image=" + image + ", robot=" + robot + "]";
+	  if(this.robot != null)
+	  return this.robot.toString();
+	  else if(this.mine == 1){
+		 return " 1 ";
+	  }
+	  else if(this.mine == 2){
+		  return " 2 ";
+	  }
+	  else if(this.base == 1){
+		  return " B ";
+	  }
+	  else if(this.base == 2){
+		  return " b ";
+	  }
+	  else{
+		  return "   ";
+	  }
 }
 
-  public abstract void deplaceSur();
+  public abstract void deplaceSur(Robot r);
 
   public abstract void ajoute(int equipe);
 
