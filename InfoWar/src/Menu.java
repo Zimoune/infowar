@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -13,6 +14,7 @@ public class Menu {
 		System.out.println(" 2. Joueur contre joueur  ");
 		System.out.println(" 3. Quitter ");
 		this.actionMenu(this.choixMenu());
+		
 	}
 
 	/**
@@ -33,7 +35,8 @@ public class Menu {
 			break;
 
 		default:
-			System.out.println("Veuillez rentrer un choix valide");
+			System.out.println("Entrer une valeur correcte");
+			this.actionMenu(this.choixMenu());
 			break;
 		}
 	}
@@ -44,7 +47,13 @@ public class Menu {
 	 * @return
 	 */
 	public int choixMenu() {
-		return new Scanner(System.in).nextInt();
+		do{
+			try{
+				return new Scanner(System.in).nextInt();	
+			}
+			catch(InputMismatchException e){
+				System.out.println("Entrer une valeur correcte");
+			}
+		}while(true);
 	}
-
 }
