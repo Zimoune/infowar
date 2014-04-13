@@ -17,7 +17,7 @@ public class Menu {
 	}
 
 	/**
-	 * Redirectionne l'utilisateur en fonction de sont choix.
+	 * Redirection de l'utilisateur en fonction de son choix.
 	 * 
 	 * @param choix
 	 */

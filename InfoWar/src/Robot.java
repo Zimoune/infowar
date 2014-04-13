@@ -17,7 +17,7 @@ public abstract class Robot {
 	}
 
 	/**
-	 * Retourn la coordonnees du robot
+	 * Retourne la coordonnees du robot
 	 * 
 	 * @return
 	 */
