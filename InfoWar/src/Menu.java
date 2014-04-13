@@ -10,9 +10,8 @@ public class Menu {
 		System.out.println("------------------------------");
 		System.out.println("|            MENU            |");
 		System.out.println("------------------------------");
-		System.out.println(" 1. Joueur contre ordinateur ");
-		System.out.println(" 2. Joueur contre joueur  ");
-		System.out.println(" 3. Quitter ");
+		System.out.println(" 1. Joueur contre Joueur");
+		System.out.println(" 2. Quitter ");
 		this.actionMenu(this.choixMenu());
 		
 	}
@@ -28,9 +27,6 @@ public class Menu {
 			new Partie();
 			break;
 		case 2:
-			System.out.println("lancement de la partie jcj");
-			break;
-		case 3:
 			System.out.println("Bye");
 			break;
 
