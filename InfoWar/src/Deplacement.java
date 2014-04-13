@@ -6,18 +6,17 @@ public class Deplacement extends Action {
 
 	@Override
 	public void agit() {
-		if (this.getObjectif().getHauteur() < 10
+		if (this.getObjectif().getHauteur() < 10   // Verifie les dimensions du plateau 
 				&& this.getObjectif().getHauteur() > 0
 				&& this.getObjectif().getLargeur() < 5
 				&& this.getObjectif().getLargeur() > 0
-				&& (this.getRobot().getVue().plateau.tableau[this.getObjectif()
+				&& (this.getRobot().getVue().plateau.getBase(this.getRobot().getEquipe()).equals(this.getObjectif()) ||
+						this.getRobot().getVue().plateau.tableau[this.getObjectif()
 						.getLargeur()][this.getObjectif().getHauteur()]
-						.estBase() != this.getRobot().getEquipe() || this
-						.getRobot().getVue().plateau.tableau[this.getObjectif()
-						.getLargeur()][this.getObjectif().getHauteur()]
-						.estBase() == 0)) { // Verifie que le
-											// deplacement est dans
-											// le plateau
+						.estBase() == 0)  // Verifie si le deplacement ne s'effectue pas sur la base adverse
+				&& !this.getRobot().getVue().plateau.estRobot(this.getObjectif().getHauteur(), this.getObjectif().getLargeur())) { // Verifie que le
+											// Verifie si le deplacement ne s'effectue pas sur un autre robot
+											// 
 			this.getRobot().setCoordonnees(this.getObjectif());// Change les
 																// coordonnees
 																// du robot
@@ -32,6 +31,10 @@ public class Deplacement extends Action {
 																	// effectuer
 																	// le
 																	// deplacement
+			
+			if(this.getRobot().getVue().estMine(this.getObjectif())){
+				this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getDegatMine()); // Cas ou la case selectionné est une mine
+			}
 
 		} else {
 			this.getRobot()
