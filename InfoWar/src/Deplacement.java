@@ -14,7 +14,7 @@ public class Deplacement extends Action {
 						this.getRobot().getVue().plateau.tableau[this.getObjectif()
 						.getLargeur()][this.getObjectif().getHauteur()]
 						.estBase() == 0)  // Verifie si le deplacement ne s'effectue pas sur la base adverse
-				&& !this.getRobot().getVue().plateau.estRobot(this.getObjectif().getHauteur(), this.getObjectif().getLargeur())) { // Verifie que le
+				&& !this.getRobot().getVue().plateau.estRobot(this.getObjectif().getLargeur(), this.getObjectif().getHauteur())) { // Verifie que le
 											// Verifie si le deplacement ne s'effectue pas sur un autre robot
 											// 
 			this.getRobot().setCoordonnees(this.getObjectif());// Change les
