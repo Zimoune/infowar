@@ -11,7 +11,7 @@ public class Tireur extends Robot {
 	@Override
 	public boolean peutTirer() {
 		// TODO Auto-generated method stub
-		return false;
+		return this.getCoutAction() < this.getEnergie();
 	}
 
 	@Override

@@ -18,11 +18,13 @@ public abstract class Robot {
 
 	/**
 	 * Retourn la coordonnees du robot
+	 * 
 	 * @return
 	 */
-	public Coordonnees getCoord(){
+	public Coordonnees getCoord() {
 		return this.coord;
 	}
+
 	public abstract boolean peutTirer();
 
 	/**
@@ -31,7 +33,8 @@ public abstract class Robot {
 	 * @return
 	 */
 	public boolean estSurBase() {
-		return false;
+		return this.getCoord().equals(
+				this.getVue().plateau.getBase(this.getEquipe()));
 	}
 
 	/**
@@ -97,43 +100,42 @@ public abstract class Robot {
 	 * @param vue
 	 */
 	public void setVue(Vue vue) {
+		this.vue = vue;
 	}
 
 	/**
 	 * Affiche le robot
 	 */
 	public String toString() {
-		if(this instanceof Tireur){
-			if(this.equipe == 1){
+		if (this instanceof Tireur) {
+			if (this.equipe == 1) {
 				return " T ";
-			}
-			else{
+			} else {
 				return " t ";
 			}
 		}
-			
-		else if(this instanceof Piegeur){
-			if(this.equipe == 1){
+
+		else if (this instanceof Piegeur) {
+			if (this.equipe == 1) {
 				return " P ";
-			}
-			else{
+			} else {
 				return " p ";
 			}
-		}
-		else{
+		} else {
 			System.out.println("Un robot n'a pas d'équipe");
 			return " ? ";
 		}
 
 	}
 
-	public String stats(){
-		if(this instanceof Tireur)
+	public String stats() {
+		if (this instanceof Tireur)
 			return "Tireur : " + this.energie + " points d'énergie(s)";
-		else{
+		else {
 			return "Piegeur : " + this.energie + " points d'énergie(s)";
 		}
 	}
+
 	/**
 	 * Enleve l'energie en tirant
 	 */

@@ -3,7 +3,8 @@ public abstract class Action {
 	private Robot robot;
 	
 	public Action(Robot robot, Coordonnees direction) {
-
+		this.robot = robot;
+		this.coord = direction;
 	}
 
 	public Robot getRobot() {
@@ -11,11 +12,11 @@ public abstract class Action {
 	}
 
 	public Coordonnees getDirection() {
-		return null;
+		return coord;
 	}
 
 	public Coordonnees getObjectif() {
-		return null;
+		return new Coordonnees(this.robot.getCoord().getLargeur()+this.getDirection().getLargeur(), this.robot.getCoord().getHauteur()+this.getDirection().getHauteur());
 	}
 
 	public abstract void agit();

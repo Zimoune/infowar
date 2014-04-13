@@ -8,5 +8,6 @@ public class Attaque extends Action {
 	public void agit() {
 		// TODO Auto-generated method stub
 		
+		
 	}
 }

@@ -9,7 +9,7 @@ public class Piegeur extends Robot {
 
 	@Override
 	public boolean peutTirer() {
-		return false;
+		return this.getCoutAction() < this.getEnergie();
 	}
 
 	@Override
