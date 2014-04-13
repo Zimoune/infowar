@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -39,11 +40,11 @@ public class Partie {
 			break;
 		//Sinon mauvais choix.
 		default:
-			System.out.println("Veuillez rentrer un choix valide");
+			System.out.println("Entrer une valeur correcte");
 			actionChoixRobot(choixRobot(), equipe);
 			break;
 		}
-		
+
 	}
 
 	/**
@@ -51,11 +52,14 @@ public class Partie {
 	 * @return
 	 */
 	private int choixRobot() {
-		System.out.println("Choisissez un type de robot :");
-		System.out.println("1. Tireur");
-		System.out.println("2. Piegeur");
-		
-		return new Scanner(System.in).nextInt();
+		do{
+			try{
+				return new Scanner(System.in).nextInt();
+			}
+			catch(InputMismatchException e){
+				System.out.println("Entrer une valeur correcte");
+			}
+		}while(true);
 	}
 
 	/**
@@ -71,6 +75,9 @@ public class Partie {
 			this.listVu.add(new Vue(i, this.p));
 			//Choix des types de tout les robots
 			for(int j = 0; j < nmbRobotParEquipe ; j++){
+				System.out.println("Choisissez un type de robot :");
+				System.out.println("1. Tireur");
+				System.out.println("2. Piegeur");
 				this.actionChoixRobot(choixRobot(), i);
 			}
 
