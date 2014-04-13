@@ -33,8 +33,11 @@ public class Deplacement extends Action {
 																	// deplacement
 			
 			if(this.getRobot().getVue().estMine(this.getObjectif())){
-				this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getDegatMine()); // Cas ou la case selectionné est une mine
+				this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getDegatMine());// Cas ou la case selectionné est une mine
+				this.getRobot().getVue().setMine(this.getObjectif(), 0);
 			}
+			
+			
 
 		} else {
 			this.getRobot()
