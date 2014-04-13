@@ -15,11 +15,11 @@ public class Deplacement extends Action {
 			this.getRobot().setCoordonnees(this.getObjectif());// Change les
 																// coordonnees
 																// du robot
-		this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getCoutDep());
+		this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getCoutDep());// Enleve les point d'energie necessaire pour effectuer le deplacement
 			
 		}
 		else {
-			this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getCoutDep());
+			this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getCoutDep());// Enleve les points d'energie nécessaire pour éffectuer le deplacement
 		}
 	}
 }
