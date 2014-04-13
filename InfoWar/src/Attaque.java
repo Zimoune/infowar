@@ -8,8 +8,8 @@ public class Attaque extends Action {
 	public void agit() {
 		// TODO Auto-generated method stub
 		if(this.getRobot() instanceof Tireur){ // Le robot est un tireur
-		if (this.getRobot().peutTirer() //Verifie si le robot peut tirer et si l'objectif est correcte
-						.getLargeur(), this.getObjectif().getHauteur())){
+		if (this.getRobot().peutTirer() && this.getRobot().getVue().plateau.estRobot(this.getObjectif().getLargeur(), this.getObjectif().getHauteur()) //Verifie si le robot peut tirer et si l'objectif est correcte
+						){
 			this.getRobot().getVue().plateau.tableau[this.getObjectif()
 					.getLargeur()][this.getObjectif().getHauteur()]
 					.getContenu().subitTir(); // Fait des degat au robot toucher
@@ -30,11 +30,11 @@ public class Attaque extends Action {
 							this.getRobot().getVue().setMine(getObjectif(), this.getRobot().getEquipe()); // pose la mine
 				}
 				else {
-					System.out.println("Vous ne pouvez pas posez de mine ici"); // Cas si la case n'est pas libre
+					System.out.println("Vous ne pouvez pas posez de mine ici");
 				}
 			}
 			else {
-				System.out.println("Vous n'avez pas assez d'energie"); // Cas si le robot ne peut pas poser de mine
+				System.out.println("Vous n'avez pas assez d'energie");
 			}
 		}
 	}
