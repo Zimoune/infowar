@@ -48,7 +48,7 @@ public class Plateau {
 		for (int i = 0; i < this.x; i++) {
 			System.out.println("---------------------");
 			for(int j = 0; j < this.y; j++){
-				System.out.print("¦");
+				System.out.print("|");
 				if(this.tableau[i][j].contientMine() != vue.equipe && this.tableau[i][j].contientMine() != 0)
 					if(this.tableau[i][j].robot == null){
 						System.out.print("   ");
@@ -65,7 +65,7 @@ public class Plateau {
 					
 				
 			}
-			System.out.println("¦ " + (i+1));
+			System.out.println("| " + (i+1));
 		}
 		System.out.println("---------------------");
 	}
