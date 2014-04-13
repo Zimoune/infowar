@@ -13,7 +13,7 @@ public class Attaque extends Action {
 			this.getRobot().getVue().plateau.tableau[this.getObjectif()
 					.getLargeur()][this.getObjectif().getHauteur()]
 					.getContenu().subitTir();
-			this.getRobot().setEnergie(this.getRobot().getCoutAction());
+			this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
 		}
 		else
 			System.out.println("Pas assez d'energie");
