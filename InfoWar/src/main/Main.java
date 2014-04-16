@@ -31,13 +31,13 @@ public class Main {
 					r1 = new Tireur(v1,0,0,1);
 				}
 				else{
-					r1 = new Piegeur(v1,p.getLargeur()-1,p.getHauteur()-1,1);
+					r1 = new Piegeur(v1,0,0,1);
 				}
 
 			}
 			else if(cpt == 1){
 				if(choixUtilisateur.equals("t")){
-					r2 = new Tireur(v2,0,0,2);
+					r2 = new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
 				}
 				else{
 					r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
