@@ -17,9 +17,34 @@ public class Main {
 	static Vue v2 = new Vue(2,p);
 	
 	public static void main(String[] args) {
-		
-		Robot r1 = new Tireur(v1,0,0,1);
-		Robot r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
+		int cpt = 0;
+		Scanner sc = new Scanner(System.in);
+		Robot r1 = null;
+		Robot r2 = null;
+		String choixUtilisateur;
+
+		do{
+			System.out.println("Quel est le robot que vous voulez jouer ? (t/p)");			
+			choixUtilisateur = sc.next();
+			if(cpt == 0){
+				if(choixUtilisateur.equals("t")){
+					r1 = new Tireur(v1,0,0,1);
+				}
+				else{
+					r1 = new Piegeur(v1,p.getLargeur()-1,p.getHauteur()-1,1);
+				}
+
+			}
+			else if(cpt == 1){
+				if(choixUtilisateur.equals("t")){
+					r2 = new Tireur(v2,0,0,2);
+				}
+				else{
+					r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
+				}			
+			}		
+			cpt++;
+		}while(cpt < 2);
 		jouer(p,r1,r2);
 	}
 	
