@@ -12,7 +12,7 @@ import plateau.Vue;
 import robot.*;
 
 public class Main {
-	static Plateau p = new Plateau(10,10);
+	static Plateau p = new Plateau(5,10);
 	static Vue v1 = new Vue(1,p);
 	static Vue v2 = new Vue(2,p);
 	
@@ -56,7 +56,9 @@ public class Main {
 			System.out.print("Choisissez votre direction: ");
 			deplacementName = s.next();
 		} while(deplacementName.equalsIgnoreCase("z") && deplacementName.equalsIgnoreCase("q")
-				&& deplacementName.equalsIgnoreCase("s") && deplacementName.equalsIgnoreCase("d"));
+				&& deplacementName.equalsIgnoreCase("s") && deplacementName.equalsIgnoreCase("d")
+				&& deplacementName.equalsIgnoreCase("a") && deplacementName.equalsIgnoreCase("e")
+				&& deplacementName.equalsIgnoreCase("w") && deplacementName.equalsIgnoreCase("c"));
 		
 		//On regarde le caractère de la chaine et on attribut la direction correspondante
 		switch(deplacementName.charAt(0)) {
@@ -64,6 +66,10 @@ public class Main {
 		case 's': c = Constante.Bas;break;
 		case 'd': c = Constante.Droite;break;
 		case 'q': c = Constante.Gauche;break;
+		case 'a': c = Constante.diaHautGauche;break;
+		case 'e': c = Constante.diaHautDroite;break;
+		case 'w': c = Constante.diaBasGauche;break;
+		case 'c': c = Constante.diaBasDroite;break;
 		}
 		
 		if (actionName.equalsIgnoreCase("a")) {
