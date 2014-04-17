@@ -85,6 +85,10 @@ public class Plateau {
 					
 			}
 			System.out.print("|");
+			if(i == 1)
+				System.out.print("	   a=haut-gauche, z=haut, e=haut-droite");
+			if(i == 2)
+				System.out.print("        q=gauche, d=droite");
 			System.out.println();
 		}
 

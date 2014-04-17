@@ -22,6 +22,8 @@ public class Main {
 		Robot r1 = null;
 		Robot r2 = null;
 		String choixUtilisateur;
+		
+		System.out.println("Bienvenue dans VirtualWar !!\n\n");
 
 		do{
 			System.out.println("Quel est le robot que vous voulez jouer ? (t/p)");			
@@ -45,6 +47,20 @@ public class Main {
 			}		
 			cpt++;
 		}while(cpt < 2);
+		
+		if(r1.getType().equals("T")){
+			System.out.println("\nJoueur 1 : Tireur(T)");
+		}
+		else{
+			System.out.println("\nJoueur 1 : Piegeur(P)");
+		}
+		if(r2.getType().equals("t")){
+			System.out.println("Joueur 2 : Tireur(t)\n");
+		}
+		else{
+			System.out.println("Joueur 2 : Piegeur(p)\n");
+		}
+		
 		jouer(p,r1,r2);
 	}
 	
@@ -54,12 +70,16 @@ public class Main {
 		int tour = 0;
 		do {
 			if (tour%2 == 0){
+				System.out.println("\nTour de jeu : Joueur 1\n");
 				r = r1;
 				p.afficherPlateau(r1);
+				System.out.println();
 			}
 			else{
+				System.out.println("\nTour de jeu : Joueur 2\n");
 				r = r2;
 				p.afficherPlateau(r2);
+				System.out.println();
 			}
 			a = choixAction(r);
 			a.agit();
