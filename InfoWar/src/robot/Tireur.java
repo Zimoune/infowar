@@ -2,6 +2,7 @@ package robot;
 
 import java.util.List;
 
+import plateau.Constante;
 import plateau.Coordonnees;
 import plateau.Vue;
 
@@ -51,7 +52,7 @@ public class Tireur extends Robot {
 	@Override
 	public List<Coordonnees> getDeplacements() {
 		// TODO Auto-generated method stub
-		return null;
+		return Constante.dep;
 	}
 
 }

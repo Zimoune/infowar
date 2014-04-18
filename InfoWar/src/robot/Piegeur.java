@@ -2,6 +2,7 @@ package robot;
 
 import java.util.List;
 
+import plateau.Constante;
 import plateau.Coordonnees;
 import plateau.Vue;
 
@@ -9,7 +10,7 @@ public class Piegeur extends Robot {
 
 	public Piegeur(Vue vue, int l, int h, int equipe) {
 		super(vue, l, h, equipe);
-		this.setEnergie(60);
+		this.setEnergie(50);
 	}
 
 	@Override
@@ -53,7 +54,7 @@ public class Piegeur extends Robot {
 	@Override
 	public List<Coordonnees> getDeplacements() {
 		// TODO Auto-generated method stub
-		return null;
+		return Constante.dep;
 	}
 
 }

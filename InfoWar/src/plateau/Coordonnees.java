@@ -16,5 +16,9 @@ public class Coordonnees {
 	public int getHauteur() {
 		return this.y;
 	}
+	
+	public Coordonnees ajoutCoordonnees(Coordonnees coord){
+		return new Coordonnees(this.getLargeur()+coord.getLargeur(),this.getHauteur()+coord.getHauteur());
+	}
 
 }
