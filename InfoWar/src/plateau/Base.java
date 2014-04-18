@@ -1,9 +1,18 @@
+/**
+ * Classe : Base
+ */
+
 package plateau;
 
 import robot.Robot;
 
 public class Base extends Cellule {
-
+/**
+ * Constructeur de la classe Base
+ * @param x
+ * @param y
+ * @param equipe
+ */
 	public Base(int x, int y, int equipe) {
 		super(x, y);
 		this.base = equipe;
@@ -12,7 +21,9 @@ public class Base extends Cellule {
 		else
 			this.image = "b";
 	}
-
+/**
+ * deplace le robot sur cette base
+ */
 	@Override
 	public void deplaceSur(Robot r) {
 		if (this.getContenu() == null) {
