@@ -86,7 +86,7 @@ public class Main {
 			tour++;
 		} while(r1.getEnergie() > 0 && r2.getEnergie() > 0);
 		
-		System.out.println("Fin de la partie.");
+		System.out.println("\nFin de la partie.");
 	}
 	
 	public static Action choixAction(Robot r) {
