@@ -43,4 +43,13 @@ public class Case extends Cellule {
 		this.setContenu(null);
 	}
 
+	@Override
+	public void ajoutObstacle() {
+		// TODO Stub de la méthode généré automatiquement
+		if (this.getContenu() == null) {
+			this.obstacle = true;
+			this.image = "O";
+		}
+	}
+
 }

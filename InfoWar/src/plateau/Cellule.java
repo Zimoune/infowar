@@ -9,7 +9,7 @@ public abstract class Cellule {
 	String image = " ";
 	private Robot robot;
 	private Coordonnees coord;
-	private boolean obstacle;
+	protected boolean obstacle = false;
 	
 	public Cellule(int x, int y) {
 		coord = new Coordonnees(x,y);
@@ -44,6 +44,8 @@ public abstract class Cellule {
 	public abstract void ajout(int equipe);
 	
 	public abstract void videCase();
+	
+	public abstract void ajoutObstacle();
 	
 	public boolean estObstacle(){
 		return this.obstacle;

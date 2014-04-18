@@ -35,4 +35,10 @@ public class Base extends Cellule {
 		
 	}
 
+	@Override
+	public void ajoutObstacle() {
+		// TODO Stub de la méthode généré automatiquement
+		
+	}
+
 }

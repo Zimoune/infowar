@@ -86,7 +86,7 @@ public class Plateau {
 			}
 			System.out.print("|");
 			if(i == 0)
-				System.out.print("Déplacement(d) :");
+				System.out.print("DÃ©placement(d) :");
 			if(i == 1)
 				System.out.print("	   a=haut-gauche, z=haut, e=haut-droite");
 			if(i == 2)

@@ -77,6 +77,6 @@ public abstract class Robot {
 	public abstract List<Coordonnees> getDeplacements();
 	
 	public String toString(){
-		return "\n" + getType() + " niveau d'énergie: " + this.energie;
+		return "\n" + getType() + " niveau d'Ã©nergie: " + this.energie;
 	}
 }
