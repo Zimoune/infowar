@@ -6,36 +6,23 @@ import java.util.List;
 public class Constante {
 	
 	public static final List<Coordonnees> dep = new ArrayList<Coordonnees>();
-	public static final List<Coordonnees> depChar = new ArrayList<Coordonnees>();
-	public static final Coordonnees Haut = new Coordonnees(0, -1);
-	public static final Coordonnees Bas = new Coordonnees(0, 1);
-	public static final Coordonnees Gauche = new Coordonnees(-1, 0);
-	public static final Coordonnees Droite = new Coordonnees(1, 0);
-	public static final Coordonnees diaHautDroite = new Coordonnees(1, -1);
-	public static final Coordonnees diaBasDroite = new Coordonnees(1, 1);
-	public static final Coordonnees diaHautGauche = new Coordonnees(-1, -1);
-	public static final Coordonnees diaBasGauche = new Coordonnees(-1, 1);
-	public static final Coordonnees HautChar = new Coordonnees(0, -2);
-	public static final Coordonnees BasChar = new Coordonnees(0, 2);
-	public static final Coordonnees GaucheChar = new Coordonnees(-2, 0);
-	public static final Coordonnees DroiteChar = new Coordonnees(2, 0);
+	public static final Coordonnees HAUT = new Coordonnees(0, -1);
+	public static final Coordonnees BAS = new Coordonnees(0, 1);
+	public static final Coordonnees GAUCHE = new Coordonnees(-1, 0);
+	public static final Coordonnees DROITE = new Coordonnees(1, 0);
+	public static final Coordonnees DIAHAUTDROITE = new Coordonnees(1, -1);
+	public static final Coordonnees DIABASDROITE = new Coordonnees(1, 1);
+	public static final Coordonnees DIAHAUTGAUCHE = new Coordonnees(-1, -1);
+	public static final Coordonnees DIABASGAUCHE = new Coordonnees(-1, 1);
 
-	static {
-		dep.add(Haut);
-		dep.add(Bas);
-		dep.add(Gauche);
-		dep.add(Droite);
-		dep.add(diaBasDroite);
-		dep.add(diaBasGauche);
-		dep.add(diaHautDroite);
-		dep.add(diaHautGauche);
+	static{
+		dep.add(HAUT);
+		dep.add(BAS);
+		dep.add(DROITE);
+		dep.add(GAUCHE);
+		dep.add(DIAHAUTGAUCHE);
+		dep.add(DIAHAUTDROITE);
+		dep.add(DIABASGAUCHE);
+		dep.add(DIABASDROITE);
 	}
-	
-	static {
-		depChar.add(HautChar);
-		depChar.add(BasChar);
-		depChar.add(GaucheChar);
-		depChar.add(DroiteChar);
-	}
-	
 }

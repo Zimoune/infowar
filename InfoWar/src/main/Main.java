@@ -121,21 +121,21 @@ public class Main {
 		//On regarde le caract�re de la chaine et on attribut la direction correspondante
 		if(r.getType().equals("c") || r.getType().equals("C")){
 			switch(deplacementName.charAt(0)) {
-			case 'z': c = Constante.HautChar;break;
-			case 's': c = Constante.BasChar;break;
-			case 'd': c = Constante.DroiteChar;break;
-			case 'q': c = Constante.GaucheChar;break;
+			case 'z': c = Constante.HAUT;break;
+			case 's': c = Constante.BAS;break;
+			case 'd': c = Constante.DROITE;break;
+			case 'q': c = Constante.GAUCHE;break;
 			}
 		} else {
 			switch(deplacementName.charAt(0)) {
-			case 'z': c = Constante.Haut;break;
-			case 's': c = Constante.Bas;break;
-			case 'd': c = Constante.Droite;break;
-			case 'q': c = Constante.Gauche;break;
-			case 'a': c = Constante.diaHautGauche;break;
-			case 'e': c = Constante.diaHautDroite;break;
-			case 'w': c = Constante.diaHautGauche;break;
-			case 'c': c = Constante.diaBasDroite;break;
+			case 'z': c = Constante.HAUT;break;
+			case 's': c = Constante.BAS;break;
+			case 'd': c = Constante.DROITE;break;
+			case 'q': c = Constante.GAUCHE;break;
+			case 'a': c = Constante.DIAHAUTGAUCHE;break;
+			case 'e': c = Constante.DIAHAUTDROITE;break;
+			case 'w': c = Constante.DIABASGAUCHE;break;
+			case 'c': c = Constante.DIABASDROITE;break;
 			}
 		}
 		
@@ -143,7 +143,12 @@ public class Main {
 			action = new Attaque(r,c);
 		}
 		else {
+			if(r.getType().equals("c") || r.getType().equals("C")){
+			action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+			} else {
 			action = new Deplacement(r,c);
+			}
+			
 		}
 		
 		return action;

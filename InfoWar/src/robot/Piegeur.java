@@ -1,5 +1,6 @@
 package robot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import plateau.Constante;
@@ -54,6 +55,7 @@ public class Piegeur extends Robot {
 	@Override
 	public List<Coordonnees> getDeplacements() {
 		// TODO Auto-generated method stub
+		
 		return Constante.dep;
 	}
 

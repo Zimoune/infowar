@@ -1,5 +1,6 @@
 package robot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import plateau.Constante;
@@ -56,7 +57,9 @@ public class Char extends Robot{
 	@Override
 	public List<Coordonnees> getDeplacements() {
 		// TODO Stub de la méthode généré automatiquement
-		return Constante.depChar;
+		
+		
+		return Constante.dep;
 	}
 	
 	
