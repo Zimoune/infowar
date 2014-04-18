@@ -73,6 +73,7 @@ public class Main {
 		}
 		
 		jouer(p,r1,r2);
+		sc.close();
 	}
 	
 	public static void jouer(Plateau p, Robot r1, Robot r2) {
@@ -150,7 +151,7 @@ public class Main {
 			}
 			
 		}
-		
+		s.close();
 		return action;
 	}
 
