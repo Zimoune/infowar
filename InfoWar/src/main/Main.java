@@ -26,8 +26,11 @@ public class Main {
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
 
 		do{
-			System.out.println("Quel est le robot que vous voulez jouer ? (t/p)");			
-			choixUtilisateur = sc.next();
+			do{
+				System.out.println("Quel est le robot que vous voulez jouer ? (t/p)");			
+				choixUtilisateur = sc.next();
+			}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p"));
+			
 			if(cpt == 0){
 				if(choixUtilisateur.equals("t")){
 					r1 = new Tireur(v1,0,0,1);
