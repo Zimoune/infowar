@@ -27,7 +27,7 @@ public class Main {
 
 		do{
 			do{
-				System.out.println("Quel est le robot que vous voulez jouer pour l'équipe " + cpt + " ? (t/p/c)");			
+				System.out.println("Quel est le robot que vous voulez jouer pour l'equipe " + cpt + " ? (t/p/c)");			
 				choixUtilisateur = sc.next();
 			}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p") && !choixUtilisateur.equals("c"));
 			
