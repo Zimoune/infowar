@@ -85,6 +85,8 @@ public class Main {
 			a.agit();
 			tour++;
 		} while(r1.getEnergie() > 0 && r2.getEnergie() > 0);
+		
+		System.out.println("Fin de la partie.");
 	}
 	
 	public static Action choixAction(Robot r) {
@@ -95,15 +97,15 @@ public class Main {
 		do {
 			System.out.print("Choisissez votre action: ");
 			actionName = s.next();
-		} while (actionName.equalsIgnoreCase("a") && actionName.equalsIgnoreCase("d"));
+		} while (!actionName.equals("a") && !actionName.equals("d"));
 		
 		do {
 			System.out.print("Choisissez votre direction: ");
 			deplacementName = s.next();
-		} while(deplacementName.equalsIgnoreCase("z") && deplacementName.equalsIgnoreCase("q")
-				&& deplacementName.equalsIgnoreCase("s") && deplacementName.equalsIgnoreCase("d")
-				&& deplacementName.equalsIgnoreCase("a") && deplacementName.equalsIgnoreCase("e")
-				&& deplacementName.equalsIgnoreCase("w") && deplacementName.equalsIgnoreCase("c"));
+		} while(!deplacementName.equals("z") && !deplacementName.equals("q")
+				&& !deplacementName.equals("s") && !deplacementName.equals("d")
+				&& !deplacementName.equals("a") && !deplacementName.equals("e")
+				&& !deplacementName.equals("w") && !deplacementName.equals("c"));
 		
 		//On regarde le caractère de la chaine et on attribut la direction correspondante
 		switch(deplacementName.charAt(0)) {

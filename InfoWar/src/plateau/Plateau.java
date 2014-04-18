@@ -85,10 +85,19 @@ public class Plateau {
 					
 			}
 			System.out.print("|");
+			if(i == 0)
+				System.out.print("Déplacement(d) :");
 			if(i == 1)
 				System.out.print("	   a=haut-gauche, z=haut, e=haut-droite");
 			if(i == 2)
 				System.out.print("        q=gauche, d=droite");
+			if(i == 3){
+				System.out.print("        w=bas-gauche, s=bas, c=bas-droite");
+			}
+			if(i == 5)
+				System.out.print("Action(a) : ");
+			if(i == 6)
+				System.out.print("        a=attaquer, z=poser une mine");
 			System.out.println();
 		}
 
