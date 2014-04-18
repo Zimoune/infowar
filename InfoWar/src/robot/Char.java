@@ -56,7 +56,7 @@ public class Char extends Robot{
 	@Override
 	public List<Coordonnees> getDeplacements() {
 		// TODO Stub de la méthode généré automatiquement
-		return Constante.dep;
+		return Constante.depChar;
 	}
 	
 	
