@@ -34,7 +34,7 @@ public class Char extends Robot{
 	@Override
 	public boolean peutTirer() {
 		// TODO Stub de la méthode généré automatiquement
-		return false;
+		return true;
 	}
 
 	/**
@@ -86,12 +86,7 @@ public class Char extends Robot{
  */
 	@Override
 	public List<Coordonnees> getDeplacements() {
-		// TODO Stub de la méthode généré automatiquement
-		
-		
+		// TODO Stub de la méthode généré automatiquement		
 		return Constante.dep;
 	}
-	
-	
-
 }

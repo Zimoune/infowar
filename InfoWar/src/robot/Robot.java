@@ -92,12 +92,14 @@ public abstract class Robot {
 	 */
 	public void subitTir() {
 		this.setEnergie(this.getEnergie()-3);
+		System.out.println(this.getType().toString() + " a perdu 3 point d'energie par un tir");
 	}
 	/**
 	 * Ce robot subit des degats d'une mine
 	 */
 	public void subitMine() {
 		this.setEnergie(this.getEnergie()-2);
+		System.out.println(this.getType().toString() + " a perdu 2 point d'energie par une mine");
 	}
 	/**
 	 * @return true si le robot a la capacite de tirer

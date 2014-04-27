@@ -65,12 +65,12 @@ public class Main {
 			System.out.println("\nJoueur 1 : Char(C)");
 		}
 		if(r2.getType().equals("t")){
-			System.out.println("Joueur 2 : Tireur(t)\n");
+			System.out.println("Joueur 2 : Tireur(t)");
 		}
 		else if(r2.getType().equals("p")){
-			System.out.println("\nJoueur 2 : Piegeur(p)");
+			System.out.println("Joueur 2 : Piegeur(p)");
 		} else {
-			System.out.println("\nJoueur 1 : Char(c)");
+			System.out.println("Joueur 2 : Char(c)");
 		}
 		
 		jouer(p,r1,r2);
@@ -83,12 +83,14 @@ public class Main {
 		int tour = 0;
 		do {
 			if (tour%2 == 0){
+				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : Joueur 1\n");
 				r = r1;
 				p.afficherPlateau(r1);
 				System.out.println();
 			}
 			else{
+				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : Joueur 2\n");
 				r = r2;
 				p.afficherPlateau(r2);
