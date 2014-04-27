@@ -144,8 +144,22 @@ public class Main {
 		}
 		
 		if (actionName.equalsIgnoreCase("a")) {
-			action = new Attaque(r,c);
+			int cpt = 1;
+			boolean test = true;
+			if(r.getType().equals("c") || r.getType().equals("C")){
+				do{
+					System.out.println("test");
+					action = new Attaque(r, new Coordonnees(c.getLargeur()*cpt, c.getHauteur()*cpt));
+					if(p.getContenu(c.getLargeur()*cpt, c.getHauteur()*cpt) != null){
+						test = false;
+					}
+					cpt++;
+				}while(cpt < 10 && test == true);
+			}
+			else				
+				action = new Attaque(r,c);
 		}
+		
 		else {
 			if(r.getType().equals("c") || r.getType().equals("C")){
 				if(deplacementName.equals("z") || deplacementName.equals("s") || deplacementName.equals("q") || deplacementName.equals("d")){
