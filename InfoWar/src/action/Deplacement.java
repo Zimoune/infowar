@@ -12,13 +12,18 @@ public class Deplacement extends Action {
 
 	@Override
 	public void agit() {
+		//On vérifie que la direction est differente de null
 		if (this.getDirection() != null) {
+			
+			//On vérifie que la case choisi est bien vide
 			if (this.getRobot().getVue().getContenu(this.getObjectif()) == null) {
+				
+				//On déplace le robot sur cette case
 				this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
 			}
+			
+			//Que la case soit vide ou pas on enleve l'energie au robot
 			this.getRobot().setEnergie(this.getRobot().getEnergie()-1);
-		}
-		
+		}		
 	}
-
 }

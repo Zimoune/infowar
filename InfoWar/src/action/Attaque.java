@@ -12,17 +12,23 @@ public class Attaque extends Action {
 
 	@Override
 	public void agit() {
+		//On vérifie que la direction selectionné n'est pas null
 		if (this.getDirection() != null) {
+
+			//On vérifie que le robot peut tirer
 			if (this.getRobot().peutTirer()) {
+				
+				//On vérifie que l'endroit ou le robot doit tirer n'est pas vide
 				if (this.getRobot().getVue().getContenu(this.getObjectif()) != null) {
+					//On retire l'energie au robot qui se fait attaquer
 					this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
 				}
 			}
-			else
+			else{
 				this.getRobot().getVue().ajout(this.getObjectif(), this.getRobot().getEquipe());
+			}		
+			//On retire au robot attaquant l'energie de l'attaque que la case soit vide ou pas
 			this.getRobot().setEnergie(this.getRobot().getEnergie()-1);
 		}
-		
 	}
-
 }

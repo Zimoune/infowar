@@ -15,10 +15,11 @@ public class Main {
 	static Plateau p = new Plateau(5,10);
 	static Vue v1 = new Vue(1,p);
 	static Vue v2 = new Vue(2,p);
+	static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		int cpt = 1;
-		Scanner sc = new Scanner(System.in);
+		
 		Robot r1 = null;
 		Robot r2 = null;
 		String choixUtilisateur;
@@ -102,18 +103,17 @@ public class Main {
 	}
 	
 	public static Action choixAction(Robot r) {
-		Scanner s = new Scanner(System.in);
 		String actionName, deplacementName;
 		Action action;
 		Coordonnees c = null;
 		do {
 			System.out.print("Choisissez votre action: ");
-			actionName = s.next();
+			actionName = sc.next();
 		} while (!actionName.equals("a") && !actionName.equals("d"));
 		
 		do {
 			System.out.print("Choisissez votre direction: ");
-			deplacementName = s.next();
+			deplacementName = sc.next();
 		} while(!deplacementName.equals("z") && !deplacementName.equals("q")
 				&& !deplacementName.equals("s") && !deplacementName.equals("d")
 				&& !deplacementName.equals("a") && !deplacementName.equals("e")
@@ -126,6 +126,7 @@ public class Main {
 			case 's': c = Constante.BAS;break;
 			case 'd': c = Constante.DROITE;break;
 			case 'q': c = Constante.GAUCHE;break;
+			default : c = null;
 			}
 		} else {
 			switch(deplacementName.charAt(0)) {
@@ -145,13 +146,17 @@ public class Main {
 		}
 		else {
 			if(r.getType().equals("c") || r.getType().equals("C")){
-			action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+				if(deplacementName.equals("z") || deplacementName.equals("s") || deplacementName.equals("q") || deplacementName.equals("d")){
+					action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+				}			
+				else{
+					action = new Deplacement(r, new Coordonnees(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()));
+				}
 			} else {
 			action = new Deplacement(r,c);
 			}
 			
 		}
-		s.close();
 		return action;
 	}
 
