@@ -4,15 +4,20 @@
 
 package plateau;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import robot.Robot;
 
 public class Base extends Cellule {
+	private ArrayList<Robot> robotDansBase = new ArrayList<Robot>(); 
+	
 /**
  * Constructeur de la classe Base
  * @param x
  * @param y
  * @param equipe
- */
+ */	
 	public Base(int x, int y, int equipe) {
 		super(x, y);
 		this.base = equipe;
@@ -32,6 +37,22 @@ public class Base extends Cellule {
 			this.setContenu(r);
 		}
 		
+	}
+	
+	public void addRobot(Robot r){
+		this.robotDansBase.add(r);
+	}
+	
+	public String getRobot(){
+		return this.robotDansBase.toString();
+	}
+	
+	public void removeRobot(Robot r){
+		for(Robot r2 : this.robotDansBase){
+			if(r.equals(r2)){
+				this.robotDansBase.remove(r);
+			}
+		}
 	}
 
 	@Override

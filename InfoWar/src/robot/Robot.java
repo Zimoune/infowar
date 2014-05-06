@@ -12,6 +12,8 @@ import plateau.Vue;
 
 public abstract class Robot {
 	
+	private String nom;
+	
 	private int energie;
 	private int equipe;
 	private Vue vue;
@@ -24,12 +26,17 @@ public abstract class Robot {
 	 * @param h
 	 * @param equipe
 	 */
-	public Robot(Vue vue, int l, int h, int equipe) {
+	public Robot(Vue vue, int l, int h, int equipe, String nom) {
 		this.vue = vue;
 		this.equipe = equipe;
 		this.coord = new Coordonnees(l,h);
 		this.deplacements = new ArrayList<Coordonnees>();
 		this.vue.deplaceSur(coord, this);
+		this.nom = nom;
+	}
+	
+	public String getNom(){
+		return this.nom;
 	}
 	/**
 	 * 

@@ -18,8 +18,8 @@ public class Tireur extends Robot {
  * @param h
  * @param equipe
  */
-	public Tireur(Vue vue, int l, int h, int equipe) {
-		super(vue, l, h, equipe);
+	public Tireur(Vue vue, int l, int h, int equipe, String nom) {
+		super(vue, l, h, equipe,nom);
 		this.setEnergie(40);
 	}
 /**

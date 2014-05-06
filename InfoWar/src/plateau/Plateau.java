@@ -86,7 +86,7 @@ public class Plateau {
 			}
 			System.out.print("|");
 			if(i == 2)
-				System.out.print("Deplacement = d et Attaque = a");
+				System.out.print("     Deplacement = d et Attaque = a");
 			if(i == 3)
 				System.out.print("	   a=haut-gauche, z=haut, e=haut-droite");
 			if(i == 4)

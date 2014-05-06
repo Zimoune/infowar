@@ -21,8 +21,8 @@ public class Piegeur extends Robot {
 	 * @param hauteur
 	 * @param equipe
 	 */
-	public Piegeur(Vue vue, int l, int h, int equipe) {
-		super(vue, l, h, equipe);
+	public Piegeur(Vue vue, int l, int h, int equipe, String nom) {
+		super(vue, l, h, equipe,nom);
 		this.setEnergie(50);
 	}
 	/**
