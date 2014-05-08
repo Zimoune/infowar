@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Rï¿½my
 // Date : 08/05/2014
 // Fichier : Attaque.java
 // 
-// Hérite de Action. Gère les attaques des différents robots
+// Hï¿½rite de Action. Gï¿½re les attaques des diffï¿½rents robots
 //*********************************************************************
 
 package action;
@@ -13,21 +13,29 @@ import plateau.Coordonnees;
 import robot.Robot;
 
 public class Attaque extends Action {
-
+/**
+ * Constructeur de la classe Attaque
+ * @param r , Robot concerne
+ * @param direction , direction de l'action
+ */
 	public Attaque(Robot r, Coordonnees direction) {
 		super(r, direction);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/**
+	 * Methode agit()
+	 * Elle effectue l'attaque en verifiant tout les parametres de l'action
+	 */
 	@Override
 	public void agit() {
-		//On vérifie que la direction selectionné n'est pas null
+		//On vï¿½rifie que la direction selectionnï¿½ n'est pas null
 		if (this.getDirection() != null) {
 
-			//On vérifie que le robot peut tirer
+			//On vï¿½rifie que le robot peut tirer
 			if (this.getRobot().peutTirer()) {
 				
-				//On vérifie que l'endroit ou le robot doit tirer n'est pas vide
+				//On vï¿½rifie que l'endroit ou le robot doit tirer n'est pas vide
 				if (this.getRobot().getVue().getContenu(this.getObjectif()) != null) {
 					//On retire l'energie au robot qui se fait attaquer
 					this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();

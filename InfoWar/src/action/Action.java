@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Rï¿½my
 // Date : 08/05/2014
 // Fichier : Action.java
 // 
-// Classe mère de Attaque et déplacement. Gère Toute les actions des robots 
+// Classe mï¿½re de Attaque et dï¿½placement. Gï¿½re Toute les actions des robots 
 //*********************************************************************
 
 package action;
@@ -17,19 +17,36 @@ public abstract class Action {
 	private Robot robot;
 	private Coordonnees coord;
 	
-	public Action(Robot r, Coordonnees direction) {
-		this.robot = r;
+	/**
+	 * Constructeur de la classe Action
+	 * @param robot , Robot qui effectue l'action
+	 * @param direction , Coordonnee indiquant la direction
+	 */
+	public Action(Robot robot, Coordonnees direction) {
+		this.robot = robot;
 		this.coord = direction;
 	}
 	
+	/**
+	 * Retourne le robot qui effectue l'action
+	 * @return robot
+	 */
 	public Robot getRobot() {
 		return this.robot;
 	}
 	
+	/**
+	 * Retourne la direction de l'action
+	 * @return coord
+	 */
 	public Coordonnees getDirection() {
 		return this.coord;
 	}
 	
+	/**
+	 * Retourne la cible de l'action du robot
+	 * @return objectif
+	 */
 	public Coordonnees getObjectif() {
 		return new Coordonnees(robot.getCoordonnees().getLargeur()+coord.getLargeur(),
 				robot.getCoordonnees().getHauteur()+coord.getHauteur());

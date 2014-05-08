@@ -5,21 +5,27 @@ import plateau.Coordonnees;
 import robot.Robot;
 
 public class Deplacement extends Action {
-
+	/**
+	 * Constructeur de la classe Deplacement
+	 * @param r , Robot concerne
+	 * @param direction, direction de l'action
+	 */
 	public Deplacement(Robot r, Coordonnees direction) {
 		super(r, direction);
 		// TODO Auto-generated constructor stub
 	}
-
+	/**
+	 * Methode agit() Elle effectue le deplacement et verifie les parametres
+	 */
 	@Override
 	public void agit() {
-		//On vérifie que la direction est differente de null
+		//On vï¿½rifie que la direction est differente de null
 		if (this.getDirection() != null) {
 			
-			//On vérifie que la case choisi est bien vide
+			//On vï¿½rifie que la case choisi est bien vide
 			if (this.getRobot().getVue().getContenu(this.getObjectif()) == null) {
 				
-				//On déplace le robot sur cette case
+				//On dï¿½place le robot sur cette case
 				this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
 			}
 			
