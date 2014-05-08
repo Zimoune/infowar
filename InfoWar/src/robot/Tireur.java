@@ -67,8 +67,8 @@ public class Tireur extends Robot {
 	@Override
 	public String getType() {
 		if (this.getEquipe() == 1)
-			return "T";
-		return "t";
+			return "T" + this.getNom().substring(this.getNom().length()-1);
+		return "t"+ this.getNom().substring(this.getNom().length()-1);
 	}
 /**
  * @return une liste de deplcament

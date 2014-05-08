@@ -6,7 +6,7 @@ public abstract class Cellule {
 	
 	protected int base = 0;
 	protected int mine = 0;
-	String image = " ";
+	String image = "  ";
 	private Robot robot;
 	private Coordonnees coord;
 	protected boolean obstacle = false;

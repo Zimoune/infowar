@@ -22,13 +22,16 @@ public class Main {
 	
 	public static void main(String[] args) {
 		int cpt = 1;
+		int nbRobot;
 		
 		String choixUtilisateur;
 		
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
 		
-		System.out.println("Combien de robot par equipe voulez vous ?");
-		int nbRobot = sc.nextInt();
+		do{
+			System.out.println("Combien de robot par equipe voulez vous ?");
+			nbRobot = sc.nextInt();
+		}while(nbRobot < 0 || nbRobot > 5);
 		
 		int t = 1;
 		int t1 = 1;
@@ -57,7 +60,7 @@ public class Main {
 				else if(choixUtilisateur.equals("p")){
 					
 					//r1 = new Piegeur(v1,0,0,1);
-					listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + p));
+					listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + pi));
 					pi++;
 				} else {
 					//r1 = new Char(v1,0,0,1);
@@ -84,29 +87,7 @@ public class Main {
 			}		
 			cpt++;
 		}while(cpt < 3);
-		}
-
-		for(Robot r : listeRobotEquipe1){
-			if(r.getType().equals("T")){
-				System.out.println("\nJoueur 1 : " + r.getNom());
-			}
-			else if(r.getType().equals("P")){
-				System.out.println("\nJoueur 1 : " + r.getNom());
-			} else {
-				System.out.println("\nJoueur 1 : " + r.getNom());
-			}
-		}
-
-		for(Robot r : listeRobotEquipe2){
-			if(r.getType().equals("t")){
-				System.out.println("Joueur 2 : " + r.getNom());
-			}
-			else if(r.getType().equals("p")){
-				System.out.println("Joueur 2 : " + r.getNom());
-			} else {
-				System.out.println("Joueur 2 : " + r.getNom());
-			}
-		}		
+		}	
 		
 		jouer(p,listeRobotEquipe1,listeRobotEquipe2);
 		sc.close();
@@ -117,36 +98,68 @@ public class Main {
 		Action a;
 		int tour = 0;
 		String choixRobot;
-		boolean test = true;
-		boolean test2 = false;
+		boolean partieContinu = true;
+		boolean robotDansListe = false;
 		do {
+			robotDansListe = false;
 			if (tour%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : Joueur 1\n");
 				p.afficherPlateau(r);
 				System.out.println();
 				do{
-				System.out.println("Quel robot voulez vous bouger ?");
-				choixRobot = sc.next();
+					for(Robot r2 : listeRobotEquipe1){
+						if(r2.getType().equals("T")){
+							System.out.println("Joueur 1 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						}
+						else if(r2.getType().equals("P")){
+							System.out.println("Joueur 1 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						} else {
+							System.out.println("Joueur 1 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						}
+					}
+					System.out.println("Quel robot voulez vous jouer ?");
+					choixRobot = sc.next();
+
+					for(Robot rob : listeRobotEquipe1){
+						if(rob.getNom().equals(choixRobot))
+							robotDansListe = true;
+					}
 				
-				for(Robot rob : listeRobotEquipe1){
-					if(rob.getNom().equals(choixRobot))
-						test2 = true;
-				}
-				
-				}while(test2 == false);
+				}while(robotDansListe == false);
 				for(Robot rob : listeRobotEquipe1){
 					if(rob.getNom().equals(choixRobot)){
 						r = rob;
 					}
 				}
+				System.out.println();
 			}
 			else{
 				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : Joueur 2\n");
 				p.afficherPlateau(r);
-				System.out.println("Quel robot voulez vous bouger ?");
-				choixRobot = sc.next();
+				System.out.println();
+				do{
+					for(Robot r2 : listeRobotEquipe2){
+						if(r2.getType().equals("t")){
+							System.out.println("Joueur 2 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						}
+						else if(r2.getType().equals("p")){
+							System.out.println("Joueur 2 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						} else {
+							System.out.println("Joueur 2 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						}
+					}
+					System.out.println("Quel robot voulez vous jouer ?");
+					choixRobot = sc.next();
+
+					for(Robot rob : listeRobotEquipe2){
+						if(rob.getNom().equals(choixRobot))
+							robotDansListe = true;
+					}
+				}while(robotDansListe == false);
+
+
 				for(Robot rob : listeRobotEquipe2){
 					if(rob.getNom().equals(choixRobot)){
 						r = rob;
@@ -160,16 +173,16 @@ public class Main {
 
 			for(Robot rob : listeRobotEquipe1){
 				if(rob.getEnergie() <= 0){
-					test = false;
+					partieContinu = false;
 				}
 			}
 			for(Robot rob : listeRobotEquipe2){
 				if(rob.getEnergie() <= 0){
-					test = false;
+					partieContinu = false;
 				}
 			}
 
-		} while(test == true);
+		} while(partieContinu == true);
 
 		System.out.println("\nFin de la partie.");
 	}
@@ -216,7 +229,7 @@ public class Main {
 		if (actionName.equalsIgnoreCase("a")) {
 			int cpt = 1;
 			boolean test = true;
-			if(r.getType().equals("c") || r.getType().equals("C")){
+			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				do{
 					action = new Attaque(r, new Coordonnees(c.getLargeur()*cpt, c.getHauteur()*cpt));
 					if(p.getContenu(r.getCoordonnees().getLargeur() + c.getLargeur()*cpt, r.getCoordonnees().getHauteur() + c.getHauteur()*cpt) != null){
@@ -230,7 +243,7 @@ public class Main {
 		}
 		
 		else {
-			if(r.getType().equals("c") || r.getType().equals("C")){
+			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				if(deplacementName.equals("z") || deplacementName.equals("s") || deplacementName.equals("q") || deplacementName.equals("d")){
 					action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
 				}			

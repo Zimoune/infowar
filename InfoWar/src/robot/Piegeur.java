@@ -72,9 +72,9 @@ public class Piegeur extends Robot {
 	@Override
 	public String getType() {
 		if (this.getEquipe() == 1) {
-			return "P";
+			return "P" + this.getNom().substring(this.getNom().length()-1);
 		}
-		return "p";
+		return "p" + this.getNom().substring(this.getNom().length()-1);
 	}
 	/**
 	 * Renvoie la liste de coordonnees de deplacement du robot

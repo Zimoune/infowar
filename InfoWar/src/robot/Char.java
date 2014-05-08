@@ -76,9 +76,9 @@ public class Char extends Robot{
 	public String getType() {
 		// TODO Stub de la méthode généré automatiquement
 		if (this.getEquipe() == 1) {
-			return "C";
+			return "C"+ this.getNom().substring(this.getNom().length()-1);
 		}
-		return "c";
+		return "c"+ this.getNom().substring(this.getNom().length()-1);
 	}
 /**
  * Renvoie la liste de coordonnees de deplacement du robot

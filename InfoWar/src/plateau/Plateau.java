@@ -77,8 +77,6 @@ public class Plateau {
 				if(plateau[i][j].contientMine() > 0) {
 					if (plateau[i][j].contientMine() == r.getEquipe())
 						System.out.print(plateau[i][j]);
-					else
-						System.out.print(" ");
 				}
 				else
 					System.out.print(plateau[i][j]);
@@ -86,18 +84,18 @@ public class Plateau {
 			}
 			System.out.print("|");
 			if(i == 2)
-				System.out.print("     Deplacement = d et Attaque = a");
+				System.out.print("	Deplacement = d et Attaque = a");
 			if(i == 3)
-				System.out.print("	   a=haut-gauche, z=haut, e=haut-droite");
+				System.out.print("		a=haut-gauche, z=haut, e=haut-droite");
 			if(i == 4)
-				System.out.print("        q=gauche, d=droite");
+				System.out.print("		q=gauche, d=droite");
 			if(i == 5){
-				System.out.print("        w=bas-gauche, s=bas, c=bas-droite");
+				System.out.print("		w=bas-gauche, s=bas, c=bas-droite");
 			}
 			System.out.println();
 		}
 
-		System.out.println(r);
+		System.out.println();
 	}
 	
 }

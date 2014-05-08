@@ -4,7 +4,6 @@
 
 package plateau;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import robot.Robot;
@@ -22,9 +21,9 @@ public class Base extends Cellule {
 		super(x, y);
 		this.base = equipe;
 		if (this.base == 1)
-			this.image = "B";
+			this.image = "B ";
 		else
-			this.image = "b";
+			this.image = "b ";
 	}
 /**
  * deplace le robot sur cette base

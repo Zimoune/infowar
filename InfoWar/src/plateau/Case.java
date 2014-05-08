@@ -39,7 +39,7 @@ public class Case extends Cellule {
 	@Override
 	public void videCase() {
 		this.mine = 0;
-		this.image = " ";
+		this.image = "  ";
 		this.setContenu(null);
 	}
 

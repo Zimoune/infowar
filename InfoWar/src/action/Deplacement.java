@@ -24,6 +24,7 @@ public class Deplacement extends Action {
 			
 			//Que la case soit vide ou pas on enleve l'energie au robot
 			this.getRobot().setEnergie(this.getRobot().getEnergie()-1);
+			System.out.println("Vous avez perdu 1 point d'energie");
 		}		
 	}
 }
