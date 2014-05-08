@@ -1,6 +1,10 @@
-/**
- * Classe : Robot
- */
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Robot.java
+// 
+// Robot est la classe mere de Char, Tireur et piegeur. Gére ce qui est commun a tous les robots
+//*********************************************************************
 
 package robot;
 import java.util.ArrayList;

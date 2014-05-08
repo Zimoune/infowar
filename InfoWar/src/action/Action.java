@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Action.java
+// 
+// Classe mère de Attaque et déplacement. Gère Toute les actions des robots 
+//*********************************************************************
+
 package action;
 
 import plateau.Coordonnees;

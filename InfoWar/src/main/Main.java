@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Main.java
+// 
+// Gére le dérooulement de la partie 
+//*********************************************************************
+
 package main;
 
 import java.util.ArrayList;
@@ -6,10 +14,12 @@ import java.util.Scanner;
 import action.Action;
 import action.Attaque;
 import action.Deplacement;
+
 import plateau.Constante;
 import plateau.Coordonnees;
 import plateau.Plateau;
 import plateau.Vue;
+
 import robot.*;
 
 public class Main {
@@ -110,12 +120,12 @@ public class Main {
 				do{
 					for(Robot r2 : listeRobotEquipe1){
 						if(r2.getType().equals("T")){
-							System.out.println("Joueur 1 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						}
 						else if(r2.getType().equals("P")){
-							System.out.println("Joueur 1 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						} else {
-							System.out.println("Joueur 1 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						}
 					}
 					System.out.println("Quel robot voulez vous jouer ?");
@@ -142,12 +152,12 @@ public class Main {
 				do{
 					for(Robot r2 : listeRobotEquipe2){
 						if(r2.getType().equals("t")){
-							System.out.println("Joueur 2 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						}
 						else if(r2.getType().equals("p")){
-							System.out.println("Joueur 2 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						} else {
-							System.out.println("Joueur 2 : " + r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						}
 					}
 					System.out.println("Quel robot voulez vous jouer ?");

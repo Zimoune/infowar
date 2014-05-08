@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Constante.java
+// 
+// Initialise des constantes de déplacement
+//*********************************************************************
+
 package plateau;
 
 import java.util.ArrayList;

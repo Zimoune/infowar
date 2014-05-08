@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Vue.java
+// 
+// Gére la vue des different robot. Deux robots de différentes équipse ne doivent pas avoir la meme vue
+//*********************************************************************
+
 package plateau;
 import robot.Robot;
 

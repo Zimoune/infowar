@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Attaque.java
+// 
+// Hérite de Action. Gère les attaques des différents robots
+//*********************************************************************
+
 package action;
 
 import plateau.Coordonnees;

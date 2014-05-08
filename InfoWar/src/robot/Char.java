@@ -1,8 +1,10 @@
-/**
- * Classe : Char
- * Elle correspont Ã  un robot de type Char
- * Avec tous ses attributs d'energie
- */
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Char.java
+// 
+// Char herite de robot. Gére le robot de type Char tels que son energie ou son attaque 
+//*********************************************************************
 
 package robot;
 

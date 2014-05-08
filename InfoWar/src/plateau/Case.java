@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Case.java
+// 
+// Hérite de Cellule. Gère le comportement d'une case
+//*********************************************************************
+
 package plateau;
 
 import robot.Robot;

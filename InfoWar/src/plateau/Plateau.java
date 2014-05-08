@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Plateau.java
+// 
+// Gére le plateau de jeu tels que l'affichage 
+//*********************************************************************
+
 package plateau;
 
 

@@ -1,8 +1,10 @@
-/**
- * Classe : Piegeur
- * Elle correspont Ã  un robot de type Piegeur
- * Avec tous ses attributs d'energie
- */
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Piegeur.java
+// 
+// Char herite de robot. Gére le robot de type Piegeur tels que son energie ou son attaque 
+//*********************************************************************
 
 package robot;
 

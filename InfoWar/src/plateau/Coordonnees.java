@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Coordonnees.java
+// 
+// Gère les Coordonnées et les initialises. Cela permet de placer les robots 
+//*********************************************************************
+
 package plateau;
 
 public class Coordonnees {

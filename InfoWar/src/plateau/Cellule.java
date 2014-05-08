@@ -1,3 +1,11 @@
+//********************************************************************* 
+// Programmeur : Hanquez Rémy
+// Date : 08/05/2014
+// Fichier : Cellule.java
+// 
+// Classe mère de Case. Gère le comportement d'une Cellule
+//*********************************************************************
+
 package plateau;
 
 import robot.Robot;
