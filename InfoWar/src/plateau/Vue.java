@@ -7,6 +7,7 @@
 //*********************************************************************
 
 package plateau;
+
 import robot.Robot;
 
 public class Vue {

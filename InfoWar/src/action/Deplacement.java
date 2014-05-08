@@ -1,6 +1,7 @@
 package action;
 
 import plateau.Coordonnees;
+
 import robot.Robot;
 
 public class Deplacement extends Action {
