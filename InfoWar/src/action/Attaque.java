@@ -32,16 +32,17 @@ public class Attaque extends Action {
 		//On v�rifie que la direction selectionn� n'est pas null
 		if (this.getDirection() != null) {
 
-			//On v�rifie que le robot peut tirer
+			//On verifie que le robot peut tirer
 			if (this.getRobot().peutTirer()) {
 				
-				//On v�rifie que l'endroit ou le robot doit tirer n'est pas vide
+				//On verifie que l'endroit ou le robot doit tirer n'est pas vide
 				if (this.getRobot().getVue().getContenu(this.getObjectif()) != null) {
 					//On retire l'energie au robot qui se fait attaquer
 					this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
 				}
 			}
 			else{
+				System.out.println("Vous ne pouvez pas effectuer cette action");
 				this.getRobot().getVue().ajout(this.getObjectif(), this.getRobot().getEquipe());
 			}		
 			//On retire au robot attaquant l'energie de l'attaque que la case soit vide ou pas

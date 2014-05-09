@@ -128,15 +128,23 @@ public class Main {
 							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						}
 					}
-					System.out.println("Quel robot voulez vous jouer ?");
-					choixRobot = sc.next();
+					if(listeRobotEquipe1.size() != 1){
+						System.out.println("Quel robot voulez vous jouer ?");
+						choixRobot = sc.next();
 
-					for(Robot rob : listeRobotEquipe1){
-						if(rob.getNom().equals(choixRobot))
-							robotDansListe = true;
+						for(Robot rob : listeRobotEquipe1){
+							if(rob.getNom().equals(choixRobot))
+								robotDansListe = true;
+
+						}
 					}
-				
+					else{
+						choixRobot = listeRobotEquipe1.get(0).getNom();
+						robotDansListe = true;
+					}
+
 				}while(robotDansListe == false);
+
 				for(Robot rob : listeRobotEquipe1){
 					if(rob.getNom().equals(choixRobot)){
 						r = rob;
@@ -160,13 +168,20 @@ public class Main {
 							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 						}
 					}
-					System.out.println("Quel robot voulez vous jouer ?");
-					choixRobot = sc.next();
+					if(listeRobotEquipe2.size() != 1){
+						System.out.println("Quel robot voulez vous jouer ?");
+						choixRobot = sc.next();
 
-					for(Robot rob : listeRobotEquipe2){
-						if(rob.getNom().equals(choixRobot))
-							robotDansListe = true;
+						for(Robot rob : listeRobotEquipe2){
+							if(rob.getNom().equals(choixRobot))
+								robotDansListe = true;
+						}
 					}
+					else{
+						choixRobot = listeRobotEquipe2.get(0).getNom();
+						robotDansListe = true;
+					}
+
 				}while(robotDansListe == false);
 
 
