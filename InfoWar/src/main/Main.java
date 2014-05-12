@@ -118,7 +118,6 @@ public class Main {
 		int tour = 0;
 		Robot r = null;
 		Action a;
-		Robot choixRobot;
 		Random alea = new Random();
 		do{
 			if(tour%2 == 0){
