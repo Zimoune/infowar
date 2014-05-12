@@ -85,6 +85,8 @@ public class Plateau {
 				if(plateau[i][j].contientMine() > 0) {
 					if (plateau[i][j].contientMine() == r.getEquipe())
 						System.out.print(plateau[i][j]);
+					else 
+						System.out.print("  ");
 				}
 				else
 					System.out.print(plateau[i][j]);

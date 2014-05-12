@@ -37,9 +37,9 @@ public class Case extends Cellule {
 		if (this.getContenu() == null && this.mine == 0) {
 			this.mine = equipe;
 			if (equipe == 1)
-				this.image = "X";
+				this.image = "X ";
 			else
-				this.image = "x";
+				this.image = "x ";
 		}
 		
 	}
@@ -56,7 +56,7 @@ public class Case extends Cellule {
 		// TODO Stub de la méthode généré automatiquement
 		if (this.getContenu() == null) {
 			this.obstacle = true;
-			this.image = "O";
+			this.image = "O ";
 		}
 	}
 

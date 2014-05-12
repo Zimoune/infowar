@@ -9,17 +9,16 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import action.Action;
 import action.Attaque;
 import action.Deplacement;
-
 import plateau.Constante;
 import plateau.Coordonnees;
 import plateau.Plateau;
 import plateau.Vue;
-
 import robot.*;
 
 public class Main {
@@ -29,14 +28,20 @@ public class Main {
 	static Scanner sc = new Scanner(System.in);
 	static ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
 	static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
+	static int nbRobot;
 	
 	public static void main(String[] args) {
 		int cpt = 1;
-		int nbRobot;
+		int choixMode;
 		
 		String choixUtilisateur;
 		
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
+		
+		do{
+			System.out.println("Quel mode de jeu voulez vous? Joueur vs Joueur(1) ou IA vs IA(2)");
+			choixMode = sc.nextInt();
+		}while(choixMode < 1 || choixMode > 2);
 		
 		do{
 			System.out.println("Combien de robot par equipe voulez vous ?");
@@ -98,9 +103,82 @@ public class Main {
 			cpt++;
 		}while(cpt < 3);
 		}	
+		if(choixMode == 1){
+			jouer(p,listeRobotEquipe1,listeRobotEquipe2);
+		}
+		else{
+			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2);
+		}
 		
-		jouer(p,listeRobotEquipe1,listeRobotEquipe2);
 		sc.close();
+	}
+	
+	public static void jouerIaSimple(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2){
+		boolean partieContinu = true;
+		int tour = 0;
+		Robot r = null;
+		Action a;
+		Robot choixRobot;
+		Random alea = new Random();
+		do{
+			if(tour%2 == 0){
+				System.out.println("\n----------------------------------------------------------------------------------");
+				System.out.println("\nTour de jeu : Joueur 1\n");
+				p.afficherPlateau(r);
+				System.out.println();
+				for(Robot r2 : listeRobotEquipe1){
+					if(r2.getType().equals("T")){
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					}
+					else if(r2.getType().equals("P")){
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					} else {
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					}
+				}
+				int g = alea.nextInt(nbRobot);
+				r=listeRobotEquipe1.get(g);
+				System.out.println();
+			}
+			else{
+				System.out.println("\n----------------------------------------------------------------------------------");
+				System.out.println("\nTour de jeu : Joueur 2\n");
+				p.afficherPlateau(r);
+				System.out.println();
+				for(Robot r2 : listeRobotEquipe1){
+					if(r2.getType().equals("T")){
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					}
+					else if(r2.getType().equals("P")){
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					} else {
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					}
+				}
+				int g = alea.nextInt(nbRobot);
+				r=listeRobotEquipe2.get(g);
+				System.out.println();
+			}
+			a = choixAction(r, 1);
+			a.agit();
+			tour++;
+
+			for(Robot rob : listeRobotEquipe1){
+				if(rob.getEnergie() <= 0){
+					partieContinu = false;
+				}
+			}
+			for(Robot rob : listeRobotEquipe2){
+				if(rob.getEnergie() <= 0){
+					partieContinu = false;
+				}
+			}			
+			try{
+				Thread.sleep(3000);
+			}catch(InterruptedException ex){
+				Thread.currentThread().interrupt();
+			}
+		}while(partieContinu == true);
 	}
 	
 	public static void jouer(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2) {
@@ -117,6 +195,7 @@ public class Main {
 				System.out.println("\nTour de jeu : Joueur 1\n");
 				p.afficherPlateau(r);
 				System.out.println();
+				
 				do{
 					for(Robot r2 : listeRobotEquipe1){
 						if(r2.getType().equals("T")){
@@ -192,7 +271,7 @@ public class Main {
 				}
 				System.out.println();
 			}
-			a = choixAction(r);
+			a = choixAction(r, 0);
 			a.agit();
 			tour++;
 
@@ -212,22 +291,61 @@ public class Main {
 		System.out.println("\nFin de la partie.");
 	}
 
-	public static Action choixAction(Robot r) {
+	public static Action choixAction(Robot r, int choixMode) {
 		String actionName, deplacementName;
 		Action action;
 		Coordonnees c = null;
-		do {
-			System.out.print("Choisissez votre action: ");
-			actionName = sc.next();
-		} while (!actionName.equals("a") && !actionName.equals("d"));
-		
-		do {
-			System.out.print("Choisissez votre direction: ");
-			deplacementName = sc.next();
-		} while(!deplacementName.equals("z") && !deplacementName.equals("q")
-				&& !deplacementName.equals("s") && !deplacementName.equals("d")
-				&& !deplacementName.equals("a") && !deplacementName.equals("e")
-				&& !deplacementName.equals("w") && !deplacementName.equals("c"));
+		Random alea = new Random();
+		if(choixMode == 0){
+			do {
+				System.out.print("Choisissez votre action: ");
+				actionName = sc.next();
+			} while (!actionName.equals("a") && !actionName.equals("d"));
+
+			do {
+				System.out.print("Choisissez votre direction: ");
+				deplacementName = sc.next();
+			} while(!deplacementName.equals("z") && !deplacementName.equals("q")
+					&& !deplacementName.equals("s") && !deplacementName.equals("d")
+					&& !deplacementName.equals("a") && !deplacementName.equals("e")
+					&& !deplacementName.equals("w") && !deplacementName.equals("c"));
+		}
+		else{
+			int g = alea.nextInt(2);
+			if(g == 0){
+				actionName = "a";
+			}
+			else{
+				actionName = "d";
+			}
+
+			g = alea.nextInt(7);
+
+			if(g == 0){
+				deplacementName = "z";
+			}
+			else if(g == 1){
+				deplacementName = "q";
+			}
+			else if(g == 2){
+				deplacementName = "s";
+			}
+			else if(g == 3){
+				deplacementName = "d";
+			}
+			else if(g == 4){
+				deplacementName = "a";
+			}
+			else if(g == 5){
+				deplacementName = "e";
+			}
+			else if(g == 6){
+				deplacementName = "w";
+			}
+			else{
+				deplacementName = "c";
+			}			
+		}		
 		
 		//On regarde le caract�re de la chaine et on attribut la direction correspondante
 		if(r.getType().equals("c") || r.getType().equals("C")){
