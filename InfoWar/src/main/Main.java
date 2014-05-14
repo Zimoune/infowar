@@ -293,7 +293,6 @@ public class Main {
 	public static Action choixAction(Robot r, int choixMode) {
 		String actionName, deplacementName;
 		Action action;
-		IA ia = new IA(choixMode);
 		Coordonnees c = null;
 		if(choixMode == 0){
 			do {
@@ -310,8 +309,9 @@ public class Main {
 					&& !deplacementName.equals("w") && !deplacementName.equals("c"));
 		}
 		else{
-			actionName = ia.choixAction();
-			deplacementName = ia.choixDeplacement();			
+			IA ia = new IA(choixMode);
+			actionName = ia.choixAction(r, p);
+			deplacementName = ia.choixDeplacement(r, p, actionName);			
 		}		
 		
 		//On regarde le caract�re de la chaine et on attribut la direction correspondante
