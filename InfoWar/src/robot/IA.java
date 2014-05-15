@@ -6,7 +6,7 @@ import plateau.Plateau;
 
 public class IA {
 	private int niveau;
-	private Random alea;
+	private Random alea = new Random();;
 	
 	public IA(int niveau){
 		this.niveau = niveau;
@@ -14,8 +14,9 @@ public class IA {
 	
 	public String choixAction(Robot r, Plateau p){
 		String actionName;
+		int g;
 		if(niveau == 1){
-			int g = alea.nextInt(2);
+			g = alea.nextInt(2);
 		
 			if(g == 0){
 				actionName = "a";
