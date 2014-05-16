@@ -9,6 +9,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,22 +33,36 @@ public class Main {
 	
 	public static void main(String[] args) {
 		int cpt = 1;
-		int choixMode;
+		int choixMode = 0;
+		int test = 0;
+		int testValeur = 0;
 		
 		String choixUtilisateur;
-		
+
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
-		
+
 		do{
-			System.out.println("Quel mode de jeu voulez vous? Joueur vs Joueur(1) ou IA vs IA(2)");
-			choixMode = sc.nextInt();
-		}while(choixMode < 1 || choixMode > 2);
-		
+			try{
+				System.out.println("Quel mode de jeu voulez vous? Joueur vs Joueur(1) ou IA vs IA(2)");
+				choixMode = sc.nextInt();
+			}catch(InputMismatchException e){
+				System.out.println("Vous n'avez pas entree une valeur valide");
+				test = 1;
+				sc.next();
+			}
+		}while((choixMode < 1 || choixMode > 2) && test == 1);
+
 		do{
-			System.out.println("Combien de robot par equipe voulez vous ?");
-			nbRobot = sc.nextInt();
-		}while(nbRobot < 0 || nbRobot > 5);
-		
+			try{
+				System.out.println("Combien de robot par equipe voulez vous ?");
+				nbRobot = sc.nextInt();
+			}catch(InputMismatchException e){
+				System.out.println("Vous n'avez pas entree une valeur valide");
+				testValeur = 1;
+				sc.next();
+			}
+		}while((nbRobot < 0 || nbRobot > 5) && testValeur == 1);
+
 		int t = 1;
 		int t1 = 1;
 		int pi = 1;
