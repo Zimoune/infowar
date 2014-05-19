@@ -43,14 +43,17 @@ public class Main {
 
 		do{
 			try{
-				System.out.println("Quel mode de jeu voulez vous? Joueur vs Joueur(1) ou IA vs IA(2)");
+				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Quitter");
 				choixMode = sc.nextInt();
+				if(choixMode == 3){
+					return;
+				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
 				test = 1;
 				sc.next();
 			}
-		}while((choixMode < 1 || choixMode > 2) && test == 1);
+		}while((choixMode < 1 || choixMode > 2) || test == 1);
 
 		do{
 			try{
@@ -61,7 +64,7 @@ public class Main {
 				testValeur = 1;
 				sc.next();
 			}
-		}while((nbRobot < 0 || nbRobot > 5) && testValeur == 1);
+		}while((nbRobot < 0 || nbRobot > 5) || testValeur == 1);
 
 		int t = 1;
 		int t1 = 1;
