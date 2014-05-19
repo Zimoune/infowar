@@ -118,8 +118,7 @@ public abstract class Robot {
 	/**
 	 * Definie si le robot est un IA
 	 */
-	public void setIa()
-	{
+	public void setIa()	{
 		this.estIa = true;
 	}
 	

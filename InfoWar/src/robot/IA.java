@@ -5,20 +5,21 @@ import java.util.Random;
 import plateau.Plateau;
 
 public class IA {
-	private int niveau;
-	private Random alea = new Random();;
+	private int niveaudeDifficulte;
+	private Random alea = new Random();
 	
-	public IA(int niveau){
-		this.niveau = niveau;
+	public IA(int niveaudeDifficulte){
+		this.niveaudeDifficulte = niveaudeDifficulte;
 	}
 	
 	public String choixAction(Robot r, Plateau p){
-		String actionName;
-		int g;
-		if(niveau == 1){
-			g = alea.nextInt(2);
+		String actionName;		
+		int nbPossibilte;
 		
-			if(g == 0){
+		if(niveaudeDifficulte == 1){
+			nbPossibilte = alea.nextInt(2);
+		
+			if(nbPossibilte == 0){
 				actionName = "a";
 			}
 			else{
@@ -43,32 +44,55 @@ public class IA {
 	
 	public String choixDeplacement(Robot r, Plateau p, String actionName){
 		String deplacementName;
-		if(niveau == 1){
-			int g = alea.nextInt(7);
+		int nbPossibilite = alea.nextInt(7);
 
-			if(g == 0){
-				deplacementName = "z";
-			}
-			else if(g == 1){
-				deplacementName = "q";
-			}
-			else if(g == 2){
-				deplacementName = "s";
-			}
-			else if(g == 3){
-				deplacementName = "d";
-			}
-			else if(g == 4){
-				deplacementName = "a";
-			}
-			else if(g == 5){
-				deplacementName = "e";
-			}
-			else if(g == 6){
-				deplacementName = "w";
+		if(niveaudeDifficulte == 1){
+			nbPossibilite = alea.nextInt(7);
+			if(actionName == "d"){
+				switch (nbPossibilite) {
+				case 0:
+					deplacementName = "z";
+					break;
+				case 1:
+					deplacementName = "q";
+					break;
+				case 2:
+					deplacementName = "s";
+					break;
+				case 3:
+					deplacementName = "d";
+					break;
+				case 4:
+					deplacementName = "a";
+					break;
+				case 5:
+					deplacementName = "e";
+					break;
+				case 6:
+					deplacementName = "w";
+					break;
+
+				default:
+					deplacementName = "c";
+					break;
+				}
 			}
 			else{
-				deplacementName = "c";
+				nbPossibilite = alea.nextInt(3);
+				switch (nbPossibilite) {
+				case 0:
+					deplacementName = "z";
+					break;
+				case 1:
+					deplacementName = "q";
+					break;
+				case 2:
+					deplacementName = "s";
+					break;
+				default:
+					deplacementName = "d";
+					break;
+				}
 			}
 		}
 		//ici vient l'IA intelligente
