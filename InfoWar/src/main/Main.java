@@ -64,7 +64,7 @@ public class Main {
 				testValeur = 1;
 				sc.next();
 			}
-		}while((nbRobot < 0 || nbRobot > 5) || testValeur == 1);
+		}while((nbRobot <= 0 || nbRobot > 5) || testValeur == 1);
 
 		int t = 1;
 		int t1 = 1;
@@ -125,6 +125,10 @@ public class Main {
 			jouer(p,listeRobotEquipe1,listeRobotEquipe2);
 		}
 		else{
+			for(Robot r:listeRobotEquipe1)
+				r.setIa();
+			for(Robot r:listeRobotEquipe2)
+				r.setIa();
 			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2);
 		}
 		

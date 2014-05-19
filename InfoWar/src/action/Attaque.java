@@ -42,6 +42,8 @@ public class Attaque extends Action {
 				}
 			}
 			else{
+				//Si le robot est ia inutile d'afficher le message d'erreur
+				if(!this.getRobot().estIa())
 				System.out.println("Vous ne pouvez pas effectuer cette action");
 				this.getRobot().getVue().ajout(this.getObjectif(), this.getRobot().getEquipe());
 			}		

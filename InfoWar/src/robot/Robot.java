@@ -24,6 +24,7 @@ public abstract class Robot {
 	private Vue vue;
 	private Coordonnees coord;
 	public List<Coordonnees> deplacements;
+	private boolean estIa = false;
 	/**
 	 * Constructeur du robot
 	 * @param vue
@@ -112,6 +113,22 @@ public abstract class Robot {
 	public void subitMine() {
 		this.setEnergie(this.getEnergie()-2);
 		System.out.println(this.getType().toString() + " a perdu 2 point d'energie par une mine");
+	}
+	
+	/**
+	 * Definie si le robot est un IA
+	 */
+	public void setIa()
+	{
+		this.estIa = true;
+	}
+	
+	/**
+	 * Retourne true si le robot est un IA
+	 * @return
+	 */
+	public boolean estIa(){
+		return this.estIa;
 	}
 	/**
 	 * @return true si le robot a la capacite de tirer
