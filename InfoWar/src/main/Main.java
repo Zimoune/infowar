@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Main.java
 // 
-// Gére le dérooulement de la partie 
+// Gere le deroulement de la partie 
 //*********************************************************************
 
 package main;
@@ -32,10 +32,9 @@ public class Main {
 	static int nbRobot;
 	
 	public static void main(String[] args) {
-		int cpt = 1;
+		int cptIndiceEquipe = 1;
 		int choixMode = 0;
-		int test = 0;
-		int testValeur = 0;
+		int testChoixUtilisateurInt = 0;
 		
 		String choixUtilisateur;
 
@@ -50,10 +49,12 @@ public class Main {
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
-				test = 1;
+				testChoixUtilisateurInt = 1;
 				sc.next();
 			}
-		}while((choixMode < 1 || choixMode > 2) || test == 1);
+		}while((choixMode < 1 || choixMode > 2) || testChoixUtilisateurInt == 1);
+		
+		testChoixUtilisateurInt = 0;
 
 		do{
 			try{
@@ -61,65 +62,63 @@ public class Main {
 				nbRobot = sc.nextInt();
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
-				testValeur = 1;
+				testChoixUtilisateurInt = 1;
 				sc.next();
 			}
-		}while((nbRobot <= 0 || nbRobot > 5) || testValeur == 1);
+		}while((nbRobot <= 0 || nbRobot > 5) || testChoixUtilisateurInt == 1);
 
-		int t = 1;
-		int t1 = 1;
-		int pi = 1;
-		int pi1 = 1;
-		int c = 1;
-		int c1 = 1;
+		int nbTireurEquipe1 = 1;
+		int nbTireurEquipe2 = 1;
+		int nbPiegeurEquipe1 = 1;
+		int nbPiegeurEquipe2 = 1;
+		int nbCharEquipe1 = 1;
+		int nbCharEquipe2 = 1;
 		
 		for( int i = 0; i < nbRobot; i++){
 			
-			cpt = 1;
+			cptIndiceEquipe = 1;
 			
 		do{
 			do{
-				System.out.println("Quel est le robot que vous voulez jouer pour l'equipe " + cpt + " ? (t/p/c)");			
+				System.out.println("Quel est le robot que vous voulez jouer pour l'equipe " + cptIndiceEquipe + " ? (t/p/c)");			
 				choixUtilisateur = sc.next();
 			}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p") && !choixUtilisateur.equals("c"));
 			
-			if(cpt == 1){
-				if(choixUtilisateur.equals("t")){
-					
+			if(cptIndiceEquipe == 1){
+				if(choixUtilisateur.equals("t")){					
 					//r1 = new Tireur(v1,0,0,1);
-					listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur" + t));
-					t ++;
+					listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur" + nbTireurEquipe1));
+					nbTireurEquipe1++;
 				}
-				else if(choixUtilisateur.equals("p")){
-					
+				else if(choixUtilisateur.equals("p")){					
 					//r1 = new Piegeur(v1,0,0,1);
-					listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + pi));
-					pi++;
+					listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + nbPiegeurEquipe1));
+					nbPiegeurEquipe1++;
 				} else {
 					//r1 = new Char(v1,0,0,1);
-					listeRobotEquipe1.add(new Char(v1,0,0,1,"Char" + c));
-					c++;
+					listeRobotEquipe1.add(new Char(v1,0,0,1,"Char" + nbCharEquipe1));
+					nbCharEquipe1++;
 				}
 
 			}
-			else if(cpt == 2){
+			else if(cptIndiceEquipe == 2){
 				if(choixUtilisateur.equals("t")){
 					//r2 = new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-					listeRobotEquipe2.add(new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Tireur" + t1));
-					t1++;
+					listeRobotEquipe2.add(new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Tireur" + nbTireurEquipe2));
+					nbTireurEquipe2++;
 				}
 				else if(choixUtilisateur.equals("p")){
 					//r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-					listeRobotEquipe2.add(new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Piegeur" + pi1));
-					pi1++;
+					listeRobotEquipe2.add(new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Piegeur" + nbPiegeurEquipe2));
+					nbPiegeurEquipe2++;
 				} else {
 					//r2 = new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-					listeRobotEquipe2.add(new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Char" + c1));
-					c1++;
+					listeRobotEquipe2.add(new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Char" + nbCharEquipe2));
+					nbCharEquipe2++;
 				}
 			}		
-			cpt++;
-		}while(cpt < 3);
+			cptIndiceEquipe++;
+		}while(cptIndiceEquipe < 3);
 		}	
 		if(choixMode == 1){
 			jouer(p,listeRobotEquipe1,listeRobotEquipe2);
@@ -137,12 +136,12 @@ public class Main {
 	
 	public static void jouerIaSimple(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2){
 		boolean partieContinu = true;
-		int tour = 0;
+		int tourDeJeu = 0;
 		Robot r = null;
 		Action a;
 		Random alea = new Random();
 		do{
-			if(tour%2 == 0){
+			if(tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : Joueur 1\n");
 				p.afficherPlateau(r);
@@ -182,7 +181,7 @@ public class Main {
 			}
 			a = choixAction(r, 1);
 			a.agit();
-			tour++;
+			tourDeJeu++;
 
 			for(Robot rob : listeRobotEquipe1){
 				if(rob.getEnergie() <= 0){
@@ -205,13 +204,13 @@ public class Main {
 	public static void jouer(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2) {
 		Robot r = null;
 		Action a;
-		int tour = 0;
+		int tourDeJeu = 0;
 		String choixRobot;
 		boolean partieContinu = true;
 		boolean robotDansListe = false;
 		do {
 			robotDansListe = false;
-			if (tour%2 == 0){
+			if (tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : Joueur 1\n");
 				p.afficherPlateau(r);
@@ -294,7 +293,7 @@ public class Main {
 			}
 			a = choixAction(r, 0);
 			a.agit();
-			tour++;
+			tourDeJeu++;
 
 			for(Robot rob : listeRobotEquipe1){
 				if(rob.getEnergie() <= 0){
