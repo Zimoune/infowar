@@ -1,17 +1,44 @@
 package robot;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import plateau.Base;
+import plateau.Case;
 import plateau.Plateau;
 
 public class IA {
 	private int niveaudeDifficulte;
 	private Random alea = new Random();
-	
-	public IA(int niveaudeDifficulte){
+	private ArrayList<Robot> listeRobotEquipe = new ArrayList<Robot>();
+
+	public IA(int niveaudeDifficulte, ArrayList<Robot> listRobot){
 		this.niveaudeDifficulte = niveaudeDifficulte;
+		for(Robot r2d2 : listRobot){
+			this.listeRobotEquipe.add(r2d2);
+		}		
 	}
-	
+
+	public void calculChemin(Plateau p, Robot r){
+		Robot rob;
+		int testDistanceRobot = 10000;
+		
+		p.initPoids();
+		
+		//On trouve le robot le plus proche
+		for(Robot r2d2 : listeRobotEquipe){
+			if(testDistanceRobot > (r2d2.getCoordonnees().getHauteur()+r2d2.getCoordonnees().getLargeur())){
+				rob = r2d2;
+			}
+		}
+		
+		for (int i=0; i<p.getHauteur(); i++) {
+			for (int j=0; j<p.getLargeur(); j++) {
+				
+			}
+		}
+	}
+
 	public String choixAction(Robot r, Plateau p){
 		String actionName;		
 		int nbPossibilte;

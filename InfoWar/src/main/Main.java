@@ -330,9 +330,16 @@ public class Main {
 					&& !deplacementName.equals("w") && !deplacementName.equals("c"));
 		}
 		else{
-			IA ia = new IA(choixMode);
-			actionName = ia.choixAction(r, p);
-			deplacementName = ia.choixDeplacement(r, p, actionName);			
+			if(listeRobotEquipe1.contains(r)){
+				IA ia = new IA(choixMode, listeRobotEquipe2);
+				actionName = ia.choixAction(r, p);
+				deplacementName = ia.choixDeplacement(r, p, actionName);
+			}
+			else{
+				IA ia = new IA(choixMode, listeRobotEquipe1);
+				actionName = ia.choixAction(r, p);
+				deplacementName = ia.choixDeplacement(r, p, actionName);
+			}						
 		}		
 		
 		//On regarde le caract�re de la chaine et on attribut la direction correspondante

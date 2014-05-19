@@ -11,7 +11,7 @@ package plateau;
 import robot.Robot;
 
 public class Case extends Cellule {
-
+	
 	public Case(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub

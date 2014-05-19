@@ -15,6 +15,7 @@ public class Plateau {
 	
 	private Cellule[][] plateau;
 	private int largeur, hauteur;
+	private int poids;
 	
 	public Plateau(int largeur, int hauteur) {
 		plateau = new Cellule[hauteur][largeur];
@@ -29,6 +30,23 @@ public class Plateau {
 		}
 		this.hauteur = hauteur;
 		this.largeur = largeur;
+	}
+
+	public void initPoids(){
+		for (int i=0; i<hauteur; i++) {
+			for (int j=0; j<largeur; j++) {
+				if(this.plateau[i][j].estObstacle() || this.plateau[i][j].getContenu() != null){
+					poids = 2;
+				}
+				else{
+					poids = 1;
+				}
+			}
+		}		
+	}
+
+	public int getpoids(){
+		return this.poids;
 	}
 	
 	public int getLargeur() {
