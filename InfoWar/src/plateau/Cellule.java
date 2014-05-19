@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Cellule.java
 // 
-// Classe mère de Case. Gère le comportement d'une Cellule
+// Classe mere de Case. Gere le comportement d'une Cellule
 //*********************************************************************
 
 package plateau;

@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez RÈmy
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Case.java
 // 
-// HÈrite de Cellule. GËre le comportement d'une case
+// Herite de Cellule. Gere le comportement d'une case
 //*********************************************************************
 
 package plateau;
@@ -53,7 +53,7 @@ public class Case extends Cellule {
 
 	@Override
 	public void ajoutObstacle() {
-		// TODO Stub de la m√©thode g√©n√©r√© automatiquement
+		// TODO Stub de la methode genere automatiquement
 		if (this.getContenu() == null) {
 			this.obstacle = true;
 			this.image = "O ";

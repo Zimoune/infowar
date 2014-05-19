@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez R�my
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Base.java
 // 
-// G�re la base des robots
+// Gere la base des robots
 //*********************************************************************
 
 package plateau;
@@ -72,7 +72,7 @@ public class Base extends Cellule {
 
 	@Override
 	public void ajoutObstacle() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		
 	}
 

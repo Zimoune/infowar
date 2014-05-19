@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Constante.java
 // 
-// Initialise des constantes de déplacement
+// Initialise des constantes de deplacement
 //*********************************************************************
 
 package plateau;

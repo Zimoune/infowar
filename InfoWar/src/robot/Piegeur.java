@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Piegeur.java
 // 
-// Char herite de robot. Gére le robot de type Piegeur tels que son energie ou son attaque 
+// Char herite de robot. Gere le robot de type Piegeur tels que son energie ou son attaque 
 //*********************************************************************
 
 package robot;

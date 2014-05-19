@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez R�my
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Action.java
 // 
-// Classe m�re de Attaque et d�placement. G�re Toute les actions des robots 
+// Classe mere de Attaque et deplacement. Gere Toute les actions des robots 
 //*********************************************************************
 
 package action;

@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez Rémy
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Tireur.java
 // 
-// Tireur herite de robot. Gére le robot de type Tireur tels que son energie ou son attaque 
+// Tireur herite de robot. Gere le robot de type Tireur tels que son energie ou son attaque 
 //*********************************************************************
 
 package robot;

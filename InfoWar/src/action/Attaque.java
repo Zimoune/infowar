@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez R�my
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Attaque.java
 // 
-// H�rite de Action. G�re les attaques des diff�rents robots
+// Herite de Action. Gere les attaques des differents robots
 //*********************************************************************
 
 package action;
@@ -29,7 +29,7 @@ public class Attaque extends Action {
 	 */
 	@Override
 	public void agit() {
-		//On v�rifie que la direction selectionn� n'est pas null
+		//On verifie que la direction selectionne n'est pas null
 		if (this.getDirection() != null) {
 
 			//On verifie que le robot peut tirer

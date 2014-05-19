@@ -1,9 +1,9 @@
 //********************************************************************* 
-// Programmeur : Hanquez R�my
+// Programmeur : Hanquez Remy
 // Date : 08/05/2014
 // Fichier : Char.java
 // 
-// Char herite de robot. G�re le robot de type Char tels que son energie ou son attaque 
+// Char herite de robot. Gere le robot de type Char tels que son energie ou son attaque 
 //*********************************************************************
 
 package robot;
@@ -27,7 +27,7 @@ public class Char extends Robot{
 	public Char(Vue vue, int l, int h, int equipe,String nom) {
 		super(vue, l, h, equipe,nom);
 		this.setEnergie(60);
-		// TODO Stub du constructeur généré automatiquement
+		// TODO Stub du constructeur genere automatiquement
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class Char extends Robot{
 	 */
 	@Override
 	public boolean peutTirer() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		return true;
 	}
 
@@ -44,7 +44,7 @@ public class Char extends Robot{
 	 */
 	@Override
 	public int getCoutAction() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		return 1;
 	}
 /**
@@ -52,7 +52,7 @@ public class Char extends Robot{
  */
 	@Override
 	public int getCoutDep() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		return 5;
 	}
 /**
@@ -60,7 +60,7 @@ public class Char extends Robot{
  */
 	@Override
 	public int getDegatTir() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		return 6;
 	}
 /**
@@ -68,7 +68,7 @@ public class Char extends Robot{
  */
 	@Override
 	public int getDegatMine() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		return 0;
 	}
 /**
@@ -76,7 +76,7 @@ public class Char extends Robot{
  */
 	@Override
 	public String getType() {
-		// TODO Stub de la méthode généré automatiquement
+		// TODO Stub de la methode genere automatiquement
 		if (this.getEquipe() == 1) {
 			return "C"+ this.getNom().substring(this.getNom().length()-1);
 		}
@@ -88,7 +88,7 @@ public class Char extends Robot{
  */
 	@Override
 	public List<Coordonnees> getDeplacements() {
-		// TODO Stub de la méthode généré automatiquement		
+		// TODO Stub de la methode genere automatiquement		
 		return Constante.dep;
 	}
 }
