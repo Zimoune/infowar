@@ -363,7 +363,7 @@ public class Main {
 			case 'c': c = Constante.DIABASDROITE;break;
 			}
 		}
-		
+
 		if (actionName.equalsIgnoreCase("a")) {
 			int cpt = 1;
 			boolean test = true;
@@ -379,19 +379,44 @@ public class Main {
 			else				
 				action = new Attaque(r,c);
 		}
-		
+
 		else {
 			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
-				if(deplacementName.equals("z") || deplacementName.equals("s") || deplacementName.equals("q") || deplacementName.equals("d")){
-					action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
-				}			
+				if(deplacementName.equals("z")){
+					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) == null)
+						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+					else{
+						action = new Deplacement(r, new Coordonnees(c.getLargeur(), c.getHauteur()+1));
+					}
+				}	
+				else if(deplacementName.equals("s")){
+					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) == null)
+						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+					else{
+						action = new Deplacement(r, new Coordonnees(c.getLargeur(), c.getHauteur()-1));
+					}
+				}
+				else if(deplacementName.equals("q")){
+					if(p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()) == null)
+						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+					else{
+						action = new Deplacement(r, new Coordonnees(c.getLargeur()+1, c.getHauteur()));
+					}
+				}
+				else if(deplacementName.equals("d")){
+					if(p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()) == null)
+						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
+					else{
+						action = new Deplacement(r, new Coordonnees(c.getLargeur()-1, c.getHauteur()));
+					}
+				}
 				else{
 					action = new Deplacement(r, new Coordonnees(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()));
 				}
-			} else {
-			action = new Deplacement(r,c);
 			}
-			
+			else{
+				action = new Deplacement(r,c);
+			}
 		}
 		return action;
 	}
