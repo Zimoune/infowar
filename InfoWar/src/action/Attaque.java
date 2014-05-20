@@ -37,8 +37,9 @@ public class Attaque extends Action {
 				
 				//On verifie que l'endroit ou le robot doit tirer n'est pas vide
 				if (this.getRobot().getVue().getContenu(this.getObjectif()) != null) {
+					if(this.getRobot().getVue().getContenu(this.getObjectif()).getEquipe() != this.getRobot().getEquipe())
 					//On retire l'energie au robot qui se fait attaquer
-					this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
+						this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
 				}
 			}
 			else{
