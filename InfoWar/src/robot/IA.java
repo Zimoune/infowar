@@ -5,12 +5,14 @@ import java.util.Random;
 
 import plateau.Base;
 import plateau.Case;
+import plateau.Cellule;
 import plateau.Plateau;
 
 public class IA {
 	private int niveaudeDifficulte;
 	private Random alea = new Random();
 	private ArrayList<Robot> listeRobotEquipe = new ArrayList<Robot>();
+	private ArrayList<Cellule> listCheminPossible = new ArrayList<Cellule>();
 
 	public IA(int niveaudeDifficulte, ArrayList<Robot> listRobot){
 		this.niveaudeDifficulte = niveaudeDifficulte;
@@ -23,6 +25,7 @@ public class IA {
 		Robot rob;
 		int testDistanceRobot = 10000;
 		
+		//Initialisation du poids de chaque cellule
 		p.initPoids();
 		
 		//On trouve le robot le plus proche
@@ -32,15 +35,12 @@ public class IA {
 			}
 		}
 		
-		for (int i=0; i<p.getHauteur(); i++) {
-			for (int j=0; j<p.getLargeur(); j++) {
-				
-			}
-		}
+		//On calcule le chemin le plus court
+		
 	}
 
 	public String choixAction(Robot r, Plateau p){
-		String actionName;		
+		String actionName;
 		int nbPossibilte;
 		
 		if(niveaudeDifficulte == 1){
