@@ -30,13 +30,14 @@ public class Main {
 	static ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
 	static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
 	static int nbRobot;
+	static String nomPaysEquipe1, nomPaysEquipe2;
 	
 	public static void main(String[] args) {
 		int cptIndiceEquipe = 1;
 		int choixMode = 0;
 		int testChoixUtilisateurInt = 0;
 		String choixUtilisateur;
-		p.genererchemin();
+		/*p.genererchemin();*/
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
 
 		do{
@@ -66,6 +67,37 @@ public class Main {
 			}
 		}while((nbRobot <= 0 || nbRobot > 5) || testChoixUtilisateurInt == 1);
 
+		testChoixUtilisateurInt = 0;
+
+		do{
+			try{
+				System.out.println("Equipe 1, qu'elle sera le nom de  votre Pays?");
+				nomPaysEquipe1 = sc.next();
+
+			}
+			catch(InputMismatchException e){
+				System.out.println("Vous n'avez pas entree une valeur valide");
+				testChoixUtilisateurInt = 1;
+				sc.next();
+			}
+		}while(testChoixUtilisateurInt == 1);
+
+		testChoixUtilisateurInt = 0;
+
+		do{
+			try{
+				System.out.println("Equipe 2, qu'elle sera le nom de votre Pays?");
+				nomPaysEquipe2 = sc.next();
+
+			}
+			catch(InputMismatchException e){
+				System.out.println("Vous n'avez pas entree une valeur valide");
+				testChoixUtilisateurInt = 1;
+				sc.next();
+			}
+		}while(testChoixUtilisateurInt == 1);
+
+
 		int nbTireurEquipe1 = 1;
 		int nbTireurEquipe2 = 1;
 		int nbPiegeurEquipe1 = 1;
@@ -79,7 +111,13 @@ public class Main {
 			
 		do{
 			do{
-				System.out.println("Quel est le robot que vous voulez jouer pour l'equipe " + cptIndiceEquipe + " ? (t/p/c)");			
+				if(cptIndiceEquipe == 1){
+					System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe1 + " ? (t/p/c)");
+				}
+				else{
+					System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe2 + " ? (t/p/c)");
+				}
+							
 				choixUtilisateur = sc.next();
 			}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p") && !choixUtilisateur.equals("c"));
 			
@@ -142,7 +180,7 @@ public class Main {
 		do{
 			if(tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
-				System.out.println("\nTour de jeu : Joueur 1\n");
+				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
 				for(Robot r2 : listeRobotEquipe1){
@@ -161,7 +199,7 @@ public class Main {
 			}
 			else{
 				System.out.println("\n----------------------------------------------------------------------------------");
-				System.out.println("\nTour de jeu : Joueur 2\n");
+				System.out.println("\nTour de jeu : " + nomPaysEquipe2 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
 				for(Robot r2 : listeRobotEquipe1){
@@ -211,7 +249,7 @@ public class Main {
 			robotDansListe = false;
 			if (tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
-				System.out.println("\nTour de jeu : Joueur 1\n");
+				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
 				
@@ -252,7 +290,7 @@ public class Main {
 			}
 			else{
 				System.out.println("\n----------------------------------------------------------------------------------");
-				System.out.println("\nTour de jeu : Joueur 2\n");
+				System.out.println("\nTour de jeu : " + nomPaysEquipe2 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
 				do{

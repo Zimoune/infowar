@@ -112,7 +112,7 @@ public class Plateau {
 		System.out.println();
 	}
 	
-	public void genererchemin(){
+	/*public void genererchemin(){
 		Random hauteur1 = new Random();
 		Random longueur2 = new Random();
 		Random choix = new Random();
@@ -190,7 +190,7 @@ public class Plateau {
 				System.out.println(obstacle + "est sur le chemin");
 			}
 		} while(ctp > 0);
-	}
+	}*/
 	
 }
 
