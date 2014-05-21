@@ -43,9 +43,9 @@ public class Attaque extends Action {
 				}
 			}
 			else{
-				//Si le robot est ia inutile d'afficher le message d'erreur
+				/*Si le robot est ia inutile d'afficher le message d'erreur
 				if(!this.getRobot().estIa())
-					System.out.println("Vous ne pouvez pas effectuer cette action");
+					System.out.println("Vous ne pouvez pas effectuer cette action");*/
 				this.getRobot().getVue().ajout(this.getObjectif(), this.getRobot().getEquipe());
 			}		
 			//On retire au robot attaquant l'energie de l'attaque que la case soit vide ou pas
