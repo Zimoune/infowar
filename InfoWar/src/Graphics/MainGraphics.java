@@ -13,7 +13,7 @@ public class MainGraphics extends JFrame {
 		f.setTitle("VirtualWar");
 		f.pack();
 		f.setSize(500,500);
-		f.getContentPane().add(new Menu());
+		f.getContentPane().add(new Options());
 		f.setVisible(true);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

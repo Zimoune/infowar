@@ -41,7 +41,11 @@ public class Menu extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Stub de la méthode généré automatiquement
-		this.add(new Options());
+		this.removeAll();
+		JPanel option = new Options();
+		this.add(option);
+		option.setBounds(this.getBounds());
+		repaint();
 	}
 
 }
