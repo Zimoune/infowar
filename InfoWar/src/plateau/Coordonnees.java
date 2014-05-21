@@ -28,5 +28,16 @@ public class Coordonnees {
 	public Coordonnees ajoutCoordonnees(Coordonnees coord){
 		return new Coordonnees(this.getLargeur()+coord.getLargeur(),this.getHauteur()+coord.getHauteur());
 	}
-
+	
+	boolean estEgale(Coordonnees c1){
+		if((c1.getHauteur() ==this.getHauteur()) && (c1.getLargeur() == this.getLargeur() )){
+			return true;
+		}
+		return false;
+	
+	}
+	
+	public String toString() {
+		return "x : " +x + "y" + y;
+	}
 }
