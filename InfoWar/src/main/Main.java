@@ -35,13 +35,11 @@ public class Main {
 	public static void main(String[] args) {
 		int cptIndiceEquipe = 1;
 		int choixMode = 0;
-		int testChoixUtilisateurInt = 0;
 		String choixUtilisateur;
-		/*p.genererchemin();*/
+		p.genererchemin();
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
 
 		do{
-			testChoixUtilisateurInt = 0;
 			try{
 				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Quitter");
 				choixMode = sc.nextInt();
@@ -50,56 +48,37 @@ public class Main {
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
 				sc.next();
 			}
-		}while((choixMode < 1 || choixMode > 2) || testChoixUtilisateurInt == 1);
-
-		testChoixUtilisateurInt = 0;
+		}while((choixMode < 1 || choixMode > 2));
 
 		do{
-			testChoixUtilisateurInt = 0;
 			try{
 				System.out.println("Combien de robot par equipe voulez vous ?");
 				nbRobot = sc.nextInt();
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
 				sc.next();
 			}
-		}while((nbRobot < 0 || nbRobot > 5) || testChoixUtilisateurInt == 1);
+		}while((nbRobot < 0 || nbRobot > 5));
+		try{
+			System.out.println("Equipe 1, qu'elle sera le nom de  votre Pays?");
+			nomPaysEquipe1 = sc.next();
 
-		testChoixUtilisateurInt = 0;
+		}
+		catch(InputMismatchException e){
+			System.out.println("Vous n'avez pas entree une valeur valide");
+			sc.next();
+		}
+		try{
+			System.out.println("Equipe 2, qu'elle sera le nom de votre Pays?");
+			nomPaysEquipe2 = sc.next();
 
-		do{
-			testChoixUtilisateurInt = 0;
-			try{
-				System.out.println("Equipe 1, qu'elle sera le nom de  votre Pays?");
-				nomPaysEquipe1 = sc.next();
-
-			}
-			catch(InputMismatchException e){
-				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
-				sc.next();
-			}
-		}while(testChoixUtilisateurInt == 1);
-
-		testChoixUtilisateurInt = 0;
-
-		do{
-			testChoixUtilisateurInt = 0;
-			try{
-				System.out.println("Equipe 2, qu'elle sera le nom de votre Pays?");
-				nomPaysEquipe2 = sc.next();
-
-			}
-			catch(InputMismatchException e){
-				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
-				sc.next();
-			}
-		}while(testChoixUtilisateurInt == 1);
+		}
+		catch(InputMismatchException e){
+			System.out.println("Vous n'avez pas entree une valeur valide");
+			sc.next();
+		}
 
 
 		int nbTireurEquipe1 = 1;
@@ -241,7 +220,7 @@ public class Main {
 			}
 		}while(partieContinu == true);
 	}
-	
+
 	public static void jouer(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2) {
 		Robot r = null;
 		Action a;
@@ -256,7 +235,7 @@ public class Main {
 				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
-				
+
 				do{
 					for(Robot r2 : listeRobotEquipe1){
 						if(r2.getType().equals("T")){
@@ -382,7 +361,7 @@ public class Main {
 				deplacementName = ia.choixDeplacement(r, p, actionName);
 			}						
 		}		
-		
+
 		//On regarde le caractere de la chaine et on attribut la direction correspondante
 		if(r.getType().equals("c") || r.getType().equals("C")){
 			switch(deplacementName.charAt(0)) {
