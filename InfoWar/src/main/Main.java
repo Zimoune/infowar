@@ -10,6 +10,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -315,17 +316,38 @@ public class Main {
 			a.agit();
 			tourDeJeu++;
 
-			for(Robot rob : listeRobotEquipe1){
-				if(rob.getEnergie() <= 0){
-					partieContinu = false;
-				}
-			}
-			for(Robot rob : listeRobotEquipe2){
-				if(rob.getEnergie() <= 0){
-					partieContinu = false;
-				}
-			}
+			Iterator<Robot> itEquipe1 = listeRobotEquipe1.iterator();
 
+			while(itEquipe1.hasNext()){
+				Robot rob = itEquipe1.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe1 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe1.remove();
+					
+				}
+			}
+			
+			listeRobotEquipe1.remove(r);
+
+			Iterator<Robot> itEquipe2= listeRobotEquipe2.iterator();
+
+			while(itEquipe2.hasNext()){
+				Robot rob = itEquipe2.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe2 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe2.remove();
+				}
+			}
+			
+			listeRobotEquipe2.remove(r);
+			
+			if(listeRobotEquipe1.isEmpty() || listeRobotEquipe2.isEmpty())
+				partieContinu = false;			
+			
 		} while(partieContinu == true);
 
 		System.out.println("\nFin de la partie.");

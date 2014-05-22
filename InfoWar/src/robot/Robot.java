@@ -41,6 +41,15 @@ public abstract class Robot {
 		this.nom = nom;
 	}
 	
+	public boolean estMort(){
+		if(this.getEnergie() <= 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public String getNom(){
 		return this.nom;
 	}

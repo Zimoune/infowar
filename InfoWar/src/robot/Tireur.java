@@ -24,7 +24,7 @@ public class Tireur extends Robot {
  */
 	public Tireur(Vue vue, int l, int h, int equipe, String nom) {
 		super(vue, l, h, equipe,nom);
-		this.setEnergie(40);
+		this.setEnergie(1);
 	}
 /**
  * @return true si le robot peut tirer

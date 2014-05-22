@@ -26,7 +26,7 @@ public class Char extends Robot{
 	 */
 	public Char(Vue vue, int l, int h, int equipe,String nom) {
 		super(vue, l, h, equipe,nom);
-		this.setEnergie(60);
+		this.setEnergie(1);
 		// TODO Stub du constructeur genere automatiquement
 	}
 
