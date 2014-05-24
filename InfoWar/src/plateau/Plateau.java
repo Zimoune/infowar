@@ -87,7 +87,7 @@ public class Plateau {
 			for (int j=0; j<plateau[0].length; j++) {
 				System.out.print("|");
 				if(plateau[i][j].contientMine() > 0) {
-					if (plateau[i][j].contientMine() == r.getEquipe())
+					if (plateau[i][j].contientMine() != r.getEquipe())
 						System.out.print(plateau[i][j]);
 					else 
 						System.out.print("  ");
@@ -112,7 +112,7 @@ public class Plateau {
 		System.out.println();
 	}
 	
-	/*public void genererchemin(){
+	public void genererchemin(){
 		Random hauteur1 = new Random();
 		Random longueur2 = new Random();
 		Random choix = new Random();
@@ -190,7 +190,7 @@ public class Plateau {
 				System.out.println(obstacle + "est sur le chemin");
 			}
 		} while(ctp > 0);
-	}*/
+	}
 	
 }
 

@@ -10,6 +10,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -31,11 +32,10 @@ public class Main {
 	static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
 	static int nbRobot;
 	static String nomPaysEquipe1, nomPaysEquipe2;
-	
+
 	public static void main(String[] args) {
 		int cptIndiceEquipe = 1;
 		int choixMode = 0;
-		int testChoixUtilisateurInt = 0;
 		String choixUtilisateur;
 		/*p.genererchemin();*/
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
@@ -49,12 +49,9 @@ public class Main {
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
 				sc.next();
 			}
-		}while((choixMode < 1 || choixMode > 2) || testChoixUtilisateurInt == 1);
-		
-		testChoixUtilisateurInt = 0;
+		}while((choixMode < 1 || choixMode > 2));
 
 		do{
 			try{
@@ -62,40 +59,27 @@ public class Main {
 				nbRobot = sc.nextInt();
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
 				sc.next();
 			}
-		}while((nbRobot <= 0 || nbRobot > 5) || testChoixUtilisateurInt == 1);
+		}while((nbRobot < 0 || nbRobot > 5));
+		try{
+			System.out.println("Equipe 1, qu'elle sera le nom de  votre Pays?");
+			nomPaysEquipe1 = sc.next();
 
-		testChoixUtilisateurInt = 0;
+		}
+		catch(InputMismatchException e){
+			System.out.println("Vous n'avez pas entree une valeur valide");
+			sc.next();
+		}
+		try{
+			System.out.println("Equipe 2, qu'elle sera le nom de votre Pays?");
+			nomPaysEquipe2 = sc.next();
 
-		do{
-			try{
-				System.out.println("Equipe 1, qu'elle sera le nom de  votre Pays?");
-				nomPaysEquipe1 = sc.next();
-
-			}
-			catch(InputMismatchException e){
-				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
-				sc.next();
-			}
-		}while(testChoixUtilisateurInt == 1);
-
-		testChoixUtilisateurInt = 0;
-
-		do{
-			try{
-				System.out.println("Equipe 2, qu'elle sera le nom de votre Pays?");
-				nomPaysEquipe2 = sc.next();
-
-			}
-			catch(InputMismatchException e){
-				System.out.println("Vous n'avez pas entree une valeur valide");
-				testChoixUtilisateurInt = 1;
-				sc.next();
-			}
-		}while(testChoixUtilisateurInt == 1);
+		}
+		catch(InputMismatchException e){
+			System.out.println("Vous n'avez pas entree une valeur valide");
+			sc.next();
+		}
 
 
 		int nbTireurEquipe1 = 1;
@@ -104,59 +88,59 @@ public class Main {
 		int nbPiegeurEquipe2 = 1;
 		int nbCharEquipe1 = 1;
 		int nbCharEquipe2 = 1;
-		
-		for( int i = 0; i < nbRobot; i++){
-			
-			cptIndiceEquipe = 1;
-			
-		do{
-			do{
-				if(cptIndiceEquipe == 1){
-					System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe1 + " ? (t/p/c)");
-				}
-				else{
-					System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe2 + " ? (t/p/c)");
-				}
-							
-				choixUtilisateur = sc.next();
-			}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p") && !choixUtilisateur.equals("c"));
-			
-			if(cptIndiceEquipe == 1){
-				if(choixUtilisateur.equals("t")){					
-					//r1 = new Tireur(v1,0,0,1);
-					listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur" + nbTireurEquipe1));
-					nbTireurEquipe1++;
-				}
-				else if(choixUtilisateur.equals("p")){					
-					//r1 = new Piegeur(v1,0,0,1);
-					listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + nbPiegeurEquipe1));
-					nbPiegeurEquipe1++;
-				} else {
-					//r1 = new Char(v1,0,0,1);
-					listeRobotEquipe1.add(new Char(v1,0,0,1,"Char" + nbCharEquipe1));
-					nbCharEquipe1++;
-				}
 
-			}
-			else if(cptIndiceEquipe == 2){
-				if(choixUtilisateur.equals("t")){
-					//r2 = new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-					listeRobotEquipe2.add(new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Tireur" + nbTireurEquipe2));
-					nbTireurEquipe2++;
+		for( int i = 0; i < nbRobot; i++){
+
+			cptIndiceEquipe = 1;
+
+			do{
+				do{
+					if(cptIndiceEquipe == 1){
+						System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe1 + " ? (t/p/c)");
+					}
+					else{
+						System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe2 + " ? (t/p/c)");
+					}
+
+					choixUtilisateur = sc.next();
+				}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p") && !choixUtilisateur.equals("c"));
+
+				if(cptIndiceEquipe == 1){
+					if(choixUtilisateur.equals("t")){					
+						//r1 = new Tireur(v1,0,0,1);
+						listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur" + nbTireurEquipe1));
+						nbTireurEquipe1++;
+					}
+					else if(choixUtilisateur.equals("p")){					
+						//r1 = new Piegeur(v1,0,0,1);
+						listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + nbPiegeurEquipe1));
+						nbPiegeurEquipe1++;
+					} else {
+						//r1 = new Char(v1,0,0,1);
+						listeRobotEquipe1.add(new Char(v1,0,0,1,"Char" + nbCharEquipe1));
+						nbCharEquipe1++;
+					}
+
 				}
-				else if(choixUtilisateur.equals("p")){
-					//r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-					listeRobotEquipe2.add(new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Piegeur" + nbPiegeurEquipe2));
-					nbPiegeurEquipe2++;
-				} else {
-					//r2 = new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-					listeRobotEquipe2.add(new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Char" + nbCharEquipe2));
-					nbCharEquipe2++;
-				}
-			}		
-			cptIndiceEquipe++;
-		}while(cptIndiceEquipe < 3);
-		}	
+				else if(cptIndiceEquipe == 2){
+					if(choixUtilisateur.equals("t")){
+						//r2 = new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
+						listeRobotEquipe2.add(new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Tireur" + nbTireurEquipe2));
+						nbTireurEquipe2++;
+					}
+					else if(choixUtilisateur.equals("p")){
+						//r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
+						listeRobotEquipe2.add(new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Piegeur" + nbPiegeurEquipe2));
+						nbPiegeurEquipe2++;
+					} else {
+						//r2 = new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2);
+						listeRobotEquipe2.add(new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Char" + nbCharEquipe2));
+						nbCharEquipe2++;
+					}
+				}		
+				cptIndiceEquipe++;
+			}while(cptIndiceEquipe < 3);
+		}
 		if(choixMode == 1){
 			jouer(p,listeRobotEquipe1,listeRobotEquipe2);
 		}
@@ -167,10 +151,10 @@ public class Main {
 				r.setIa();
 			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2);
 		}
-		
+
 		sc.close();
 	}
-	
+
 	public static void jouerIaSimple(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2){
 		boolean partieContinu = true;
 		int tourDeJeu = 0;
@@ -237,7 +221,7 @@ public class Main {
 			}
 		}while(partieContinu == true);
 	}
-	
+
 	public static void jouer(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2) {
 		Robot r = null;
 		Action a;
@@ -252,7 +236,7 @@ public class Main {
 				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
-				
+
 				do{
 					for(Robot r2 : listeRobotEquipe1){
 						if(r2.getType().equals("T")){
@@ -332,17 +316,38 @@ public class Main {
 			a.agit();
 			tourDeJeu++;
 
-			for(Robot rob : listeRobotEquipe1){
-				if(rob.getEnergie() <= 0){
-					partieContinu = false;
-				}
-			}
-			for(Robot rob : listeRobotEquipe2){
-				if(rob.getEnergie() <= 0){
-					partieContinu = false;
-				}
-			}
+			Iterator<Robot> itEquipe1 = listeRobotEquipe1.iterator();
 
+			while(itEquipe1.hasNext()){
+				Robot rob = itEquipe1.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe1 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe1.remove();
+					
+				}
+			}
+			
+			listeRobotEquipe1.remove(r);
+
+			Iterator<Robot> itEquipe2= listeRobotEquipe2.iterator();
+
+			while(itEquipe2.hasNext()){
+				Robot rob = itEquipe2.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe2 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe2.remove();
+				}
+			}
+			
+			listeRobotEquipe2.remove(r);
+			
+			if(listeRobotEquipe1.isEmpty() || listeRobotEquipe2.isEmpty())
+				partieContinu = false;			
+			
 		} while(partieContinu == true);
 
 		System.out.println("\nFin de la partie.");
@@ -378,8 +383,8 @@ public class Main {
 				deplacementName = ia.choixDeplacement(r, p, actionName);
 			}						
 		}		
-		
-		//On regarde le caract�re de la chaine et on attribut la direction correspondante
+
+		//On regarde le caractere de la chaine et on attribut la direction correspondante
 		if(r.getType().equals("c") || r.getType().equals("C")){
 			switch(deplacementName.charAt(0)) {
 			case 'z': c = Constante.HAUT;break;
