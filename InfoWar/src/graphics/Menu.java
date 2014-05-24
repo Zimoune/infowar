@@ -1,4 +1,4 @@
-package Graphics;
+package graphics;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -11,8 +11,7 @@ import javax.swing.border.Border;
 
 public class Menu extends JPanel implements ActionListener {
 	
-	CardLayout carte;
-	JPanel content;
+	JFrame f;
 	
 	JButton jcj = new JButton("Joueur contre Joueur");
 	JButton jco = new JButton("Joueur contre Ordinateur");
@@ -21,9 +20,8 @@ public class Menu extends JPanel implements ActionListener {
 	JPanel panelButton = new JPanel();
 	JLabel titre = new JLabel("VirtualWar");
 	
-	public Menu(CardLayout carte, String[] listePanel, JPanel content){
-		this.carte = carte;
-		this.content = content;
+	public Menu(JFrame f){
+		this.f = f;
 		
 		this.setLayout(null);
 		panelButton.setLayout(new GridLayout(4,1));
@@ -48,7 +46,10 @@ public class Menu extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Stub de la méthode généré automatiquement
-		carte.next(content);
+		this.removeAll();
+		this.set
+		this.revalidate();
+		
 	}
 
 }
