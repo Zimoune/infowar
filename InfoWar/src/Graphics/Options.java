@@ -1,5 +1,6 @@
 package Graphics;
 
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +25,7 @@ public class Options extends JPanel implements ActionListener {
 	JPanel taille = new JPanel();
 	
 	
-	public Options(){
+	public Options(CardLayout carte, String[] listePanel, JPanel content){
 		this.setLayout(null);
 		core.setLayout(new GridLayout(5,2));
 		
