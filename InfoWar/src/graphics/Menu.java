@@ -47,7 +47,7 @@ public class Menu extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Stub de la méthode généré automatiquement
 		this.removeAll();
-		this.set
+		//this.set
 		this.revalidate();
 		
 	}

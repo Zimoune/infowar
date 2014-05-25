@@ -26,8 +26,12 @@ public class Char extends Robot{
 	 */
 	public Char(Vue vue, int l, int h, int equipe,String nom) {
 		super(vue, l, h, equipe,nom);
-		this.setEnergie(1);
+		this.setEnergie(60);
 		// TODO Stub du constructeur genere automatiquement
+	}
+	
+	public int getEnergieDeBase(){
+		return 60;
 	}
 
 	/**
@@ -53,7 +57,7 @@ public class Char extends Robot{
 	@Override
 	public int getCoutDep() {
 		// TODO Stub de la methode genere automatiquement
-		return 5;
+		return 10;
 	}
 /**
  * @return les degats du tir du robot

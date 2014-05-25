@@ -50,6 +50,10 @@ public abstract class Robot {
 		}
 	}
 	
+	public int getEnergieDeBase(){
+		return this.getEnergieDeBase();
+	}
+	
 	public String getNom(){
 		return this.nom;
 	}

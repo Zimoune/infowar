@@ -75,5 +75,4 @@ public class Base extends Cellule {
 		// TODO Stub de la methode genere automatiquement
 		
 	}
-
 }

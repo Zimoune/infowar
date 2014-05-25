@@ -38,8 +38,10 @@ public class Attaque extends Action {
 				//On verifie que l'endroit ou le robot doit tirer n'est pas vide
 				if (this.getRobot().getVue().getContenu(this.getObjectif()) != null) {
 					if(this.getRobot().getVue().getContenu(this.getObjectif()).getEquipe() != this.getRobot().getEquipe())
-						//On retire l'energie au robot qui se fait attaquer
-						this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
+						//on verifie que le robot que l'on attaque n'est pas sur sa base
+						if(!this.getRobot().getVue().getContenu(this.getObjectif()).estSurBase())
+							//On retire l'energie au robot qui se fait attaquer
+							this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
 				}
 			}
 			else{
@@ -49,7 +51,10 @@ public class Attaque extends Action {
 				this.getRobot().getVue().ajout(this.getObjectif(), this.getRobot().getEquipe());
 			}		
 			//On retire au robot attaquant l'energie de l'attaque que la case soit vide ou pas
-			this.getRobot().setEnergie(this.getRobot().getEnergie()-1);
+			this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getCoutAction());
+			System.out.println();
+			System.out.println(this.getRobot().getNom() + " a perdu : " + this.getRobot().getCoutAction() + " energie apres avoir attaque !");
+			
 		}
 	}
 }

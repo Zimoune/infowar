@@ -24,14 +24,14 @@ import plateau.Vue;
 import robot.*;
 
 public class Main {
-	static Plateau p = new Plateau(5,10);
-	static Vue v1 = new Vue(1,p);
-	static Vue v2 = new Vue(2,p);
-	static Scanner sc = new Scanner(System.in);
-	static ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
-	static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
-	static int nbRobot;
-	static String nomPaysEquipe1, nomPaysEquipe2;
+	private static Plateau p = new Plateau(5,10);
+	private static Vue v1 = new Vue(1,p);
+	private static Vue v2 = new Vue(2,p);
+	private static Scanner sc = new Scanner(System.in);
+	private static ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
+	private static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
+	private static int nbRobot;
+	private static String nomPaysEquipe1, nomPaysEquipe2;
 
 	public static void main(String[] args) {
 		int cptIndiceEquipe = 1;
@@ -316,6 +316,8 @@ public class Main {
 			a.agit();
 			tourDeJeu++;
 
+			r = null;
+
 			Iterator<Robot> itEquipe1 = listeRobotEquipe1.iterator();
 
 			while(itEquipe1.hasNext()){
@@ -325,10 +327,10 @@ public class Main {
 					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
 					System.out.println(nomPaysEquipe1 + " : " + rob.getNom() + " est mort au combat !");
 					itEquipe1.remove();
-					
+
 				}
 			}
-			
+
 			listeRobotEquipe1.remove(r);
 
 			Iterator<Robot> itEquipe2= listeRobotEquipe2.iterator();
@@ -342,12 +344,27 @@ public class Main {
 					itEquipe2.remove();
 				}
 			}
-			
+
 			listeRobotEquipe2.remove(r);
-			
+
 			if(listeRobotEquipe1.isEmpty() || listeRobotEquipe2.isEmpty())
-				partieContinu = false;			
-			
+				partieContinu = false;		
+
+			for(Robot rob : listeRobotEquipe1){
+				if(rob.getEnergie() != rob.getEnergieDeBase() && rob.estSurBase()){
+					if(rob.getEnergieDeBase() - rob.getEnergie() >= 1){
+						rob.setEnergie(rob.getEnergie() + 2);
+						System.out.println();
+						System.out.println(rob.getNom() + " a recupere 2 point d'energie");
+					}
+					else{
+						rob.setEnergie(rob.getEnergie() + 1);
+						System.out.println();
+						System.out.println(rob.getNom() + " a recupere 1 point d'energie");
+					}
+				}
+			}
+
 		} while(partieContinu == true);
 
 		System.out.println("\nFin de la partie.");
@@ -357,11 +374,52 @@ public class Main {
 		String actionName, deplacementName;
 		Action action;
 		Coordonnees c = null;
+		int nbRobotSurBase = 0;
+
 		if(choixMode == 0){
-			do {
-				System.out.print("Choisissez votre action: ");
-				actionName = sc.next();
-			} while (!actionName.equals("a") && !actionName.equals("d"));
+			if(r.getEquipe() == 0){
+				for(Robot rob : listeRobotEquipe1){
+					if(rob.estSurBase()){
+						nbRobotSurBase++;
+					}
+				}
+				if(nbRobotSurBase == listeRobotEquipe1.size()){
+					do {
+						System.out.print("Choisissez votre action: ");
+						actionName = sc.next();
+						if(!actionName.equals("d"))
+							System.out.println("Vous devez avoir au moins 1 robot hors de la base");
+					} while (!actionName.equals("d"));
+				}
+				else{
+					do {
+						System.out.print("Choisissez votre action: ");
+						actionName = sc.next();
+					} while (!actionName.equals("a") && !actionName.equals("d"));
+				}
+			}
+
+			else{
+				for(Robot rob : listeRobotEquipe2){
+					if(rob.estSurBase()){
+						nbRobotSurBase++;
+					}
+				}
+				if(nbRobotSurBase == listeRobotEquipe2.size()){
+					do {
+						System.out.print("Choisissez votre action: ");
+						actionName = sc.next();
+						if(!actionName.equals("d"))
+							System.out.println("Vous devez avoir au moins 1 robot hors de la base");
+					} while (!actionName.equals("d"));
+				}
+				else{
+					do {
+						System.out.print("Choisissez votre action: ");
+						actionName = sc.next();
+					} while (!actionName.equals("a") && !actionName.equals("d"));
+				}
+			}
 
 			do {
 				System.out.print("Choisissez votre direction: ");
@@ -373,14 +431,14 @@ public class Main {
 		}
 		else{
 			if(listeRobotEquipe1.contains(r)){
-				IA ia = new IA(choixMode, listeRobotEquipe2);
-				actionName = ia.choixAction(r, p);
-				deplacementName = ia.choixDeplacement(r, p, actionName);
+				IA ia = new IA(choixMode, listeRobotEquipe1);
+				actionName = ia.choixAction(r, p, listeRobotEquipe1);
+				deplacementName = ia.choixDeplacement(r, p, actionName, listeRobotEquipe1, 0);
 			}
 			else{
-				IA ia = new IA(choixMode, listeRobotEquipe1);
-				actionName = ia.choixAction(r, p);
-				deplacementName = ia.choixDeplacement(r, p, actionName);
+				IA ia = new IA(choixMode, listeRobotEquipe2);
+				actionName = ia.choixAction(r, p, listeRobotEquipe2);
+				deplacementName = ia.choixDeplacement(r, p, actionName, listeRobotEquipe2, 1);
 			}						
 		}		
 
@@ -416,7 +474,7 @@ public class Main {
 						test = false;
 					}
 					cpt++;
-				}while(cpt < 10 && test == true);
+				}while(cpt <= 10 && test == true);
 			}
 			else				
 				action = new Attaque(r,c);

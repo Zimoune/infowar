@@ -24,7 +24,6 @@ public class Deplacement extends Action {
 			
 			//On verifie que la case choisi est bien vide
 			if (this.getRobot().getVue().getContenu(this.getObjectif()) == null) {
-				
 				//On deplace le robot sur cette case
 				this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
 			}

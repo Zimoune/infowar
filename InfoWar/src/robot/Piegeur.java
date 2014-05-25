@@ -35,6 +35,10 @@ public class Piegeur extends Robot {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public int getEnergieDeBase(){
+		return 50;
+	}
 	/**
 	 * @return cout de l'attaque
 	 */
@@ -49,7 +53,7 @@ public class Piegeur extends Robot {
 	@Override
 	public int getCoutDep() {
 		// TODO Auto-generated method stub
-		return 1;
+		return 2;
 	}
 
 /**
