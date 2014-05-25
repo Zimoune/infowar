@@ -54,14 +54,14 @@ public class IA {
 				}
 			}
 
-
 		}
 		//ici vient l'IA intelligente
 		else{
-			if(!p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).equals(null)
-					|| !p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1).equals(null)
-					|| !p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()).equals(null)
-					|| !p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()).equals(null)){
+
+			if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).getEquipe() != r.getEquipe()
+					|| p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1).getEquipe() != r.getEquipe()
+					|| p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()
+					|| p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 
 				actionName = "a";
 			}
@@ -69,21 +69,23 @@ public class IA {
 				actionName = "d";
 			}
 		}		
+		System.out.println(actionName);
+		
 		return actionName;
 	}
 
-	public String choixDeplacement(Robot r, Plateau p, String actionName, ArrayList<Robot> liste, int equipe){
+	public String choixDeplacement(Robot r, Plateau p, String actionName, int equipe){
 		String deplacementName;
 		int nbRobotSurBase = 0;
-		int nbPossibilite = alea.nextInt(7);
+		int nbPossibilite;
 
 		if(niveaudeDifficulte == 1){
-			for(Robot rob : liste){
+			for(Robot rob : listeRobotEquipe){
 				if(rob.estSurBase()){
 					nbRobotSurBase++;
 				}
 			}
-			if(nbRobotSurBase == liste.size()){
+			if(nbRobotSurBase == listeRobotEquipe.size()){
 				nbPossibilite = alea.nextInt(2);
 				if(equipe == 0){
 					switch (nbPossibilite) {
@@ -111,7 +113,6 @@ public class IA {
 						break;
 					}
 				}
-
 			}
 			else{
 				nbPossibilite = alea.nextInt(7);
@@ -167,13 +168,13 @@ public class IA {
 		//ici vient l'IA intelligente
 		else{
 			if(actionName == "a"){
-				if(!p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).equals(null)){
+				if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).getEquipe() != r.getEquipe()){
 					deplacementName = "z";
 				}
-				else if(!p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1).equals(null)){
+				else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1).getEquipe() != r.getEquipe()){
 					deplacementName = "s";
 				}
-				else if(!p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()).equals(null)){
+				else if(p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 					deplacementName = "q";
 				}
 				else{
@@ -181,9 +182,76 @@ public class IA {
 				}
 			}
 			else{
-				deplacementName = "z";
-			}			
+				for(Robot rob : listeRobotEquipe){
+					if(rob.estSurBase()){
+						nbRobotSurBase++;
+					}
+				}
+				if(nbRobotSurBase == listeRobotEquipe.size()){
+					nbPossibilite = alea.nextInt(2);
+					if(equipe == 0){
+						switch (nbPossibilite) {
+						case 0:
+							deplacementName = "d";
+							break;
+						case 1:
+							deplacementName = "c";
+							break;
+						default:
+							deplacementName = "s";
+							break;
+						}
+					}
+					else{
+						switch (nbPossibilite) {
+						case 0:
+							deplacementName = "z";
+							break;
+						case 1:
+							deplacementName = "a";
+							break;
+						default:
+							deplacementName = "q";
+							break;
+						}
+					}
+
+				}
+
+
+				else{
+					nbPossibilite = alea.nextInt(7);
+				}
+				switch (nbPossibilite) {
+				case 0:
+					deplacementName = "z";
+					break;
+				case 1:
+					deplacementName = "q";
+					break;
+				case 2:
+					deplacementName = "s";
+					break;
+				case 3:
+					deplacementName = "d";
+					break;
+				case 4:
+					deplacementName = "a";
+					break;
+				case 5:
+					deplacementName = "e";
+					break;
+				case 6:
+					deplacementName = "w";
+					break;
+
+				default:
+					deplacementName = "c";
+					break;
+				}
+			}
 		}
+		System.out.println(deplacementName);
 		return deplacementName;
 	}
 }

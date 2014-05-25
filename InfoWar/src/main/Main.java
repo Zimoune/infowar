@@ -32,10 +32,11 @@ public class Main {
 	private static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
 	private static int nbRobot;
 	private static String nomPaysEquipe1, nomPaysEquipe2;
+	private static int choixDifficulte = 0;
 
 	public static void main(String[] args) {
 		int cptIndiceEquipe = 1;
-		int choixMode = 0;
+		int choixMode = 1;
 		String choixUtilisateur;
 		/*p.genererchemin();*/
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
@@ -52,7 +53,18 @@ public class Main {
 				sc.next();
 			}
 		}while((choixMode < 1 || choixMode > 2));
-
+		if(choixMode == 2){
+			do{
+				try{
+					System.out.println("Difficulte IA : Aleatoire(1), NonAleatoire(2)");
+					choixDifficulte = sc.nextInt();
+				}catch(InputMismatchException e){
+					System.out.println("Vous n'avez pas entree une valeur valide");
+					sc.next();
+				}
+			}while(choixDifficulte < 1 || choixDifficulte > 2);
+		}
+		
 		do{
 			try{
 				System.out.println("Combien de robot par equipe voulez vous ?");
@@ -144,18 +156,25 @@ public class Main {
 		if(choixMode == 1){
 			jouer(p,listeRobotEquipe1,listeRobotEquipe2);
 		}
+		else if(choixMode == 2){
+			for(Robot r:listeRobotEquipe1)
+				r.setIa();
+			for(Robot r:listeRobotEquipe2)
+				r.setIa();
+			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
+		}
 		else{
 			for(Robot r:listeRobotEquipe1)
 				r.setIa();
 			for(Robot r:listeRobotEquipe2)
 				r.setIa();
-			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2);
+			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
 		}
 
 		sc.close();
 	}
 
-	public static void jouerIaSimple(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2){
+	public static void jouerIaSimple(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
 		boolean partieContinu = true;
 		int tourDeJeu = 0;
 		Robot r = null;
@@ -200,7 +219,7 @@ public class Main {
 				r=listeRobotEquipe2.get(g);
 				System.out.println();
 			}
-			a = choixAction(r, 1);
+			a = choixAction(r, 1, choixDifficulte);
 			a.agit();
 			tourDeJeu++;
 
@@ -312,7 +331,7 @@ public class Main {
 				}
 				System.out.println();
 			}
-			a = choixAction(r, 0);
+			a = choixAction(r, 0, choixDifficulte);
 			a.agit();
 			tourDeJeu++;
 
@@ -370,7 +389,7 @@ public class Main {
 		System.out.println("\nFin de la partie.");
 	}
 
-	public static Action choixAction(Robot r, int choixMode) {
+	public static Action choixAction(Robot r, int choixMode, int choixDifficulte) {
 		String actionName, deplacementName;
 		Action action;
 		Coordonnees c = null;
@@ -429,18 +448,18 @@ public class Main {
 					&& !deplacementName.equals("a") && !deplacementName.equals("e")
 					&& !deplacementName.equals("w") && !deplacementName.equals("c"));
 		}
-		else{
+		else{			
 			if(listeRobotEquipe1.contains(r)){
-				IA ia = new IA(choixMode, listeRobotEquipe1);
+				IA ia = new IA(choixDifficulte, listeRobotEquipe1);
 				actionName = ia.choixAction(r, p, listeRobotEquipe1);
-				deplacementName = ia.choixDeplacement(r, p, actionName, listeRobotEquipe1, 0);
+				deplacementName = ia.choixDeplacement(r, p, actionName, 0);
 			}
 			else{
-				IA ia = new IA(choixMode, listeRobotEquipe2);
-				actionName = ia.choixAction(r, p, listeRobotEquipe2);
-				deplacementName = ia.choixDeplacement(r, p, actionName, listeRobotEquipe2, 1);
-			}						
-		}		
+				IA ia = new IA(choixDifficulte, listeRobotEquipe2);
+				actionName = ia.choixAction(r, p, listeRobotEquipe1);
+				deplacementName = ia.choixDeplacement(r, p, actionName, 1);
+			}
+		}
 
 		//On regarde le caractere de la chaine et on attribut la direction correspondante
 		if(r.getType().equals("c") || r.getType().equals("C")){
