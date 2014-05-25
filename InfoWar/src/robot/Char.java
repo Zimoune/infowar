@@ -57,7 +57,7 @@ public class Char extends Robot{
 	@Override
 	public int getCoutDep() {
 		// TODO Stub de la methode genere automatiquement
-		return 10;
+		return 5;
 	}
 /**
  * @return les degats du tir du robot
