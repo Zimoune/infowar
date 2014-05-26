@@ -30,10 +30,7 @@ public class Obstacle extends Cellule{
 		
 	}
 
-	@Override
-	public String toString() {
-		return this.toString();
-	}
+
 
 	@Override
 	public void ajoutObstacle() {

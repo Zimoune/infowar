@@ -29,12 +29,10 @@ public class Coordonnees {
 		return new Coordonnees(this.getLargeur()+coord.getLargeur(),this.getHauteur()+coord.getHauteur());
 	}
 	
-	boolean estEgale(Coordonnees c1){
-		if((c1.getHauteur() ==this.getHauteur()) && (c1.getLargeur() == this.getLargeur() )){
-			return true;
-		}
-		return false;
-	
+	public boolean equals(Object o){
+		return ((o instanceof Coordonnees) && (((Coordonnees)o).getHauteur() == this.getHauteur()) && (((Coordonnees)o).getLargeur() == this.getLargeur())); 
+		
+		
 	}
 	
 	public String toString() {

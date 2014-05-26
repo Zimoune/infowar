@@ -112,85 +112,84 @@ public class Plateau {
 		System.out.println();
 	}
 	
-	public void genererchemin(){
-		Random hauteur1 = new Random();
-		Random longueur2 = new Random();
-		Random choix = new Random();
-		ArrayList<Coordonnees> chemin = new ArrayList<Coordonnees>();
-		int milieu = (int)(this.getLargeur()/2);
-		System.out.println(milieu);
-		Coordonnees c = new Coordonnees(milieu,hauteur1.nextInt(this.getHauteur()));
-		chemin.add(c);
-		chemin.add(new Coordonnees(0,0));
-		chemin.add(new Coordonnees(this.getLargeur(),this.getHauteur()));
-		Coordonnees droite = new Coordonnees(milieu +1,c.getHauteur());
-		Coordonnees gauche = new Coordonnees(milieu -1,c.getHauteur());
-		System.out.println(gauche);
-		chemin.add(droite);
-		chemin.add(gauche);
-		System.out.println( droite);
-		Coordonnees base1 = new Coordonnees(0,0);
-		Coordonnees base2 = new Coordonnees(this.getLargeur(),this.getHauteur());
-		Obstacle obs;
-		while(!(gauche.estEgale(base1))){
-			if (gauche.getLargeur() == 0){	
-				gauche = new Coordonnees(0,gauche.getHauteur() -1);
-				chemin.add(gauche);
-			}
-			else if(gauche.getHauteur() == 0){
-				gauche = new Coordonnees(gauche.getLargeur() -1 , 0);
-				chemin.add(gauche);
-			}
-			else {
-				if(choix.nextInt(2) == 0){
-					gauche = new Coordonnees(gauche.getLargeur() - 1, gauche.getHauteur());
-					chemin.add(gauche);
-				}
-				else {
-					gauche = new Coordonnees(gauche.getLargeur(),gauche.getHauteur() -1);
-					chemin.add(gauche);
-				}
-			}
-		}
-		while(!(droite.estEgale(base2))){
-			if (droite.getLargeur() == this.getLargeur()){
-				droite = new Coordonnees(droite.getLargeur(),droite.getHauteur() + 1);
-				chemin.add(droite);
-			}
-			else if (droite.getHauteur() == this.getHauteur()){
-				droite = new Coordonnees(droite.getLargeur() +1, droite.getHauteur());
-				chemin.add(droite);
-			}
-			else {
-				if(choix.nextInt(2) == 0){
-					droite = new Coordonnees(droite.getLargeur() +1, droite.getHauteur());
-					chemin.add(droite);
-				}
-				else {
-					droite = new Coordonnees(droite.getLargeur(),droite.getHauteur()+1);
-					chemin.add(droite);
-				}
-			}
-		}
-		System.out.println(chemin);
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Quel est le pourcentage d'obstacle souhaite :");
-		int pourcentage = sc.nextInt();
-		int ctp =this.getHauteur()*this.getLargeur()*pourcentage/100;
-		Coordonnees obstacle;
-		do {
-			obstacle = new Coordonnees(longueur2.nextInt(this.getLargeur()),hauteur1.nextInt(this.getHauteur()));
-			System.out.println(!chemin.contains(obstacle));
-			if (!chemin.contains(obstacle)) {
-				System.out.println("Rentrer" + obstacle);
-				this.plateau[obstacle.getLargeur()][obstacle.getHauteur()] = new Obstacle(obstacle.getLargeur(),obstacle.getHauteur());
-				ctp--;
-			}
-			else {
-				System.out.println(obstacle + "est sur le chemin");
-			}
-		} while(ctp > 0);
-	}
-	
-}
+	public void genererchemin() {
+	    Random hauteur1 = new Random();
+	    Random longueur2 = new Random();
+	    Random choix = new Random();
+	    ArrayList chemin = new ArrayList();
+	    System.out.println(this.getHauteur());
+	    System.out.println(this.getLargeur());
+	    int milieu = getLargeur() / 2;
+	    System.out.println(milieu);
+	    Coordonnees c = new Coordonnees(milieu, hauteur1.nextInt(
+	      getLargeur()));
+	    chemin.add(c);
+	    chemin.add(new Coordonnees(0, 0));
+	    chemin.add(new Coordonnees(getLargeur() - 1, getHauteur() - 1));
+	    Coordonnees droite = new Coordonnees(milieu + 1, c.getHauteur());
+	    Coordonnees gauche = new Coordonnees(milieu - 1, c.getHauteur());
+	    chemin.add(gauche);
+	    Coordonnees base1 = new Coordonnees(0, 0);
+	    Coordonnees base2 =new Coordonnees(getLargeur() - 1, getHauteur() - 1);
 
+	    while (!gauche.equals(base1)) {
+	      if (gauche.getLargeur() == 0) {
+	        gauche = new Coordonnees(0, gauche.getHauteur() - 1);
+	        chemin.add(gauche);
+	      } else if (gauche.getHauteur() == 0) {
+	        gauche = new Coordonnees(gauche.getLargeur() - 1, 0);
+	        chemin.add(gauche);
+	      }
+	      else if (choix.nextInt(2) == 0) {
+	        gauche = new Coordonnees(gauche.getLargeur() - 1, 
+	          gauche.getHauteur());
+	        chemin.add(gauche);
+	      } else {
+	        gauche = new Coordonnees(gauche.getLargeur(), 
+	          gauche.getHauteur() - 1);
+	        chemin.add(gauche);
+	      }
+	    }
+
+	    while (!droite.equals(base2)) {
+	      if (droite.getLargeur() == (this.largeur -1)) {
+	        droite = new Coordonnees(droite.getLargeur(), 
+	          droite.getHauteur() + 1);
+	        chemin.add(droite);
+	        
+	      } else if (droite.getHauteur() == (this.hauteur -1)) {
+	        droite = new Coordonnees(droite.getLargeur() + 1, 
+	          droite.getHauteur());
+	        chemin.add(droite);
+	        System.out.println("fais chier");
+	      }
+	      else if (choix.nextInt(2) == 0) {
+	        droite = new Coordonnees(droite.getLargeur() + 1, 
+	          droite.getHauteur());
+	        chemin.add(droite);
+	      } else {
+	        droite = new Coordonnees(droite.getLargeur(), 
+	          droite.getHauteur() + 1);
+	        chemin.add(droite);
+	      }
+	    }
+	    Scanner sc = new Scanner(System.in);
+	    System.out.println("Quel est le pourcentage d'obstacle souhaite :");
+	    int pourcentage = sc.nextInt();
+	    int ctp = getHauteur() * getLargeur() * pourcentage / 100;
+	    do
+	    {
+	      Coordonnees obstacle = new Coordonnees(longueur2.nextInt(getLargeur()), 
+	        hauteur1.nextInt(getHauteur()));
+	      System.out.println(!chemin.contains(obstacle));
+	      if (!chemin.contains(obstacle)) {
+	        this.plateau[obstacle.getHauteur()][obstacle.getLargeur()] = new Obstacle(
+	          obstacle.getHauteur(), obstacle.getLargeur());
+	        ctp--;
+	      } else {
+	        System.out.println(obstacle + "est sur le chemin");
+	      }
+	    }
+	    while (ctp > 0);
+	  }
+	}
