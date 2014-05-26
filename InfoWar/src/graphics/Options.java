@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Options extends JPanel implements ActionListener, KeyListener {
 
@@ -29,6 +31,7 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 	JPanel core;
 	JPanel taille;
 	JButton retour;
+	boolean valeurCorrecte = true;
 
 	public Options() {
 
@@ -52,8 +55,6 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		core.setLayout(new GridLayout(5, 4, 200, 100));
-
-		largeur.addKeyListener(this);
 
 		taille.add(hauteur);
 		taille.add(largeur);

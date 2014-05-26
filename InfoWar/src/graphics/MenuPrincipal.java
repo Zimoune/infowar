@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import main.Main;
+
 public class MenuPrincipal extends JFrame implements ActionListener {
 
 	JButton jcj;
@@ -79,6 +81,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			this.revalidate();
 		} else if (e.getSource() == quitter) {
 			System.exit(0);
+		} else if (e.getSource() == jcj){
+			Main main = new Main();
+			main.main(null);
 		}
 	}
 
