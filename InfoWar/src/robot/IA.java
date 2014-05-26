@@ -514,7 +514,6 @@ public class IA {
 							case 6:
 								deplacementName = "w";
 								break;
-
 							default:
 								deplacementName = "c";
 								break;
@@ -524,7 +523,6 @@ public class IA {
 				}
 			}
 		}
-		System.out.println(r.getNom() + " : " + deplacementName);
 		return deplacementName;
 	}
 }
