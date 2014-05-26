@@ -223,21 +223,61 @@ public class Main {
 			a.agit();
 			tourDeJeu++;
 
-			for(Robot rob : listeRobotEquipe1){
-				if(rob.getEnergie() <= 0){
-					partieContinu = false;
+			r = null;
+
+			Iterator<Robot> itEquipe1 = listeRobotEquipe1.iterator();
+
+			while(itEquipe1.hasNext()){
+				Robot rob = itEquipe1.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe1 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe1.remove();
+
 				}
 			}
-			for(Robot rob : listeRobotEquipe2){
-				if(rob.getEnergie() <= 0){
-					partieContinu = false;
+
+			listeRobotEquipe1.remove(r);
+
+			Iterator<Robot> itEquipe2= listeRobotEquipe2.iterator();
+
+			while(itEquipe2.hasNext()){
+				Robot rob = itEquipe2.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe2 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe2.remove();
 				}
-			}			
+			}
+
+			listeRobotEquipe2.remove(r);
+
+			if(listeRobotEquipe1.isEmpty() || listeRobotEquipe2.isEmpty())
+				partieContinu = false;		
+
+			for(Robot rob : listeRobotEquipe1){
+				if(rob.getEnergie() != rob.getEnergieDeBase() && rob.estSurBase()){
+					if(rob.getEnergieDeBase() - rob.getEnergie() >= 1){
+						rob.setEnergie(rob.getEnergie() + 2);
+						System.out.println();
+						System.out.println(rob.getNom() + " a recupere 2 point d'energie");
+					}
+					else{
+						rob.setEnergie(rob.getEnergie() + 1);
+						System.out.println();
+						System.out.println(rob.getNom() + " a recupere 1 point d'energie");
+					}
+				}
+			}
+		
 			try{
-				Thread.sleep(3000);
+				Thread.sleep(1000);
 			}catch(InterruptedException ex){
 				Thread.currentThread().interrupt();
 			}
+			
 		}while(partieContinu == true);
 	}
 

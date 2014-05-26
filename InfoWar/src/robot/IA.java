@@ -54,18 +54,18 @@ public class IA {
 			else{
 				actionName = "d";
 			}
-
 		}
 		//ici vient l'IA intelligente
 		else{
 			if(r.getType().equals("C") || r.getType().equals("c")){
 				do{
-					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1*cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1*cpt).getEquipe() != r.getEquipe()
-							|| p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1*cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1*cpt).getEquipe() != r.getEquipe()
-							|| p.getContenu(r.getCoordonnees().getLargeur()-1*cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1*cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()
-							|| p.getContenu(r.getCoordonnees().getLargeur()+1*cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+1*cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
+					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt).getEquipe() != r.getEquipe()
+							|| p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt).getEquipe() != r.getEquipe()
+							|| p.getContenu(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()
+							|| p.getContenu(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 
 						actionName = "a";
+						System.out.println("peut tirer");
 						test = true;
 					}
 					else{
@@ -188,13 +188,13 @@ public class IA {
 			if(actionName == "a"){
 				if(r.getType().equals("C") || r.getType().equals("c")){
 					do{
-						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1*cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1*cpt).getEquipe() != r.getEquipe()){
+						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "z";
 						}
-						else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1*cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1*cpt).getEquipe() != r.getEquipe()){
+						else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "s";
 						}
-						else if(p.getContenu(r.getCoordonnees().getLargeur()-1*cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1*cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
+						else if(p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 							deplacementName = "q";
 						}
 						else{
@@ -284,6 +284,7 @@ public class IA {
 					}
 				}
 				else{
+					System.out.println("c'est deja sa");
 					if(r.getType().equals("c") || r.getType().equals("C")){
 						if(r.getCoordonnees().getHauteur() == p.getHauteur() && r.getCoordonnees().getLargeur() != p.getLargeur() && p.getLargeur() != 0){
 							nbPossibilite = alea.nextInt(2);
@@ -523,7 +524,7 @@ public class IA {
 				}
 			}
 		}
-		System.out.println(deplacementName);
+		System.out.println(r.getNom() + " : " + deplacementName);
 		return deplacementName;
 	}
 }
