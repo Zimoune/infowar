@@ -57,7 +57,7 @@ public class IA {
 		}
 		//ici vient l'IA intelligente
 		else{
-			if(r.getType().equals("C") || r.getType().equals("c")){
+			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				do{
 					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt).getEquipe() != r.getEquipe()
 							|| p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt).getEquipe() != r.getEquipe()
@@ -186,7 +186,7 @@ public class IA {
 		//ici vient l'IA intelligente
 		else{
 			if(actionName == "a"){
-				if(r.getType().equals("C") || r.getType().equals("c")){
+				if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 					do{
 						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "z";
@@ -284,8 +284,8 @@ public class IA {
 					}
 				}
 				else{
-					System.out.println("c'est deja sa");
-					if(r.getType().equals("c") || r.getType().equals("C")){
+					if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
+						System.out.println("c'est deja sa");
 						if(r.getCoordonnees().getHauteur() == p.getHauteur() && r.getCoordonnees().getLargeur() != p.getLargeur() && p.getLargeur() != 0){
 							nbPossibilite = alea.nextInt(2);
 							switch (nbPossibilite) {

@@ -502,7 +502,7 @@ public class Main {
 		}
 
 		//On regarde le caractere de la chaine et on attribut la direction correspondante
-		if(r.getType().equals("c") || r.getType().equals("C")){
+		if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 			switch(deplacementName.charAt(0)) {
 			case 'z': c = Constante.HAUT;break;
 			case 's': c = Constante.BAS;break;
