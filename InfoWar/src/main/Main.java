@@ -73,7 +73,7 @@ public class Main {
 				System.out.println("Vous n'avez pas entree une valeur valide");
 				sc.next();
 			}
-		}while((nbRobot < 0 || nbRobot > 5));
+		}while((nbRobot < 1 || nbRobot > 5));
 		try{
 			System.out.println("Equipe 1, qu'elle sera le nom de  votre Pays?");
 			nomPaysEquipe1 = sc.next();
