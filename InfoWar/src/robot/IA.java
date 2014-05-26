@@ -18,18 +18,6 @@ public class IA {
 		}		
 	}
 
-	/*public void calculChemin(Plateau p, Robot r){
-		Robot rob;
-		int testDistanceRobot = 10000;
-
-		//On trouve le robot le plus proche
-		for(Robot r2d2 : listeRobotEquipe){
-			if(testDistanceRobot > (r2d2.getCoordonnees().getHauteur()+r2d2.getCoordonnees().getLargeur())){
-				rob = r2d2;
-			}
-		}		
-	}*/
-
 	public String choixAction(Robot r, Plateau p, ArrayList<Robot> liste){
 		String actionName;
 		int nbRobotSurBase = 0;
