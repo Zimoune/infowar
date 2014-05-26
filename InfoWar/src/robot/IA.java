@@ -96,6 +96,7 @@ public class IA {
 		int nbRobotSurBase = 0;
 		int nbPossibilite;
 		int cpt = 1;
+		boolean test = false;
 
 		if(niveaudeDifficulte == 1){
 			for(Robot rob : listeRobotEquipe){
@@ -190,18 +191,23 @@ public class IA {
 					do{
 						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "z";
+							test = true;
 						}
 						else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "s";
+							test = true;
 						}
 						else if(p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 							deplacementName = "q";
+							test = true;
 						}
 						else{
 							deplacementName = "d";
+							test = true;
 						}
+						System.out.println(cpt);
 						cpt++;
-					}while(cpt < 11);
+					}while(cpt < 11 && test == false);
 				}
 				else{
 					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).getEquipe() != r.getEquipe()){
