@@ -271,13 +271,13 @@ public class Main {
 					}
 				}
 			}
-		
+
 			try{
 				Thread.sleep(1000);
 			}catch(InterruptedException ex){
 				Thread.currentThread().interrupt();
 			}
-			
+
 		}while(partieContinu == true);
 	}
 
@@ -480,13 +480,22 @@ public class Main {
 				}
 			}
 
-			do {
-				System.out.print("Choisissez votre direction: ");
-				deplacementName = sc.next();
-			} while(!deplacementName.equals("z") && !deplacementName.equals("q")
-					&& !deplacementName.equals("s") && !deplacementName.equals("d")
-					&& !deplacementName.equals("a") && !deplacementName.equals("e")
-					&& !deplacementName.equals("w") && !deplacementName.equals("c"));
+			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
+				do {
+					System.out.print("Choisissez votre direction: ");
+					deplacementName = sc.next();
+				} while(!deplacementName.equals("z") && !deplacementName.equals("q")
+						&& !deplacementName.equals("s") && !deplacementName.equals("d"));
+			}
+			else{
+				do {
+					System.out.print("Choisissez votre direction: ");
+					deplacementName = sc.next();
+				} while(!deplacementName.equals("z") && !deplacementName.equals("q")
+						&& !deplacementName.equals("s") && !deplacementName.equals("d")
+						&& !deplacementName.equals("a") && !deplacementName.equals("e")
+						&& !deplacementName.equals("w") && !deplacementName.equals("c"));
+			}
 		}
 		else{			
 			if(r.getEquipe() == 1){
@@ -508,7 +517,7 @@ public class Main {
 			case 's': c = Constante.BAS;break;
 			case 'd': c = Constante.DROITE;break;
 			case 'q': c = Constante.GAUCHE;break;
-			default : c = null;
+			default : c = null; break;
 			}
 		} else {
 			switch(deplacementName.charAt(0)) {
@@ -520,6 +529,7 @@ public class Main {
 			case 'e': c = Constante.DIAHAUTDROITE;break;
 			case 'w': c = Constante.DIABASGAUCHE;break;
 			case 'c': c = Constante.DIABASDROITE;break;
+			default : c = null; break;
 			}
 		}
 
