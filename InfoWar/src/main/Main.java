@@ -64,7 +64,7 @@ public class Main {
 				}
 			}while(choixDifficulte < 1 || choixDifficulte > 2);
 		}
-		
+
 		do{
 			try{
 				System.out.println("Combien de robot par equipe voulez vous ?");
@@ -219,7 +219,7 @@ public class Main {
 				r=listeRobotEquipe2.get(g);
 				System.out.println();
 			}
-			a = choixAction(r, 1, choixDifficulte);
+			a = choixAction(r, 1);
 			a.agit();
 			tourDeJeu++;
 
@@ -331,7 +331,7 @@ public class Main {
 				}
 				System.out.println();
 			}
-			a = choixAction(r, 0, choixDifficulte);
+			a = choixAction(r, 0);
 			a.agit();
 			tourDeJeu++;
 
@@ -389,7 +389,7 @@ public class Main {
 		System.out.println("\nFin de la partie.");
 	}
 
-	public static Action choixAction(Robot r, int choixMode, int choixDifficulte) {
+	public static Action choixAction(Robot r, int choixMode) {
 		String actionName, deplacementName;
 		Action action;
 		Coordonnees c = null;
@@ -449,15 +449,15 @@ public class Main {
 					&& !deplacementName.equals("w") && !deplacementName.equals("c"));
 		}
 		else{			
-			if(listeRobotEquipe1.contains(r)){
+			if(r.getEquipe() == 1){
 				IA ia = new IA(choixDifficulte, listeRobotEquipe1);
-				actionName = ia.choixAction(r, p, listeRobotEquipe1);
-				deplacementName = ia.choixDeplacement(r, p, actionName, 0);
+				actionName = ia.choixAction(r, p, listeRobotEquipe2);
+				deplacementName = ia.choixDeplacement(r, p, actionName);
 			}
 			else{
 				IA ia = new IA(choixDifficulte, listeRobotEquipe2);
 				actionName = ia.choixAction(r, p, listeRobotEquipe1);
-				deplacementName = ia.choixDeplacement(r, p, actionName, 1);
+				deplacementName = ia.choixDeplacement(r, p, actionName);
 			}
 		}
 
