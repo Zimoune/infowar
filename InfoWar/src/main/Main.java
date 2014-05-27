@@ -22,6 +22,7 @@ import plateau.Plateau;
 import plateau.Vue;
 import robot.Char;
 import robot.IA;
+import robot.IaFinal;
 import robot.Piegeur;
 import robot.Robot;
 import robot.Tireur;
@@ -506,12 +507,12 @@ public class Main {
 		}
 		else{			
 			if(r.getEquipe() == 1){
-				IA ia = new IA(choixDifficulte, listeRobotEquipe1);
+				IaFinal ia = new IaFinal(choixDifficulte, listeRobotEquipe1);
 				actionName = ia.choixAction(r, p, listeRobotEquipe2);
 				deplacementName = ia.choixDeplacement(r, p, actionName);
 			}
 			else{
-				IA ia = new IA(choixDifficulte, listeRobotEquipe2);
+				IaFinal ia = new IaFinal(choixDifficulte, listeRobotEquipe2);
 				actionName = ia.choixAction(r, p, listeRobotEquipe1);
 				deplacementName = ia.choixDeplacement(r, p, actionName);
 			}
