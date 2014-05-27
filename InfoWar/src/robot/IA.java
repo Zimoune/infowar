@@ -269,13 +269,13 @@ public class IA {
 				if(r.estSurBase()){
 					if(r.getEquipe() == 1){
 						if(r.getType().equals("C")){
-							if(!p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()).estSurObstacle())
+							if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()))// ICI CORRECTION DE L'ERREUR
 								deplacementName = "d";	
 							else
 								deplacementName = "c";
 						}
 						else{
-							if(!p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()).estSurObstacle())
+							if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()))
 								deplacementName = "d";	
 							else if(!p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()+1).estSurObstacle())
 								deplacementName = "c";
