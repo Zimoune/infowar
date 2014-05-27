@@ -177,21 +177,28 @@ public class IA {
 			if(actionName == "a"){
 				if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 					do{
-						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt).getEquipe() != r.getEquipe()){
-							deplacementName = "z";
-							test = true;
-						}
-						else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt).getEquipe() != r.getEquipe()){
+						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "s";
+							System.out.println("teeeessst z");
 							test = true;
 						}
-						else if(p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
+						else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt).getEquipe() != r.getEquipe()){
+							deplacementName = "z";
+							System.out.println("teeeessst s");
+							test = true;
+						}
+						else if(p.getContenu(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 							deplacementName = "q";
+							System.out.println("teeeessst q");
+							test = true;
+						}
+						else if (p.getContenu(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
+							System.out.println("teeeessst d");
+							deplacementName = "d";
 							test = true;
 						}
 						else{
-							deplacementName = "d";
-							test = true;
+							deplacementName = null;
 						}
 						System.out.println(cpt);
 						cpt++;
@@ -199,10 +206,10 @@ public class IA {
 				}
 				else{
 					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).getEquipe() != r.getEquipe()){
-						deplacementName = "z";
+						deplacementName = "s";
 					}
 					else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1).getEquipe() != r.getEquipe()){
-						deplacementName = "s";
+						deplacementName = "z";
 					}
 					else if(p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 						deplacementName = "q";

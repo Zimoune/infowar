@@ -38,7 +38,7 @@ public class Main {
 		int cptIndiceEquipe = 1;
 		int choixMode = 1;
 		String choixUtilisateur;
-		/*p.genererchemin();*/
+		p.genererchemin();
 		System.out.println("Bienvenue dans VirtualWar !!\n\n");
 
 		do{
