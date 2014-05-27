@@ -32,9 +32,10 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 	JPanel taille;
 	JButton retour;
 	boolean valeurCorrecte = true;
+	JFrame frame;
 
-	public Options() {
-
+	public Options(JFrame frame) {
+		this.frame = frame;
 		taille = new JPanel();
 		core = new JPanel();
 		volume = new JSlider(0, 100);
@@ -50,17 +51,12 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 		nbRobot = new JLabel("Nombre de robots par équipe :");
 		titre = new JLabel("Options");
 		retour = new JButton("Retour");
-
 		titre.setFont(new Font("Serif", Font.BOLD, 48));
-
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		core.setLayout(new GridLayout(5, 4, 200, 100));
-
 		taille.add(hauteur);
 		taille.add(largeur);
-
 		retour.addActionListener(this);
-
 		core.add(Box.createRigidArea(new Dimension(30, 0)));
 		core.add(nbRobot);
 		core.add(choixNbRobot);
@@ -93,11 +89,11 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Stub de la méthode généré automatiquement
-		// Sauvegarde des changements
-		JOptionPane jop = new JOptionPane();
-		jop.showMessageDialog(null, "Message d'erreur", "Erreur",
-				JOptionPane.ERROR_MESSAGE);
+		if(e.getSource() == retour){
+			this.frame.setContentPane(new MenuPanel(frame));
+			this.frame.revalidate();
+		}
+		
 	}
 
 	@Override
