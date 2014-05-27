@@ -69,17 +69,17 @@ public class IA {
 							|| p.getContenu(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe() && testObstacle3 == false
 							|| p.getContenu(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe() && testObstacle4 == false){
 
-						if(p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt)){
+						if(!p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt)){
 							testObstacle1 = true;
 						}
-						if(p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt)){
+						if(!p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt)){
 							testObstacle2 = true;
 						}
 
-						if(p.estObstacle(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur())){
+						if(!p.estObstacle(r.getCoordonnees().getLargeur()-cpt, r.getCoordonnees().getHauteur())){
 							testObstacle3 = true;
 						}
-						if(p.estObstacle(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur())){
+						if(!p.estObstacle(r.getCoordonnees().getLargeur()+cpt, r.getCoordonnees().getHauteur())){
 							testObstacle4 = true;
 						}
 						actionName = "a";
