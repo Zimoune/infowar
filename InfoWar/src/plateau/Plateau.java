@@ -63,6 +63,12 @@ public class Plateau {
 			return this.plateau[y][x].estBase();
 		return -1;
 	}
+	
+	public boolean estObstacle(int x, int y){
+		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
+			return this.plateau[y][x].estObstacle();
+		return false;
+	}
 
 	public int contientMine(int x, int y) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)

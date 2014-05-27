@@ -24,7 +24,7 @@ public class IA {
 		int nbPossibilte;
 		int cpt = 1;
 		boolean test = false;
-		
+
 		for(Robot rob : liste){
 			if(rob.estSurBase()){
 				nbRobotSurBase++;

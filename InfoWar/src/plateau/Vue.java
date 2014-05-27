@@ -32,6 +32,10 @@ public class Vue {
 		return this.p.estBase(c.getLargeur(), c.getHauteur());
 	}
 	
+	public boolean estObstacle(Coordonnees c){
+		return this.p.estObstacle(c.getLargeur(), c.getHauteur());
+	}
+	
 	public Coordonnees getCoordonnes(Coordonnees c) {
 		return this.p.getCoordonnees(c.getLargeur(), c.getHauteur());
 	}

@@ -64,6 +64,11 @@ public abstract class Robot {
 	public boolean estSurBase() {
 		return this.vue.estBase(this.coord) == this.equipe;
 	}
+	
+	public boolean estSurObstacle(){
+		return this.vue.estObstacle(this.coord);
+	}
+	
 	/**
 	 * 
 	 * @return la vue du robot
