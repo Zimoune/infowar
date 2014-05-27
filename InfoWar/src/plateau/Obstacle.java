@@ -7,6 +7,7 @@ public class Obstacle extends Cellule{
 	public Obstacle(int x, int y) {
 		super(x, y);
 		this.image = "O ";
+		this.setObstacle(true);
 		// TODO Auto-generated constructor stub
 	}
 

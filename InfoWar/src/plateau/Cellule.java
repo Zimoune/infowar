@@ -27,6 +27,11 @@ public abstract class Cellule {
 		return this.base;
 	}
 	
+
+	public void setObstacle(boolean obstacle) {
+		this.obstacle = obstacle;
+	}
+
 	public int contientMine() {
 		return this.mine;
 	}
