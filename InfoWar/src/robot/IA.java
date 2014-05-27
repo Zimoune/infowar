@@ -18,18 +18,6 @@ public class IA {
 		}		
 	}
 
-	/*public void calculChemin(Plateau p, Robot r){
-		Robot rob;
-		int testDistanceRobot = 10000;
-
-		//On trouve le robot le plus proche
-		for(Robot r2d2 : listeRobotEquipe){
-			if(testDistanceRobot > (r2d2.getCoordonnees().getHauteur()+r2d2.getCoordonnees().getLargeur())){
-				rob = r2d2;
-			}
-		}		
-	}*/
-
 	public String choixAction(Robot r, Plateau p, ArrayList<Robot> liste){
 		String actionName;
 		int nbRobotSurBase = 0;
@@ -57,7 +45,7 @@ public class IA {
 		}
 		//ici vient l'IA intelligente
 		else{
-			if(r.getType().equals("C") || r.getType().equals("c")){
+			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				do{
 					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt).getEquipe() != r.getEquipe()
 							|| p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-cpt).getEquipe() != r.getEquipe()
@@ -96,6 +84,7 @@ public class IA {
 		int nbRobotSurBase = 0;
 		int nbPossibilite;
 		int cpt = 1;
+		boolean test = false;
 
 		if(niveaudeDifficulte == 1){
 			for(Robot rob : listeRobotEquipe){
@@ -186,22 +175,27 @@ public class IA {
 		//ici vient l'IA intelligente
 		else{
 			if(actionName == "a"){
-				if(r.getType().equals("C") || r.getType().equals("c")){
+				if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 					do{
 						if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1+cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "z";
+							test = true;
 						}
 						else if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1-cpt).getEquipe() != r.getEquipe()){
 							deplacementName = "s";
+							test = true;
 						}
 						else if(p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()-1-cpt, r.getCoordonnees().getHauteur()).getEquipe() != r.getEquipe()){
 							deplacementName = "q";
+							test = true;
 						}
 						else{
 							deplacementName = "d";
+							test = true;
 						}
+						System.out.println(cpt);
 						cpt++;
-					}while(cpt < 11);
+					}while(cpt < 11 && test == false);
 				}
 				else{
 					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).getEquipe() != r.getEquipe()){
@@ -284,8 +278,8 @@ public class IA {
 					}
 				}
 				else{
-					System.out.println("c'est deja sa");
-					if(r.getType().equals("c") || r.getType().equals("C")){
+					if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
+						System.out.println("c'est deja sa");
 						if(r.getCoordonnees().getHauteur() == p.getHauteur() && r.getCoordonnees().getLargeur() != p.getLargeur() && p.getLargeur() != 0){
 							nbPossibilite = alea.nextInt(2);
 							switch (nbPossibilite) {
@@ -514,7 +508,6 @@ public class IA {
 							case 6:
 								deplacementName = "w";
 								break;
-
 							default:
 								deplacementName = "c";
 								break;
@@ -524,7 +517,6 @@ public class IA {
 				}
 			}
 		}
-		System.out.println(r.getNom() + " : " + deplacementName);
 		return deplacementName;
 	}
 }
