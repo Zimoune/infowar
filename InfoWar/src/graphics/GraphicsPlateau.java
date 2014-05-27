@@ -23,11 +23,6 @@ public class GraphicsPlateau extends JPanel{
 	}
 	
 	public void recuperationImages(){
-		try{
-			
-		}catch(IOException e){
-			e.printStackTrace();
-		}
 	}
 	
 	public void paint(Graphics g){

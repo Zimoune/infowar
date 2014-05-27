@@ -15,10 +15,7 @@ import main.Main;
 
 public class MenuPrincipal extends JFrame{
 
-
-
 	MenuPanel menu = new MenuPanel(this);
-
 	public MenuPrincipal() {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("VirtualWar");
@@ -28,11 +25,8 @@ public class MenuPrincipal extends JFrame{
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setDefaultLookAndFeelDecorated(false);
 		this.setContentPane(menu);
+		this.setPreferredSize(new Dimension(1024,768));
 		this.pack();
-	}
-
-	public static void main(String[] args) {
-		JFrame f = new MenuPrincipal();
 	}
 
 }

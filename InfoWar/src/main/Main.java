@@ -8,20 +8,26 @@
 
 package main;
 
+import graphics.MenuPrincipal;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
-import action.Action;
-import action.Attaque;
-import action.Deplacement;
 import plateau.Constante;
 import plateau.Coordonnees;
 import plateau.Plateau;
 import plateau.Vue;
-import robot.*;
+import robot.Char;
+import robot.IA;
+import robot.Piegeur;
+import robot.Robot;
+import robot.Tireur;
+import action.Action;
+import action.Attaque;
+import action.Deplacement;
 
 public class Main {
 	private static Plateau p = new Plateau(5,10);
@@ -35,6 +41,7 @@ public class Main {
 	private static int choixDifficulte = 0;
 
 	public static void main(String[] args) {
+		new MenuPrincipal();
 		int cptIndiceEquipe = 1;
 		int choixMode = 1;
 		String choixUtilisateur;
