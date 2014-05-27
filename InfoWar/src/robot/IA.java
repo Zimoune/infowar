@@ -15,7 +15,7 @@ public class IA {
 		this.niveaudeDifficulte = niveaudeDifficulte;
 		for(Robot r2d2 : listRobot){
 			this.listeRobotEquipe.add(r2d2);
-		}		
+		}
 	}
 
 	public String choixAction(Robot r, Plateau p, ArrayList<Robot> liste){
