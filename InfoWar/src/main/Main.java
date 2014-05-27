@@ -552,28 +552,28 @@ public class Main {
 		else {
 			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				if(deplacementName.equals("z")){
-					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) == null)
+					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) == null && !p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1))
 						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
 					else{
 						action = new Deplacement(r, new Coordonnees(c.getLargeur(), c.getHauteur()+1));
 					}
 				}	
 				else if(deplacementName.equals("s")){
-					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) == null)
+					if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) == null && !p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1))
 						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
 					else{
 						action = new Deplacement(r, new Coordonnees(c.getLargeur(), c.getHauteur()-1));
 					}
 				}
 				else if(deplacementName.equals("q")){
-					if(p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()) == null)
+					if(p.getContenu(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()) == null && !p.estObstacle(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()))
 						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
 					else{
 						action = new Deplacement(r, new Coordonnees(c.getLargeur()+1, c.getHauteur()));
 					}
 				}
 				else if(deplacementName.equals("d")){
-					if(p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()) == null)
+					if(p.getContenu(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()) == null && !p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()))
 						action = new Deplacement(r,new Coordonnees(c.getLargeur()*2,c.getHauteur()*2));
 					else{
 						action = new Deplacement(r, new Coordonnees(c.getLargeur()-1, c.getHauteur()));
