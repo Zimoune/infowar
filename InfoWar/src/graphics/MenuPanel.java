@@ -64,11 +64,11 @@ public class MenuPanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == jcj){
-			this.frame.setContentPane(new GraphicsParty(1));
+			this.frame.setContentPane(new GraphicsParty(1, this.frame));
 			this.frame.revalidate();
 		}
 		else if(e.getSource() == jco){
-			this.frame.setContentPane(new GraphicsParty(2));
+			this.frame.setContentPane(new GraphicsParty(2, this.frame));
 			this.frame.revalidate();
 		}
 		else if(e.getSource() == options){
