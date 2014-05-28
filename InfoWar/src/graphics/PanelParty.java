@@ -23,7 +23,7 @@ public class PanelParty extends JPanel implements ActionListener {
 		this.deplacement = new JButton("Deplacer");
 		this.attaque = new JButton("Attaquer");
 		this.quitter = new JButton("Quitter");
-		this.map = new Map(p); // A CHANGER
+		this.map = new Map(new Plateau(5,10)); // A CHANGER
 		
 		//AJOUT SANS LAYOUT
 		this.add(auTourde);
