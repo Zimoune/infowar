@@ -46,15 +46,12 @@ public class Main {
 
 		do{
 			try{
-				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n4. Quitter\n5. Map Graphique\n6. Graphique simple");
+				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n4. MenuGraphique \n5. Quitter");
 				choixMode = sc.nextInt();
-				if(choixMode == 4){
+				if(choixMode == 5){
 					return;
 				}
-				else if(choixMode == 5){
-					MenuPrincipal menu = new MenuPrincipal();
-				}
-				else if(choixMode == 6){
+				else if(choixMode == 4){
 					MenuPrincipal menu = new MenuPrincipal();
 					menu.setContentPane(new MenuPanel(menu));
 					menu.revalidate();
@@ -334,7 +331,7 @@ public class Main {
 		Action a;
 		Random alea = new Random();
 		do{
-			menu.setContentPane(new Map(p,r.getEquipe()));
+			menu.setContentPane(new Map(p,1));
 			menu.revalidate();
 			if(tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
