@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import plateau.Plateau;
+import plateau.Vue;
 import robot.Char;
 import robot.Robot;
 import robot.Tireur;
@@ -26,11 +27,14 @@ public class PanelParty extends JPanel implements ActionListener {
 	
 	String nomPays1 = "France";
 	String nomPays2 = "Allemagne";
-	
+	ArrayList<Robot> equipe1;
+	ArrayList<Robot> equipe2;
 	public PanelParty(Plateau p, int equipe, ArrayList<Robot> equipe1, ArrayList<Robot> equipe2){
 		
 		this.p = p;
 		this.equipe = equipe;
+		this.equipe1 = equipe1;
+		this.equipe2 = equipe2;
 		
 		this.setLayout(new BorderLayout());
 		
@@ -42,7 +46,7 @@ public class PanelParty extends JPanel implements ActionListener {
 		this.deplacement = new JButton("Deplacer");
 		this.attaque = new JButton("Attaquer");
 		this.quitter = new JButton("Quitter");
-		this.map = new Map(new Plateau(5,10),equipe); // A CHANGER
+		this.map = new Map(p,this.equipe); // A CHANGER
 		this.panelButton = new JPanel();
 		
 		//AJOUT SANS LAYOUT
@@ -64,11 +68,11 @@ public class PanelParty extends JPanel implements ActionListener {
 		// TODO Stub de la méthode généré automatiquement
 		JFrame choixdeplacement;
 		if(arg0.getSource() == attaque){
-			choixdeplacement = new ChoixDirection(null, "Attaque",this);
+			choixdeplacement = new ChoixDirection(equipe1.get(1), "Attaque",this);
 			choixdeplacement.setVisible(true);
 			choixdeplacement.pack();
 		} else if( arg0.getSource() == deplacement){
-			choixdeplacement = new ChoixDirection(null, "Deplacement",this);
+			choixdeplacement = new ChoixDirection(equipe1.get(1), "Deplacement",this);
 			choixdeplacement.setVisible(true);
 			choixdeplacement.pack();
 		} else {
@@ -78,23 +82,23 @@ public class PanelParty extends JPanel implements ActionListener {
 	
 	public static void main(String[] args){
 		
+		Plateau p = new Plateau(15,12);
+		Vue v1 = new Vue(1,p);
+		Vue v2 = new Vue(2,p);
+		ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
+		ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
+		listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur"));
+		listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur1"));
+		listeRobotEquipe1.add(new Char(v1,0,0,1,"Char"));
+		listeRobotEquipe2.add(new Tireur(v2,0,0,1,"Tireur2"));
+		listeRobotEquipe2.add(new Tireur(v2,0,0,1,"Tireur3"));
+		listeRobotEquipe2.add(new Char(v2,0,0,1,"Char2"));
+		p.genererchemin();
+
 		JFrame f = new JFrame();
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		Plateau p = new Plateau(15,12);
-		ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
-		ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
-		listeRobotEquipe1.add(new Tireur(null,0,0,1,"Tireur"));
-		listeRobotEquipe1.add(new Tireur(null,0,0,1,"Tireur1"));
-		listeRobotEquipe1.add(new Char(null,0,0,1,"Char"));
-		listeRobotEquipe2.add(new Tireur(null,0,0,1,"Tireur2"));
-		listeRobotEquipe2.add(new Tireur(null,0,0,1,"Tireur3"));
-		listeRobotEquipe2.add(new Char(null,0,0,1,"Char2"));
-		p.genererchemin();
-
-		
-		f.setContentPane(new PanelParty(p,0,null,null)); // A CHANGER
+		f.setContentPane(new PanelParty(p,0,listeRobotEquipe1,listeRobotEquipe2)); // A CHANGER
 		f.pack();
 	}
 	
