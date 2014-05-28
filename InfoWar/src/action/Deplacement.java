@@ -24,7 +24,7 @@ public class Deplacement extends Action {
 			if(this.getRobot().getType().equalsIgnoreCase("c")){
 				if(this.getRobot().getVue().getContenu(getObjectif()) != null && !this.getRobot().getVue().estObstacle(getObjectif())){
 					this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
-					if(this.getRobot().getVue().getContenu(new Coordonnees(this.getObjectif().getLargeur()+this.getDirection().getLargeur(),this.getObjectif().getHauteur()+this.getDirection().getHauteur())) != null && !this.getRobot().getVue().estObstacle(new Coordonnees(this.getObjectif().getLargeur()+this.getDirection().getLargeur(),this.getObjectif().getHauteur()+this.getDirection().getHauteur()))){
+					if(this.getRobot().getVue().getContenu(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur())) != null && !this.getRobot().getVue().estObstacle(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur()))){
 						this.getRobot().getVue().deplaceSur(new Coordonnees(this.getObjectif().getLargeur()+this.getDirection().getLargeur(),this.getObjectif().getHauteur()+this.getDirection().getHauteur()), this.getRobot());
 					}
 				}
