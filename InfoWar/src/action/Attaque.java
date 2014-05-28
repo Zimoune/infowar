@@ -1,5 +1,10 @@
 //********************************************************************* 
 // Programmeur : Hanquez Remy
+// Programmeur : Fack Vincent
+// Programmeur : Delplace Gautier
+// Programmeur : Lorthios Ludovic
+// Programmeur : Lepeltier Damien
+// Programmeur : Le Pallac Simon
 // Date : 08/05/2014
 // Fichier : Attaque.java
 // 

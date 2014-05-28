@@ -243,7 +243,7 @@ public class Main {
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 					}
 				}
-				int g = alea.nextInt(nbRobot);
+				int g = alea.nextInt(listeRobotEquipe2.size());
 				r=listeRobotEquipe2.get(g);
 				System.out.println();
 				a = choixAction(choixRobot(r.getEquipe()), 1);
@@ -335,7 +335,7 @@ public class Main {
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 					}
 				}
-				int g = alea.nextInt(nbRobot);
+				int g = alea.nextInt(listeRobotEquipe2.size());
 				r=listeRobotEquipe1.get(g);
 				System.out.println();
 			}
@@ -354,7 +354,7 @@ public class Main {
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 					}
 				}
-				int g = alea.nextInt(nbRobot);
+				int g = alea.nextInt(listeRobotEquipe2.size());
 				r=listeRobotEquipe2.get(g);
 				System.out.println();
 			}
