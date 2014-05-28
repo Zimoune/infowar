@@ -1,3 +1,16 @@
+//********************************************************************* 
+// Programmeur : Hanquez Remy
+// Programmeur : Fack Vincent
+// Programmeur : Delplace Gautier
+// Programmeur : Lorthios Ludovic
+// Programmeur : Lepeltier Damien
+// Programmeur : Le Pallac Simon
+// Date : 08/05/2014
+// Fichier : Deplacement.java
+// 
+// Herite de Action. Gere les deplacement des differents robots
+//*********************************************************************
+
 package action;
 
 import plateau.Coordonnees;
@@ -21,10 +34,15 @@ public class Deplacement extends Action {
 	public void agit() {
 		//On verifie que la direction est differente de null
 		if (this.getDirection() != null) {
+			
+			//on verifie que le robot est un char
 			if(this.getRobot().getType().equalsIgnoreCase("c")){
+				
 				if(this.getRobot().getVue().getContenu(getObjectif()) != null && !this.getRobot().getVue().estObstacle(getObjectif())){
 					this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
+					
 					if(this.getRobot().getVue().getContenu(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur())) != null && !this.getRobot().getVue().estObstacle(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur()))){
+						
 						this.getRobot().getVue().deplaceSur(new Coordonnees(this.getObjectif().getLargeur()+this.getDirection().getLargeur(),this.getObjectif().getHauteur()+this.getDirection().getHauteur()), this.getRobot());
 					}
 				}
@@ -32,6 +50,7 @@ public class Deplacement extends Action {
 			
 			//On verifie que la case choisi est bien vide
 			if (this.getRobot().getVue().getContenu(this.getObjectif()) == null && !this.getRobot().getVue().estObstacle(this.getObjectif())) {
+				
 				//On deplace le robot sur cette case
 				this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
 			}
