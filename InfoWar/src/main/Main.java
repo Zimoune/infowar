@@ -348,7 +348,7 @@ public class Main {
 				System.out.println("\nTour de jeu : " + nomPaysEquipe2 + "\n");
 				p.afficherPlateau(r);
 				System.out.println();
-				for(Robot r2 : listeRobotEquipe1){
+				for(Robot r2 : listeRobotEquipe2){
 					if(r2.getType().equals("t")){
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 					}
