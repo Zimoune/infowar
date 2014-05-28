@@ -1,13 +1,7 @@
-//********************************************************************* 
-// Programmeur : Hanquez Remy
-// Date : 08/05/2014
-// Fichier : Main.java
-// 
-// Gere le deroulement de la partie 
-//*********************************************************************
 
 package main;
 
+import graphics.Map;
 import graphics.MenuPrincipal;
 
 import java.util.ArrayList;
@@ -16,12 +10,13 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 import plateau.Constante;
 import plateau.Coordonnees;
 import plateau.Plateau;
 import plateau.Vue;
 import robot.Char;
-import robot.IA;
 import robot.IaFinal;
 import robot.Piegeur;
 import robot.Robot;
@@ -42,7 +37,6 @@ public class Main {
 	private static int choixDifficulte = 0;
 
 	public static void main(String[] args) {
-		new MenuPrincipal();
 		int cptIndiceEquipe = 1;
 		int choixMode = 1;
 		String choixUtilisateur;
@@ -169,26 +163,29 @@ public class Main {
 				r.setIa();
 			for(Robot r:listeRobotEquipe2)
 				r.setIa();
-			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
+			jouerIa(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
 		}
 		else{
 			for(Robot r:listeRobotEquipe1)
 				r.setIa();
 			for(Robot r:listeRobotEquipe2)
 				r.setIa();
-			jouerIaSimple(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
+			jouerIa(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
 		}
 
 		sc.close();
 	}
 
-	public static void jouerIaSimple(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
+	public static void jouerIa(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
+		JFrame menu = new MenuPrincipal(p);
 		boolean partieContinu = true;
 		int tourDeJeu = 0;
 		Robot r = null;
 		Action a;
 		Random alea = new Random();
 		do{
+			menu.setContentPane(new Map(p));
+			menu.revalidate();
 			if(tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
@@ -227,7 +224,7 @@ public class Main {
 				r=listeRobotEquipe2.get(g);
 				System.out.println();
 			}
-			a = choixAction(r, 1);
+			a = choixAction(choixRobot(r.getEquipe()), 1);
 			a.agit();
 			tourDeJeu++;
 
@@ -290,6 +287,7 @@ public class Main {
 	}
 
 	public static void jouer(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2) {
+		JFrame menu = new MenuPrincipal(p);
 		Robot r = null;
 		Action a;
 		int tourDeJeu = 0;
@@ -297,6 +295,8 @@ public class Main {
 		boolean partieContinu = true;
 		boolean robotDansListe = false;
 		do {
+			menu.setContentPane(new Map(p));
+			menu.revalidate();
 			robotDansListe = false;
 			if (tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
@@ -437,6 +437,38 @@ public class Main {
 		System.out.println("\nFin de la partie.");
 	}
 
+	public static Robot choixRobot(int equipe){
+		Robot r;
+		int nbRobotBase = 0;
+		ArrayList<Robot> list;
+
+		if(equipe == 1){
+			list = listeRobotEquipe1;			
+		}
+		else{
+			list = listeRobotEquipe2;
+		}
+		
+		for(Robot rob : list){
+			if(rob.estSurBase()){
+				nbRobotBase++;
+			}
+		}
+		
+		if(nbRobotBase == list.size()){
+			return list.get(0);
+		}
+		else{
+			for(Robot rob : list){
+				if(!rob.estSurBase()){
+					return rob;
+				}
+			}			
+		}
+		
+		return null;
+	}
+
 	public static Action choixAction(Robot r, int choixMode) {
 		String actionName, deplacementName;
 		Action action;
@@ -525,7 +557,7 @@ public class Main {
 			case 's': c = Constante.BAS;break;
 			case 'd': c = Constante.DROITE;break;
 			case 'q': c = Constante.GAUCHE;break;
-			default : c = null; break;
+			//default : c = null; break;
 			}
 		} else {
 			switch(deplacementName.charAt(0)) {
@@ -537,7 +569,7 @@ public class Main {
 			case 'e': c = Constante.DIAHAUTDROITE;break;
 			case 'w': c = Constante.DIABASGAUCHE;break;
 			case 'c': c = Constante.DIABASDROITE;break;
-			default : c = null; break;
+			//default : c = null; break;
 			}
 		}
 
@@ -555,9 +587,11 @@ public class Main {
 			}
 			else				
 				action = new Attaque(r,c);
-		}
+		} else {
+			action = new Deplacement(r,c);
+		
 
-		else {
+		/*else {
 			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				if(deplacementName.equals("z")){
 					if(p.getContenu(c.getLargeur(),c.getHauteur()) == null && p.getContenu(c.getLargeur()*2,c.getHauteur()*2) == null && !p.estObstacle(c.getLargeur(),c.getHauteur()) && !p.estObstacle(c.getLargeur()*2,c.getHauteur()*2))
@@ -601,7 +635,7 @@ public class Main {
 			}
 			else{
 				action = new Deplacement(r,c);
-			}
+			}*/
 		}
 		return action;
 	}

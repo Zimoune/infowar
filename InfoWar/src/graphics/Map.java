@@ -12,13 +12,16 @@ public class Map extends JPanel {
 	
 	
 	public Map(Plateau p){
-		this.setLayout(new GridLayout(p.getLargeur(),p.getHauteur()));
+		this.setLayout(new GridLayout(p.getHauteur(),p.getLargeur()));
 		for(int i = 0; i < p.getHauteur();i++){
 			for( int j = 0; j < p.getLargeur();j++){
 				JPanel cellule = new JPanel();
-				cellule.setBackground(Color.WHITE);
-				if((i+j)%2 == 0)
-				cellule.setBackground(Color.BLACK);
+				if(p.estObstacle(j, i))
+					cellule.setBackground(Color.BLACK);
+				else if(p.getContenu(j, i) != null)
+					cellule.setBackground(Color.BLUE);
+				else if(p.estBase(j, i) > 0)
+					cellule.setBackground(Color.YELLOW);
 				this.add(cellule);
 			}
 		}

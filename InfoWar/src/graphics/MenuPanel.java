@@ -28,7 +28,7 @@ public class MenuPanel extends JPanel implements ActionListener{
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.titre.setFont(new Font("Serif", Font.BOLD, 48));
 		this.add(titre);
-		this.add(Box.createRigidArea(new Dimension(30, 0)));
+		this.add(Box.createRigidArea(new Dimension(0, 50)));
 		/*this.add(Box.createRigidArea(new Dimension(0, 30)));
 		this.add(Box.createRigidArea(new Dimension(0, 60)));
 		this.add(Box.createRigidArea(new Dimension(0, 100)));*/
@@ -59,6 +59,7 @@ public class MenuPanel extends JPanel implements ActionListener{
 		this.options.setAlignmentX(CENTER_ALIGNMENT);
 		this.quitter.setAlignmentX(CENTER_ALIGNMENT);
 		this.titre.setAlignmentX(CENTER_ALIGNMENT);
+		this.add(Box.createRigidArea(new Dimension(0,50)));
 	}
 
 	@Override

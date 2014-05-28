@@ -39,7 +39,7 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 	int tailleX = 15, tailleY = 12, obstacle = 20, nmbRobot = 1, difficulte = 1, tauxMusique = 50;
 
 	public Options(JFrame frame) {
-		//On charge les valeurs déjà dans la config
+		//On charge les valeurs dï¿½jï¿½ dans la config
 		this.loadConfig();
 		this.frame = frame;
 		this.taille = new JPanel();
@@ -51,13 +51,13 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 		this.choixObs = new JSpinner(new SpinnerNumberModel(this.obstacle, 20, 80, 10));
 		this.choixNbRobot = new JSpinner(new SpinnerNumberModel(this.nmbRobot, 1, 5, 1));
 		this.musique = new JLabel("Musique");
-		this.niveauDifficulte = new JLabel("Niveau de difficulté :");
+		this.niveauDifficulte = new JLabel("Niveau de difficultï¿½ :");
 		this.taillePlateau = new JLabel("Taille du plateau :");
 		this.perCentObs = new JLabel("Pourcentage d'obstacle :");
-		this.nbRobot = new JLabel("Nombre de robots par équipe :");
+		this.nbRobot = new JLabel("Nombre de robots par ï¿½quipe :");
 		this.titre = new JLabel("Options");
 		this.retour = new JButton("Retour");
-		this.setDefautValues = new JButton("Valeurs par défault");
+		this.setDefautValues = new JButton("Valeurs par dï¿½fault");
 		this.titre.setFont(new Font("Serif", Font.BOLD, 48));
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.core.setLayout(new GridLayout(5, 4, 200, 100));
@@ -92,17 +92,30 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 		this.add(retour);
 		this.retour.setAlignmentX(CENTER_ALIGNMENT);
 		this.add(setDefautValues);
+		this.setDefautValues.setAlignmentX(CENTER_ALIGNMENT);
 		this.add(Box.createRigidArea(new Dimension(0, 100)));
 
 	}		
 				
 	private void setDefautValues() {
-		this.largeur.setValue(15);
-		this.hauteur.setValue(12);
-		this.choixObs.setValue(20);
-		this.choixNbRobot.setValue(1); 
-		this.choixDifficutle.setValue(1);
-		this.volume.setValue(50);
+		
+		FileOutputStream out;
+		try{
+			properties.setProperty("taillex", "15");
+			properties.setProperty("tailley", "12");
+			properties.setProperty("obstacle", "20");
+			properties.setProperty("nmbrobot", "1");
+			properties.setProperty("difficulte", "1");
+			properties.setProperty("tauxmusique", "50");
+			
+			out = new FileOutputStream(configPath);
+			this.properties.store(out, "----config----");
+			out.close();
+			
+		}catch(Exception e){
+			System.out.println("Impossible d'ï¿½crire dans la config");
+			e.printStackTrace();
+		}
 	}
 
 	private void loadConfig() {
@@ -145,8 +158,9 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 
 		}
 		else if(e.getSource() == setDefautValues){
+			this.frame.setContentPane(new MenuPanel(frame));
 			this.setDefautValues();
-			this.revalidate();
+			this.frame.revalidate();
 		}
 		
 	}
@@ -166,7 +180,7 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 			out.close();
 			
 		}catch(Exception e){
-			System.out.println("Impossible d'écrire dans la config");
+			System.out.println("Impossible d'ï¿½crire dans la config");
 			e.printStackTrace();
 		}
 	}
