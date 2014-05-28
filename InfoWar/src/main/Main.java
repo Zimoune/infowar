@@ -175,6 +175,7 @@ public class Main {
 	}
 
 	public static void jouerIAvsJoueur(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
+		JFrame menu = new MenuPrincipal(p);
 		Robot r = null;
 		Action a;
 		int tourDeJeu = 0;
@@ -184,6 +185,9 @@ public class Main {
 		Random alea = new Random();
 
 		do{
+			menu.setContentPane(new Map(p));
+			menu.revalidate();
+			
 			if (tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
 				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
