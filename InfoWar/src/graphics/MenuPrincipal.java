@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +26,9 @@ public class MenuPrincipal extends JFrame{
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setDefaultLookAndFeelDecorated(false);
 		this.setContentPane(menu);
-		this.setPreferredSize(new Dimension(1024,768));
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Dimension d = tk.getScreenSize();
+		this.setPreferredSize(d);
 		this.pack();
 	}
 
