@@ -185,7 +185,7 @@ public class Main {
 		Random alea = new Random();
 
 		do{
-			menu.setContentPane(new Map(p));
+			menu.setContentPane(new Map(p,r.getEquipe()));
 			menu.revalidate();
 			
 			if (tourDeJeu%2 == 0){
@@ -322,7 +322,7 @@ public class Main {
 		Action a;
 		Random alea = new Random();
 		do{
-			menu.setContentPane(new Map(p));
+			menu.setContentPane(new Map(p,r.getEquipe()));
 			menu.revalidate();
 			if(tourDeJeu%2 == 0){
 				System.out.println("\n----------------------------------------------------------------------------------");
@@ -435,7 +435,7 @@ public class Main {
 		boolean partieContinu = true;
 		boolean robotDansListe = false;
 		do {
-			menu.setContentPane(new Map(p));
+			menu.setContentPane(new Map(p,1));
 			menu.revalidate();
 			robotDansListe = false;
 			if (tourDeJeu%2 == 0){

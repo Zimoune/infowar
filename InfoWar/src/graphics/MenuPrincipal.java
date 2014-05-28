@@ -20,7 +20,7 @@ public class MenuPrincipal extends JFrame{
 	Map map;
 	MenuPanel menu = new MenuPanel(this);
 	public MenuPrincipal(Plateau p) {
-		this.map = new Map(p);
+		this.map = new Map(p,1);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("VirtualWar");
 		this.setResizable(false);
@@ -28,7 +28,7 @@ public class MenuPrincipal extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setDefaultLookAndFeelDecorated(false);
-		this.setContentPane(menu);
+		this.setContentPane(map);
 		this.setPreferredSize(new Dimension(1024,768));
 		this.pack();
 	}

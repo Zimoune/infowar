@@ -21,10 +21,12 @@ public class ChoixDirection extends JFrame implements ActionListener{
 	JButton gauche;
 	String mode;
 	Robot robot;
+	PanelParty panel;
 	
-	public ChoixDirection(Robot robot, String mode){
+	public ChoixDirection(Robot robot, String mode, PanelParty panel){
 		
 		this.mode = mode;
+		this.panel = panel;
 		
 		this.haut = new JButton("Haut");
 		this.bas = new JButton("Bas");
@@ -49,7 +51,8 @@ public class ChoixDirection extends JFrame implements ActionListener{
 		// TODO Stub de la méthode généré automatiquement
 		if(mode.equals("Attaque")){
 			if(e.getSource() == haut){
-				new Attaque(robot,Constante.HAUT).agit();		
+				//new Attaque(robot,Constante.HAUT).agit();	
+				System.out.println("merde");
 			} else if(e.getSource() == bas){
 				new Attaque(robot,Constante.BAS).agit();
 			} else if(e.getSource() == droite){
@@ -68,6 +71,7 @@ public class ChoixDirection extends JFrame implements ActionListener{
 				new Deplacement(robot,Constante.GAUCHE).agit();
 			}
 		}
+		this.panel.setEquipe(robot.getEquipe());
 		this.dispose();
 	}
 
