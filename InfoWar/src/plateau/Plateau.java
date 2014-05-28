@@ -133,6 +133,7 @@ public class Plateau {
 		chemin.add(new Coordonnees(0, 0));
 		chemin.add(new Coordonnees(getLargeur() - 1, getHauteur() - 1));
 		Coordonnees droite = new Coordonnees(milieu + 1, c.getHauteur());
+		chemin.add(droite);
 		Coordonnees gauche = new Coordonnees(milieu - 1, c.getHauteur());
 		chemin.add(gauche);
 		Coordonnees base1 = new Coordonnees(0, 0);
