@@ -349,10 +349,10 @@ public class Main {
 				p.afficherPlateau(r);
 				System.out.println();
 				for(Robot r2 : listeRobotEquipe1){
-					if(r2.getType().equals("T")){
+					if(r2.getType().equals("t")){
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 					}
-					else if(r2.getType().equals("P")){
+					else if(r2.getType().equals("p")){
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
 					} else {
 						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
