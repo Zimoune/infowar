@@ -45,16 +45,16 @@ public class Main {
 
 		do{
 			try{
-				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Quitter");
+				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n3. Quitter");
 				choixMode = sc.nextInt();
-				if(choixMode == 3){
+				if(choixMode == 4){
 					return;
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
 				sc.next();
 			}
-		}while((choixMode < 1 || choixMode > 2));
+		}while((choixMode < 1 || choixMode > 3));
 		if(choixMode == 2){
 			do{
 				try{
@@ -166,14 +166,146 @@ public class Main {
 			jouerIa(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
 		}
 		else{
-			for(Robot r:listeRobotEquipe1)
-				r.setIa();
 			for(Robot r:listeRobotEquipe2)
 				r.setIa();
-			jouerIa(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
+			jouerIAvsJoueur(p,listeRobotEquipe1,listeRobotEquipe2, choixDifficulte);
 		}
 
 		sc.close();
+	}
+
+	public static void jouerIAvsJoueur(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
+		Robot r = null;
+		Action a;
+		int tourDeJeu = 0;
+		String choixRobot;
+		boolean partieContinu = true;
+		boolean robotDansListe = false;
+		Random alea = new Random();
+
+		do{
+			if (tourDeJeu%2 == 0){
+				System.out.println("\n----------------------------------------------------------------------------------");
+				System.out.println("\nTour de jeu : " + nomPaysEquipe1 + "\n");
+				p.afficherPlateau(r);
+				System.out.println();
+
+				do{
+					for(Robot r2 : listeRobotEquipe1){
+						if(r2.getType().equals("T")){
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						}
+						else if(r2.getType().equals("P")){
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						} else {
+							System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+						}
+					}
+					if(listeRobotEquipe1.size() != 1){
+						System.out.println("Quel robot voulez vous jouer ?");
+						choixRobot = sc.next();
+
+						for(Robot rob : listeRobotEquipe1){
+							if(rob.getNom().equals(choixRobot))
+								robotDansListe = true;
+
+						}
+					}
+					else{
+						choixRobot = listeRobotEquipe1.get(0).getNom();
+						robotDansListe = true;
+					}
+
+				}while(robotDansListe == false);
+
+				for(Robot rob : listeRobotEquipe1){
+					if(rob.getNom().equals(choixRobot)){
+						r = rob;
+					}
+				}
+				System.out.println();
+				a = choixAction(r, 0);
+				a.agit();
+				tourDeJeu++;
+			}
+			else{
+				System.out.println("\n----------------------------------------------------------------------------------");
+				System.out.println("\nTour de jeu : " + nomPaysEquipe2 + "\n");
+				p.afficherPlateau(r);
+				System.out.println();
+				for(Robot r2 : listeRobotEquipe1){
+					if(r2.getType().equals("T")){
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					}
+					else if(r2.getType().equals("P")){
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					} else {
+						System.out.println(r2.getNom() + ", " + "Energie : " + r2.getEnergie());
+					}
+				}
+				int g = alea.nextInt(nbRobot);
+				r=listeRobotEquipe2.get(g);
+				System.out.println();
+				a = choixAction(choixRobot(r.getEquipe()), 1);
+				a.agit();
+				tourDeJeu++;
+				try{
+					Thread.sleep(1000);
+				}catch(InterruptedException ex){
+					Thread.currentThread().interrupt();
+				}
+			}
+			
+			r = null;
+
+			Iterator<Robot> itEquipe1 = listeRobotEquipe1.iterator();
+
+			while(itEquipe1.hasNext()){
+				Robot rob = itEquipe1.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe1 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe1.remove();
+
+				}
+			}
+
+			listeRobotEquipe1.remove(r);
+
+			Iterator<Robot> itEquipe2= listeRobotEquipe2.iterator();
+
+			while(itEquipe2.hasNext()){
+				Robot rob = itEquipe2.next();
+				if(rob.estMort()){
+					r = rob;
+					p.videCase(rob.getCoordonnees().getLargeur(), rob.getCoordonnees().getHauteur());
+					System.out.println(nomPaysEquipe2 + " : " + rob.getNom() + " est mort au combat !");
+					itEquipe2.remove();
+				}
+			}
+
+			listeRobotEquipe2.remove(r);
+
+			if(listeRobotEquipe1.isEmpty() || listeRobotEquipe2.isEmpty())
+				partieContinu = false;		
+
+			for(Robot rob : listeRobotEquipe1){
+				if(rob.getEnergie() != rob.getEnergieDeBase() && rob.estSurBase()){
+					if(rob.getEnergieDeBase() - rob.getEnergie() >= 1){
+						rob.setEnergie(rob.getEnergie() + 2);
+						System.out.println();
+						System.out.println(rob.getNom() + " a recupere 2 point d'energie");
+					}
+					else{
+						rob.setEnergie(rob.getEnergie() + 1);
+						System.out.println();
+						System.out.println(rob.getNom() + " a recupere 1 point d'energie");
+					}
+				}
+			}
+
+		}while(partieContinu == true);
 	}
 
 	public static void jouerIa(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
@@ -448,13 +580,13 @@ public class Main {
 		else{
 			list = listeRobotEquipe2;
 		}
-		
+
 		for(Robot rob : list){
 			if(rob.estSurBase()){
 				nbRobotBase++;
 			}
 		}
-		
+
 		if(nbRobotBase == list.size()){
 			return list.get(0);
 		}
@@ -465,7 +597,7 @@ public class Main {
 				}
 			}			
 		}
-		
+
 		return null;
 	}
 
@@ -589,9 +721,9 @@ public class Main {
 				action = new Attaque(r,c);
 		} else {
 			action = new Deplacement(r,c);
-		
 
-		/*else {
+
+			/*else {
 			if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
 				if(deplacementName.equals("z")){
 					if(p.getContenu(c.getLargeur(),c.getHauteur()) == null && p.getContenu(c.getLargeur()*2,c.getHauteur()*2) == null && !p.estObstacle(c.getLargeur(),c.getHauteur()) && !p.estObstacle(c.getLargeur()*2,c.getHauteur()*2))
