@@ -92,6 +92,15 @@ public class IaFinal {
 					cpt++;
 				}while(cpt < 11 && testPassage == false);
 			}
+			else if(r.getType().substring(0, 1).equals("t") || r.getType().substring(0, 1).equals("T")){
+				nbPossibilte = alea.nextInt(1);
+				if(nbPossibilte == 0){
+					actionName = "a";
+				}
+				else{
+					actionName = "d";
+				}
+			}
 			else{
 				if(p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1) != null && p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1).getEquipe() != r.getEquipe() && !p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+1)
 						|| p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1) != null &&  p.getContenu(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1).getEquipe() != r.getEquipe() && !p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1)
@@ -498,7 +507,7 @@ public class IaFinal {
 						cpt++;
 					}while(cpt < 11 && test == false);
 				}
-				else{
+				else if(r.getType().substring(0, 1).equals("t") || r.getType().substring(0, 1).equals("T")){
 					if(p.getContenu(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()).getEquipe() != r.getEquipe() && !p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur())){
 						deplacementName = "s";
 					}
@@ -509,6 +518,23 @@ public class IaFinal {
 						deplacementName = "q";
 					}
 					else if(p.getContenu(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()) != null && p.getContenu(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()).getEquipe() != r.getEquipe() && !p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur())){
+						deplacementName = "d";
+					}
+					else{
+						deplacementName = " ";
+					}
+				}
+				else{
+					if(p.getContenu(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()) == null){
+						deplacementName = "s";
+					}
+					else if(p.getContenu(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()) != null){
+						deplacementName = "z";
+					}
+					else if(p.getContenu(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.GAUCHE.getHauteur()) != null){
+						deplacementName = "q";
+					}
+					else if(p.getContenu(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()) != null){
 						deplacementName = "d";
 					}
 					else{
