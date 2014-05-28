@@ -2,6 +2,7 @@
 package main;
 
 import graphics.Map;
+import graphics.MenuPanel;
 import graphics.MenuPrincipal;
 
 import java.util.ArrayList;
@@ -51,10 +52,12 @@ public class Main {
 					return;
 				}
 				else if(choixMode == 5){
-					new MenuPrincipal();
+					MenuPrincipal menu = new MenuPrincipal();
 				}
 				else if(choixMode == 6){
-					new MenuPrincipal();
+					MenuPrincipal menu = new MenuPrincipal();
+					menu.setContentPane(new MenuPanel(menu));
+					menu.revalidate();
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
