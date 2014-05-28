@@ -1,5 +1,10 @@
 //********************************************************************* 
-// Programmeur : Hanquez Remy, Delplace Gautier
+// Programmeur : Hanquez Remy
+// Programmeur : Fack Vincent
+// Programmeur : Delplace Gautier
+// Programmeur : Lorthios Ludovic
+// Programmeur : Lepeltier Damien
+// Programmeur : Le Pallac Simon
 // Date : 08/05/2014
 // Fichier : Plateau.java
 // 
@@ -19,6 +24,12 @@ public class Plateau {
 
 	private Cellule[][] plateau;
 	private int largeur, hauteur;
+	
+	/**
+	 * Constructeur de la classe Plateau
+	 * @param largeur, correspond a la largeur du plateau
+	 * @param hauteur, correspond a la hauteur du plateau
+	 */
 
 	public Plateau(int largeur, int hauteur) {
 		plateau = new Cellule[hauteur][largeur];
@@ -34,29 +45,53 @@ public class Plateau {
 		this.hauteur = hauteur;
 		this.largeur = largeur;
 	}
+	
+	/*
+	 * retourne la largeur du plateau
+	 */
 
 	public int getLargeur() {
 		return this.largeur;
 	}
+	
+	/*
+	 * retourne la hauteur du plateau
+	 */
 
 	public int getHauteur() {
 		return this.hauteur;
 	}
+	
+	/*
+	 * permet de deplace le robot sur une case
+	 */
 
 	public void deplaceSur(int x, int y, Robot r) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
 			this.plateau[y][x].deplaceSur(r);
 	}
+	
+	/*
+	 * permet d'ajouter
+	 */
 
 	public void ajout(int x, int y, int equipe) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
 			this.plateau[y][x].ajout(equipe);
 	}
+	
+	/*
+	 * permet de vider une case
+	 */
 
 	public void videCase(int x, int y) {
 		if(y >= 0 && y < hauteur && x >= 0 && x < largeur)
 			this.plateau[y][x].videCase();
 	}
+	
+	/*
+	 * permet de savoir si une case est une base ou pas
+	 */
 
 	public int estBase(int x, int y) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
@@ -64,29 +99,49 @@ public class Plateau {
 		return -1;
 	}
 	
+	/*
+	 * permet de savoir si la case est un obstacle
+	 */
+	
 	public boolean estObstacle(int x, int y){
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
 			return this.plateau[y][x].estObstacle();
 		return false;
 	}
 
+	/*
+	 * permet de savoir si une case contient une mine
+	 */
+	
 	public int contientMine(int x, int y) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
 			return this.plateau[y][x].contientMine();
 		return -1;
 	}
+	
+	/*
+	 * retourne les coordonee d'une case
+	 */
 
 	public Coordonnees getCoordonnees(int x, int y) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
 			return this.plateau[y][x].getCoordonnees();
 		return null;
 	}
+	
+	/*
+	 * retourne le contenu d'une case : le robot
+	 */
 
 	public Robot getContenu(int x, int y) {
 		if(y >= 0 && y < hauteur  && x >= 0 && x < largeur)
 			return this.plateau[y][x].getContenu();
 		return null;
 	}
+	
+	/*
+	 * permet d'afficher le plateau
+	 */
 
 	public void afficherPlateau(Robot r) {
 		for(int i=0; i<plateau.length; i++) {
@@ -117,6 +172,10 @@ public class Plateau {
 
 		System.out.println();
 	}
+	
+	/*
+	 * Genere un chemin entre la base B et la base b
+	 */
 
 	public void genererchemin() {
 		Random hauteur1 = new Random();

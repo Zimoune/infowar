@@ -1,5 +1,10 @@
 //********************************************************************* 
 // Programmeur : Hanquez Remy
+// Programmeur : Fack Vincent
+// Programmeur : Delplace Gautier
+// Programmeur : Lorthios Ludovic
+// Programmeur : Lepeltier Damien
+// Programmeur : Le Pallac Simon
 // Date : 08/05/2014
 // Fichier : Base.java
 // 
@@ -42,13 +47,25 @@ public class Base extends Cellule {
 		
 	}
 	
+	/*
+	 * Ajout d'un robot dans la base
+	 */
+	
 	public void addRobot(Robot r){
 		this.robotDansBase.add(r);
 	}
 	
+	/*
+	 * Affiche les robots dans la base
+	 */
+	
 	public String getRobot(){
 		return this.robotDansBase.toString();
 	}
+	
+	/*
+	 * Supprime un robot de la base
+	 */
 	
 	public void removeRobot(Robot r){
 		for(Robot r2 : this.robotDansBase){
@@ -57,18 +74,32 @@ public class Base extends Cellule {
 			}
 		}
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see plateau.Cellule#ajout(int)
+	 */
 
 	@Override
 	public void ajout(int equipe) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see plateau.Cellule#videCase()
+	 */
 
 	@Override
 	public void videCase() {
-		this.setContenu(null);
-		
+		this.setContenu(null);		
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see plateau.Cellule#ajoutObstacle()
+	 */
 
 	@Override
 	public void ajoutObstacle() {
