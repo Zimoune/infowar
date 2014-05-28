@@ -185,7 +185,7 @@ public class Plateau {
 		System.out.println(this.getHauteur());
 		System.out.println(this.getLargeur());
 		int milieu = getLargeur() / 2;
-		System.out.println(milieu);
+		//System.out.println(milieu);
 		Coordonnees c = new Coordonnees(milieu, hauteur1.nextInt(
 				getLargeur()));
 		chemin.add(c);
@@ -227,7 +227,7 @@ public class Plateau {
 				droite = new Coordonnees(droite.getLargeur() + 1, 
 						droite.getHauteur());
 				chemin.add(droite);
-				System.out.println("fais chier");
+				//System.out.println("fais chier");
 			}
 			else if (choix.nextInt(2) == 0) {
 				droite = new Coordonnees(droite.getLargeur() + 1, 
@@ -246,13 +246,13 @@ public class Plateau {
 		while(ctp >0){
 			Coordonnees obstacle = new Coordonnees(longueur2.nextInt(getLargeur()), 
 					hauteur1.nextInt(getHauteur()));
-			System.out.println(!chemin.contains(obstacle));
+			//System.out.println(!chemin.contains(obstacle));
 			if (!chemin.contains(obstacle)) {
 				this.plateau[obstacle.getHauteur()][obstacle.getLargeur()] = new Obstacle(
 						obstacle.getHauteur(), obstacle.getLargeur());
 				ctp--;
 			} else {
-				System.out.println(obstacle + "est sur le chemin");
+				//System.out.println(obstacle + "est sur le chemin");
 			}
 		}
 	}
