@@ -32,6 +32,17 @@ public class MenuPrincipal extends JFrame{
 		this.setPreferredSize(new Dimension(1024,768));
 		this.pack();
 	}
+	public MenuPrincipal() {
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setTitle("VirtualWar");
+		this.setResizable(false);
+		this.setVisible(true);
+		this.setLocationRelativeTo(null);
+		this.setExtendedState(MAXIMIZED_BOTH);
+		this.setDefaultLookAndFeelDecorated(false);
+		this.setPreferredSize(new Dimension(1024,768));
+		this.pack();
+	}
 	
 	public Map getMap(){
 		return this.map;

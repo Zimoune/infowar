@@ -51,7 +51,10 @@ public class Main {
 					return;
 				}
 				else if(choixMode == 5){
-					
+					new MenuPrincipal();
+				}
+				else if(choixMode == 6){
+					new MenuPrincipal();
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
