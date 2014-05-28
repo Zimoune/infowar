@@ -474,6 +474,7 @@ public class IaFinal {
 			}
 			else{
 				if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
+					cpt = 1;
 					do{
 						if(p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()+cpt)){
 							testObstacle1 = true;
