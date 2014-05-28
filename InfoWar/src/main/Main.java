@@ -45,7 +45,7 @@ public class Main {
 
 		do{
 			try{
-				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n3. Quitter");
+				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n4. Quitter");
 				choixMode = sc.nextInt();
 				if(choixMode == 4){
 					return;
