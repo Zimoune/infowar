@@ -306,6 +306,8 @@ public class Main {
 			}
 
 		}while(partieContinu == true);
+		
+		System.out.println("\nFin de la partie.");
 	}
 
 	public static void jouerIa(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2, int choixDifficulte){
@@ -416,6 +418,8 @@ public class Main {
 			}
 
 		}while(partieContinu == true);
+		
+		System.out.println("\nFin de la partie.");
 	}
 
 	public static void jouer(Plateau p, ArrayList<Robot> liste1, ArrayList<Robot> liste2) {
