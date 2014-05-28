@@ -120,7 +120,7 @@ public class IaFinal {
 		boolean testObstacle3 = false;
 		boolean testObstacle4 = false;
 		boolean test = false;
-		
+
 		equipe = r.getEquipe();
 
 		//On verifie que au moins un robot est dehors
@@ -131,20 +131,37 @@ public class IaFinal {
 		}
 		if(nbRobotSurBase == listeRobotEquipe.size()){
 			if(equipe == 1){
-				if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()))
-					deplacementName = "d";	
-				else if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()+1))
-					deplacementName = "c";
-				else
-					deplacementName = "s";
+				if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
+					if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()))
+						deplacementName = "d";
+					else
+						deplacementName = "s";
+				}
+				else{
+					if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()))
+						deplacementName = "d";	
+					else if(!p.estObstacle(r.getCoordonnees().getLargeur()+1, r.getCoordonnees().getHauteur()+1))
+						deplacementName = "c";
+					else
+						deplacementName = "s";
+				}				
 			}
 			else{
-				if(!p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1))
-					deplacementName = "z";	
-				else if(!p.estObstacle(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()-1))
-					deplacementName = "a";
-				else
-					deplacementName = "q";
+				if(r.getType().substring(0, 1).equals("c") || r.getType().substring(0, 1).equals("C")){
+					if(!p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1))
+						deplacementName = "z";	
+					else
+						deplacementName = "q";
+				}
+				else{
+					if(!p.estObstacle(r.getCoordonnees().getLargeur(), r.getCoordonnees().getHauteur()-1))
+						deplacementName = "z";	
+					else if(!p.estObstacle(r.getCoordonnees().getLargeur()-1, r.getCoordonnees().getHauteur()-1))
+						deplacementName = "a";
+					else
+						deplacementName = "q";
+				}
+
 			}
 		}
 
@@ -226,14 +243,14 @@ public class IaFinal {
 					if(r.getCoordonnees().getHauteur() == p.getHauteur()-1 && r.getCoordonnees().getLargeur() != p.getLargeur()-1 && r.getCoordonnees().getLargeur() != 0){
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("z");
-							//deplacementName = "z";
+						//deplacementName = "z";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");
-							//deplacementName = "d";	
+						//deplacementName = "d";	
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("q");
-							//deplacementName = "q";
-						
+						//deplacementName = "q";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -244,7 +261,7 @@ public class IaFinal {
 							deplacementPossible.add("z");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("z");
-						
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -255,7 +272,7 @@ public class IaFinal {
 							deplacementPossible.add("s");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("q");
-						
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -266,7 +283,7 @@ public class IaFinal {
 							deplacementPossible.add("d");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-						
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -275,7 +292,7 @@ public class IaFinal {
 							deplacementPossible.add("q");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-						
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -284,7 +301,7 @@ public class IaFinal {
 							deplacementPossible.add("z");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");
-						
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -297,12 +314,12 @@ public class IaFinal {
 							deplacementPossible.add("d");	
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-						
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}				
 				}
-				
+
 				/*
 				 * robot t et p
 				 */
@@ -311,43 +328,43 @@ public class IaFinal {
 						System.out.println("YOLLLO 1");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("z");
-							//deplacementName = "z";
+						//deplacementName = "z";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTGAUCHE.getLargeur()))
 							deplacementPossible.add("a");
-							//deplacementName = "a";
+						//deplacementName = "a";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTDROITE.getHauteur()))
 							deplacementPossible.add("e");
-							//deplacementName = "e";
+						//deplacementName = "e";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("q");
-							//deplacementName = "q";
+						//deplacementName = "q";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");	
-							//deplacementName = "d";
-						
+						//deplacementName = "d";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
-						
+
 					}
 
 					else if(r.getCoordonnees().getLargeur() == p.getLargeur()-1 && r.getCoordonnees().getHauteur() != p.getHauteur()-1 && r.getCoordonnees().getHauteur() != 0){
 						System.out.println("YOLLLO 2");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("z");
-							//deplacementName = "z";
+						//deplacementName = "z";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTGAUCHE.getHauteur()))
 							deplacementPossible.add("a");
-							//deplacementName = "a";
+						//deplacementName = "a";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.GAUCHE.getHauteur()))
 							deplacementPossible.add("q");
-							//deplacementName = "q";
+						//deplacementName = "q";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASGAUCHE.getHauteur()))
 							deplacementPossible.add("w");
-							//deplacementName = "w";
+						//deplacementName = "w";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-							//deplacementName = "s";
-						
+						//deplacementName = "s";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -355,20 +372,20 @@ public class IaFinal {
 						System.out.println("YOLLLO 3");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");
-							//deplacementName = "d";
+						//deplacementName = "d";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASDROITE.getLargeur()))
 							deplacementPossible.add("c");
-							//deplacementName = "c";
+						//deplacementName = "c";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-							//deplacementName = "s";
+						//deplacementName = "s";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.GAUCHE.getHauteur()))
 							deplacementPossible.add("q");
-							//deplacementName = "q";
+						//deplacementName = "q";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASGAUCHE.getHauteur()))
 							deplacementPossible.add("w");
-							//deplacementName = "w";
-						
+						//deplacementName = "w";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -376,20 +393,20 @@ public class IaFinal {
 						System.out.println("YOLLLO 4");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-							//deplacementName = "s";
+						//deplacementName = "s";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");
-							//deplacementName = "d";
+						//deplacementName = "d";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTDROITE.getHauteur()))
 							deplacementPossible.add("e");
-							//deplacementName = "e";
+						//deplacementName = "e";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASDROITE.getLargeur()))
 							deplacementPossible.add("c");
-							//deplacementName = "c";
+						//deplacementName = "c";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("z");
-							//deplacementName = "z";
-						
+						//deplacementName = "z";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -397,14 +414,14 @@ public class IaFinal {
 						System.out.println("YOLLLO 5");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("z");
-							//deplacementName = "z";
+						//deplacementName = "z";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTDROITE.getHauteur()))
 							deplacementPossible.add("e");
-							//deplacementName = "e";
+						//deplacementName = "e";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");
-							//deplacementName = "d";
-						
+						//deplacementName = "d";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -412,14 +429,14 @@ public class IaFinal {
 						System.out.println("YOLLLO 6");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.GAUCHE.getHauteur()))
 							deplacementPossible.add("q");
-							//deplacementName = "q";
+						//deplacementName = "q";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASGAUCHE.getHauteur()))
 							deplacementPossible.add("w");
-							//deplacementName = "w";
+						//deplacementName = "w";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-							//deplacementName = "s";
-						
+						//deplacementName = "s";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
@@ -427,29 +444,29 @@ public class IaFinal {
 						System.out.println("YOLLLO 7");
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.HAUT.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("z");
-							//deplacementName = "z";
+						//deplacementName = "z";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASDROITE.getHauteur()))
 							deplacementPossible.add("c");
-							//deplacementName = "c";
+						//deplacementName = "c";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DROITE.getHauteur()))
 							deplacementPossible.add("d");
-							//deplacementName = "d";
+						//deplacementName = "d";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIABASGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIABASGAUCHE.getHauteur()))
 							deplacementPossible.add("w");
-							//deplacementName = "w";
+						//deplacementName = "w";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTDROITE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTDROITE.getHauteur()))
 							deplacementPossible.add("e");
-							//deplacementName = "e";
+						//deplacementName = "e";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.GAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.HAUT.getHauteur()))
 							deplacementPossible.add("q");
-							//deplacementName = "q";
+						//deplacementName = "q";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.DIAHAUTGAUCHE.getLargeur(), r.getCoordonnees().getHauteur()+Constante.DIAHAUTGAUCHE.getHauteur()))
 							deplacementPossible.add("a");
-							//deplacementName = "a";
+						//deplacementName = "a";
 						if(!p.estObstacle(r.getCoordonnees().getLargeur()+Constante.BAS.getLargeur(), r.getCoordonnees().getHauteur()+Constante.BAS.getHauteur()))
 							deplacementPossible.add("s");
-							//deplacementName = "s";
-						
+						//deplacementName = "s";
+
 						int nbAlea = alea.nextInt(deplacementPossible.size());
 						deplacementName = deplacementPossible.get(nbAlea);
 					}
