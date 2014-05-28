@@ -14,6 +14,7 @@ public class GraphicsParty extends JPanel{
 		this.frame.revalidate();
 		if(typeDePartie == 1 ){
 			//On lance la partie JCJ
+			
 		}
 		else{
 			//On lance la partie IAvsIA
