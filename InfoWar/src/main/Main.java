@@ -45,16 +45,19 @@ public class Main {
 
 		do{
 			try{
-				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n4. Quitter");
+				System.out.println("Quel mode de jeu voulez vous? \n1. Joueur vs Joueur\n2. IA vs IA\n3. Joueur vs IA\n4. Quitter\n5. Map Graphique\n6. Graphique simple");
 				choixMode = sc.nextInt();
 				if(choixMode == 4){
 					return;
+				}
+				else if(choixMode == 5){
+					
 				}
 			}catch(InputMismatchException e){
 				System.out.println("Vous n'avez pas entree une valeur valide");
 				sc.next();
 			}
-		}while((choixMode < 1 || choixMode > 3));
+		}while((choixMode < 1 || choixMode > 5));
 		if(choixMode == 2){
 			do{
 				try{
@@ -103,58 +106,10 @@ public class Main {
 		int nbCharEquipe1 = 1;
 		int nbCharEquipe2 = 1;
 
-		for( int i = 0; i < nbRobot; i++){
+		
+			
+		
 
-			cptIndiceEquipe = 1;
-
-			do{
-				do{
-					if(cptIndiceEquipe == 1){
-						System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe1 + " ? (t/p/c)");
-					}
-					else{
-						System.out.println("Quel est le robot que vous voulez jouer pour le pays " + nomPaysEquipe2 + " ? (t/p/c)");
-					}
-
-					choixUtilisateur = sc.next();
-				}while(!choixUtilisateur.equals("t") && !choixUtilisateur.equals("p") && !choixUtilisateur.equals("c"));
-
-				if(cptIndiceEquipe == 1){
-					if(choixUtilisateur.equals("t")){					
-						//r1 = new Tireur(v1,0,0,1);
-						listeRobotEquipe1.add(new Tireur(v1,0,0,1,"Tireur" + nbTireurEquipe1));
-						nbTireurEquipe1++;
-					}
-					else if(choixUtilisateur.equals("p")){					
-						//r1 = new Piegeur(v1,0,0,1);
-						listeRobotEquipe1.add(new Piegeur(v1,0,0,1, "Piegeur" + nbPiegeurEquipe1));
-						nbPiegeurEquipe1++;
-					} else {
-						//r1 = new Char(v1,0,0,1);
-						listeRobotEquipe1.add(new Char(v1,0,0,1,"Char" + nbCharEquipe1));
-						nbCharEquipe1++;
-					}
-
-				}
-				else if(cptIndiceEquipe == 2){
-					if(choixUtilisateur.equals("t")){
-						//r2 = new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-						listeRobotEquipe2.add(new Tireur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Tireur" + nbTireurEquipe2));
-						nbTireurEquipe2++;
-					}
-					else if(choixUtilisateur.equals("p")){
-						//r2 = new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-						listeRobotEquipe2.add(new Piegeur(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Piegeur" + nbPiegeurEquipe2));
-						nbPiegeurEquipe2++;
-					} else {
-						//r2 = new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2);
-						listeRobotEquipe2.add(new Char(v2,p.getLargeur()-1,p.getHauteur()-1,2,"Char" + nbCharEquipe2));
-						nbCharEquipe2++;
-					}
-				}		
-				cptIndiceEquipe++;
-			}while(cptIndiceEquipe < 3);
-		}
 		if(choixMode == 1){
 			jouer(p,listeRobotEquipe1,listeRobotEquipe2);
 		}
@@ -732,4 +687,5 @@ public class Main {
 		}
 		return action;
 	}
+	
 }

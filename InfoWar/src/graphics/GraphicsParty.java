@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 
 public class GraphicsParty extends JPanel{
 
-	private JFrame frame;
+	private MenuPrincipal frame;
 	
-	public GraphicsParty(int typeDePartie, JFrame frame){
+	public GraphicsParty(int typeDePartie, MenuPrincipal frame){
 		this.frame = frame;
 		this.frame.setContentPane(new GraphicsPlateau(this.frame));
 		this.frame.getContentPane().repaint();

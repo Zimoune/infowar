@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 public class PanelRobot extends JPanel {
-
+	
 	private final JLabel Nb_Robot = new JLabel("Robot numero: ");
 	String Type_Robot[] = { "Aleatoire", "Tireur", "Piegeur", "Char" };
 	private final JComboBox combo = new JComboBox(Type_Robot);
@@ -26,9 +26,9 @@ public class PanelRobot extends JPanel {
 		this.setBackground(Color.white);
 		Nb_Robot.setText(Nb_Robot.getText() + "" + i);
 		this.setPreferredSize(new Dimension(300, 50));
-		//this.setLayout(new BorderLayout());
-		//this.add(Nb_Robot, BorderLayout.WEST);
-		//this.add(combo, BorderLayout.EAST);
+		this.setLayout(new BorderLayout());
+		this.add(Nb_Robot, BorderLayout.WEST);
+		this.add(combo, BorderLayout.EAST);
 		combo.setPreferredSize(new Dimension(150, 40));
 		combo.setFont((new Font("serif", Font.BOLD, 15)));
 		Nb_Robot.setFont((new Font("serif", Font.BOLD, 15)));

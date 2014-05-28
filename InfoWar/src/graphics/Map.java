@@ -3,14 +3,16 @@ package graphics;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
 import plateau.Plateau;
+import robot.Robot;
 
 public class Map extends JPanel {
-
-	
+	private static ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
+	private static ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
 	
 	public Map(Plateau p, int equipe){
 		this.setPreferredSize(new Dimension(500,500));
@@ -28,6 +30,17 @@ public class Map extends JPanel {
 					cellule.setBackground(Color.GRAY);
 				this.add(cellule);
 			}
+		}
+	}
+	
+	public void setEquipe1(ArrayList<Robot> robot){
+		for(Robot r: robot){
+			this.listeRobotEquipe1.add(r);
+		}
+	}
+	public void setEquipe2(ArrayList<Robot> robot){
+		for(Robot r: robot){
+			this.listeRobotEquipe2.add(r);
 		}
 	}
 

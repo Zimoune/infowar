@@ -14,8 +14,8 @@ public class GraphicsPlateau extends JPanel{
 	private int tailleX, tailleY;
 	private GridLayout gl;
 	private Cellule[][] plateau;
-	private JFrame frame;
-	public GraphicsPlateau(JFrame frame){
+	private MenuPrincipal frame;
+	public GraphicsPlateau(MenuPrincipal frame){
 		//Récupèration et attribution des options
 		loadOptions();
 		this.frame = frame;

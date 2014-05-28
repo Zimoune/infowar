@@ -17,7 +17,7 @@ import main.Main;
 
 public class MenuPrincipal extends JFrame{
 
-	Map map;
+	public Map map;
 	MenuPanel menu = new MenuPanel(this);
 	public MenuPrincipal(Plateau p) {
 		this.map = new Map(p,1);
@@ -31,6 +31,10 @@ public class MenuPrincipal extends JFrame{
 		this.setContentPane(map);
 		this.setPreferredSize(new Dimension(1024,768));
 		this.pack();
+	}
+	
+	public Map getMap(){
+		return this.map;
 	}
 
 }

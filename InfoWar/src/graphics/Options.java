@@ -31,15 +31,15 @@ public class Options extends JPanel implements ActionListener{
 	JPanel core, taille;
 	JButton retour, setDefautValues;
 	boolean valeurCorrecte = true;
-	JFrame frame;
+	MenuPrincipal frame;
 	//Emplacement du fichier de config
 	String configPath="src/res/config";
 	//Config par default
 	Properties properties = new Properties();
 	int tailleX = 15, tailleY = 12, obstacle = 20, nmbRobot = 1, difficulte = 1, tauxMusique = 50;
 
-	public Options(JFrame frame) {
-		//On charge les valeurs d�j� dans la config
+	public Options(MenuPrincipal frame) {
+		//On charge les valeurs deja dans la config
 		this.loadConfig();
 		this.frame = frame;
 		this.taille = new JPanel();
@@ -113,7 +113,7 @@ public class Options extends JPanel implements ActionListener{
 			out.close();
 			
 		}catch(Exception e){
-			System.out.println("Impossible d'�crire dans la config");
+			System.out.println("Impossible d'erire dans la config");
 			e.printStackTrace();
 		}
 	}
