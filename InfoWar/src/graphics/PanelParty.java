@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import plateau.Plateau;
+import robot.Char;
 import robot.Robot;
+import robot.Tireur;
 
 public class PanelParty extends JPanel implements ActionListener {
 
@@ -22,6 +24,9 @@ public class PanelParty extends JPanel implements ActionListener {
 	Plateau p;
 	int equipe;
 	
+	String nomPays1 = "France";
+	String nomPays2 = "Allemagne";
+	
 	public PanelParty(Plateau p, int equipe, ArrayList<Robot> equipe1, ArrayList<Robot> equipe2){
 		
 		this.p = p;
@@ -29,7 +34,11 @@ public class PanelParty extends JPanel implements ActionListener {
 		
 		this.setLayout(new BorderLayout());
 		
-		this.auTourde = new JLabel("Au tour de #equipe"); // A CHANGER
+		this.auTourde = new JLabel(); // A CHANGER
+		if(equipe == 1)
+			this.auTourde.setText(nomPays1);
+		else
+			this.auTourde.setText(nomPays2);
 		this.deplacement = new JButton("Deplacer");
 		this.attaque = new JButton("Attaquer");
 		this.quitter = new JButton("Quitter");
@@ -68,11 +77,25 @@ public class PanelParty extends JPanel implements ActionListener {
 	}
 	
 	public static void main(String[] args){
+		
 		JFrame f = new JFrame();
 		f.setVisible(true);
-		f.setContentPane(new PanelParty(null,0,null,null)); // A CHANGER
-		f.pack();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Plateau p = new Plateau(15,12);
+		ArrayList<Robot> listeRobotEquipe1 = new ArrayList<Robot>();
+		ArrayList<Robot> listeRobotEquipe2 = new ArrayList<Robot>();
+		listeRobotEquipe1.add(new Tireur(null,0,0,1,"Tireur"));
+		listeRobotEquipe1.add(new Tireur(null,0,0,1,"Tireur1"));
+		listeRobotEquipe1.add(new Char(null,0,0,1,"Char"));
+		listeRobotEquipe2.add(new Tireur(null,0,0,1,"Tireur2"));
+		listeRobotEquipe2.add(new Tireur(null,0,0,1,"Tireur3"));
+		listeRobotEquipe2.add(new Char(null,0,0,1,"Char2"));
+		p.genererchemin();
+
+		
+		f.setContentPane(new PanelParty(p,0,null,null)); // A CHANGER
+		f.pack();
 	}
 	
 	public void setEquipe(int equipeActuel){

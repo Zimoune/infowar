@@ -21,7 +21,7 @@ public class Map extends JPanel {
 				if(p.estObstacle(j, i))
 					cellule.setBackground(Color.BLACK);
 				else if(p.getContenu(j, i) != null)
-					cellule.setBackground(Color.BLUE);
+					cellule.add(new JLabel(p.getContenu(j, i).getNom()));
 				else if(p.estBase(j, i) > 0)
 					cellule.setBackground(Color.YELLOW);
 				else if(p.contientMine(j, i) > 0)

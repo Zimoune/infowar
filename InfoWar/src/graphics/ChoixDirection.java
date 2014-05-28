@@ -71,7 +71,7 @@ public class ChoixDirection extends JFrame implements ActionListener{
 				new Deplacement(robot,Constante.GAUCHE).agit();
 			}
 		}
-		this.panel.setEquipe(robot.getEquipe());
+		
 		this.dispose();
 	}
 
