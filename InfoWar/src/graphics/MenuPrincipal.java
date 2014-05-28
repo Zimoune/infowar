@@ -28,7 +28,7 @@ public class MenuPrincipal extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setDefaultLookAndFeelDecorated(false);
-		this.setContentPane(map);
+		this.setContentPane(menu);
 		this.setPreferredSize(new Dimension(1024,768));
 		this.pack();
 	}

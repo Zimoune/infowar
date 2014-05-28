@@ -12,7 +12,7 @@ public class Map extends JPanel {
 	
 	
 	public Map(Plateau p){
-		this.setLayout(new GridLayout(p.getHauteur(),p.getLargeur()));
+		this.setLayout(new GridLayout(p.getHauteur(),p.getLargeur(),5,5));
 		for(int i = 0; i < p.getHauteur();i++){
 			for( int j = 0; j < p.getLargeur();j++){
 				JPanel cellule = new JPanel();

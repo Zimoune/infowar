@@ -23,7 +23,7 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class Options extends JPanel implements ActionListener, KeyListener {
+public class Options extends JPanel implements ActionListener{
 
 	JLabel titre, nbRobot, perCentObs, taillePlateau, niveauDifficulte, musique;
 	JSpinner choixNbRobot, choixObs, hauteur, largeur, choixDifficutle;
@@ -51,16 +51,17 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 		this.choixObs = new JSpinner(new SpinnerNumberModel(this.obstacle, 20, 80, 10));
 		this.choixNbRobot = new JSpinner(new SpinnerNumberModel(this.nmbRobot, 1, 5, 1));
 		this.musique = new JLabel("Musique");
-		this.niveauDifficulte = new JLabel("Niveau de difficult� :");
+		this.niveauDifficulte = new JLabel("Niveau de difficulte :");
 		this.taillePlateau = new JLabel("Taille du plateau :");
 		this.perCentObs = new JLabel("Pourcentage d'obstacle :");
-		this.nbRobot = new JLabel("Nombre de robots par �quipe :");
+		this.nbRobot = new JLabel("Nombre de robots par equipe :");
 		this.titre = new JLabel("Options");
 		this.retour = new JButton("Retour");
-		this.setDefautValues = new JButton("Valeurs par d�fault");
+		this.setDefautValues = new JButton("Valeurs par default");
+		this.setDefautValues.addActionListener(this);
 		this.titre.setFont(new Font("Serif", Font.BOLD, 48));
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		this.core.setLayout(new GridLayout(5, 4, 200, 100));
+		this.core.setLayout(new GridLayout(5, 4, 60, 80));
 		this.taille.add(hauteur);
 		this.taille.add(largeur);
 		this.retour.addActionListener(this);
@@ -83,7 +84,6 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 		this.core.add(Box.createRigidArea(new Dimension(30, 0)));
 		this.core.add(musique);
 		this.core.add(volume);
-
 		this.add(titre);
 		this.titre.setAlignmentX(CENTER_ALIGNMENT);
 		this.add(Box.createRigidArea(new Dimension(0, 100)));
@@ -101,12 +101,12 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 		
 		FileOutputStream out;
 		try{
-			properties.setProperty("taillex", "15");
-			properties.setProperty("tailley", "12");
-			properties.setProperty("obstacle", "20");
-			properties.setProperty("nmbrobot", "1");
-			properties.setProperty("difficulte", "1");
-			properties.setProperty("tauxmusique", "50");
+			this.largeur.setValue(15);
+			this.hauteur.setValue(12);
+			this.choixObs.setValue(20);
+			this.choixDifficutle.setValue(1);
+			this.choixNbRobot.setValue(1);
+			this.volume.setValue(50);
 			
 			out = new FileOutputStream(configPath);
 			this.properties.store(out, "----config----");
@@ -128,8 +128,6 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 			this.nmbRobot = stringToInt(properties.getProperty("nmbrobot"));
 			this.difficulte = stringToInt(properties.getProperty("difficulte"));
 			this.tauxMusique = stringToInt(properties.getProperty("tauxmusique"));
-			
-			
 			in.close();
 		
 	} catch(Exception e){
@@ -158,7 +156,6 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 
 		}
 		else if(e.getSource() == setDefautValues){
-			this.frame.setContentPane(new MenuPanel(frame));
 			this.setDefautValues();
 			this.frame.revalidate();
 		}
@@ -180,26 +177,8 @@ public class Options extends JPanel implements ActionListener, KeyListener {
 			out.close();
 			
 		}catch(Exception e){
-			System.out.println("Impossible d'�crire dans la config");
+			System.out.println("Impossible d'ecrire dans la config");
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Stub de la méthode généré automatiquement
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Stub de la méthode généré automatiquement
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Stub de la méthode généré automatiquement
-
-	}
-
 }

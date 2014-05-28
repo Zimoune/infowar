@@ -1,8 +1,8 @@
 #----config----
-#Wed May 28 15:32:50 CEST 2014
-tailley=14
-taillex=18
-nmbrobot=2
-obstacle=50
-tauxmusique=78
-difficulte=3
+#Wed May 28 19:05:05 CEST 2014
+tailley=12
+taillex=15
+nmbrobot=1
+obstacle=20
+tauxmusique=50
+difficulte=1
