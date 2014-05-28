@@ -1,5 +1,10 @@
 //********************************************************************* 
 // Programmeur : Hanquez Remy
+// Programmeur : Fack Vincent
+// Programmeur : Delplace Gautier
+// Programmeur : Lorthios Ludovic
+// Programmeur : Lepeltier Damien
+// Programmeur : Le Pallac Simon
 // Date : 08/05/2014
 // Fichier : Attaque.java
 // 
@@ -29,6 +34,7 @@ public class Attaque extends Action {
 	 */
 	@Override
 	public void agit() {
+		
 		//On verifie que la direction selectionne n'est pas null
 		if (this.getDirection() != null) {
 
@@ -37,20 +43,21 @@ public class Attaque extends Action {
 
 				//On verifie que l'endroit ou le robot doit tirer n'est pas vide
 				if (this.getRobot().getVue().getContenu(this.getObjectif()) != null) {
+					
 					if(this.getRobot().getVue().getContenu(this.getObjectif()).getEquipe() != this.getRobot().getEquipe())
+						
 						//on verifie que le robot que l'on attaque n'est pas sur sa base
 						if(!this.getRobot().getVue().getContenu(this.getObjectif()).estSurBase())
+							
 							//On retire l'energie au robot qui se fait attaquer
 							this.getRobot().getVue().getContenu(this.getObjectif()).subitTir();
 				}
 			}
 			else{
-				/*Si le robot est ia inutile d'afficher le message d'erreur
-				if(!this.getRobot().estIa())
-					System.out.println("Vous ne pouvez pas effectuer cette action");*/
 				this.getRobot().getVue().ajout(this.getObjectif(), this.getRobot().getEquipe());
 			}		
-			//On retire au robot attaquant l'energie de l'attaque que la case soit vide ou pas
+			
+			//On retire au robot attaquant l'energie de l'attaque que la case soit vide ou pas			
 			this.getRobot().setEnergie(this.getRobot().getEnergie() - this.getRobot().getCoutAction());
 			System.out.println();
 			System.out.println(this.getRobot().getNom() + " a perdu : " + this.getRobot().getCoutAction() + " energie apres avoir attaque !");
