@@ -36,22 +36,17 @@ public class Deplacement extends Action {
 		if (this.getDirection() != null) {
 			
 			//on verifie que le robot est un char
-			if(this.getRobot().getType().equalsIgnoreCase("c")){
+			if(this.getRobot().getType().substring(0, 1).equalsIgnoreCase("c")){
 				
-				if(this.getRobot().getVue().getContenu(getObjectif()) != null && !this.getRobot().getVue().estObstacle(getObjectif())){
+				if(this.getRobot().getVue().getContenu(getObjectif()) == null && !this.getRobot().getVue().estObstacle(getObjectif())){
 					this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
 					
-					if(this.getRobot().getVue().getContenu(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur())) != null && !this.getRobot().getVue().estObstacle(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur()))){
+					if(this.getRobot().getVue().getContenu(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur())) == null && !this.getRobot().getVue().estObstacle(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur()))){
 						
-						this.getRobot().getVue().deplaceSur(new Coordonnees(this.getObjectif().getLargeur()+this.getDirection().getLargeur(),this.getObjectif().getHauteur()+this.getDirection().getHauteur()), this.getRobot());
+						this.getRobot().getVue().deplaceSur(new Coordonnees(this.getRobot().getCoordonnees().getLargeur()+this.getDirection().getLargeur(),this.getRobot().getCoordonnees().getHauteur()+this.getDirection().getHauteur()), this.getRobot());
 					}
 				}
-			}
-			
-			//On verifie que la case choisi est bien vide
-			if (this.getRobot().getVue().getContenu(this.getObjectif()) == null && !this.getRobot().getVue().estObstacle(this.getObjectif())) {
-				
-				//On deplace le robot sur cette case
+			} else if(this.getRobot().getVue().getContenu(this.getObjectif()) == null && !this.getRobot().getVue().estObstacle(this.getObjectif())){
 				this.getRobot().getVue().deplaceSur(this.getObjectif(), this.getRobot());
 			}
 			
